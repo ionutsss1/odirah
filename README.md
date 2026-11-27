@@ -7,6 +7,7 @@ E-commerce website for ODIRAH, a fragrance house. Launch scope: one collection, 
 **Phase 1: approval pack.** As the brief requires, the sitemap, customer journey map and desktop/mobile wireframes are presented for client approval before development starts.
 
 - [`docs/approval/index.html`](docs/approval/index.html): open it in a browser. It is self-contained, apart from Google Fonts stand-ins for the licensed brand faces.
+- [Figma file: ODIRAH — Website](https://www.figma.com/design/S2y1SIU3LdwgnUf0hCgaiH): the same pack as editable Figma pages (cover, foundations, sitemap and journey, desktop and mobile wireframes), built from brand colour variables, text styles and reusable components.
 
 ## Phase 2: build (after approval)
 
