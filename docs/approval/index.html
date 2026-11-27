@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ODIRAH Website Proposal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+SC:wght@400;500;600&family=Pinyon+Script&display=swap">
+<style>
+/* Layout: an editorial proposal on brand blush. Narrow reading column for the argument,
+   wide bands for the sitemap, journey and wireframes. Wireframes are deliberately grey-box. */
+:root{
+  --bg:#E3D5CF;          /* Blush, primary */
+  --surface:#EDE3DF;     /* lifted blush for panels */
+  --sunk:#D8C8C1;        /* recessed blush */
+  --ink:#301E15;         /* Deep brown, primary */
+  --ink-2:#6A4130;       /* Brown, primary */
+  --gold:#B89367;        /* Gold accent: decoration only on blush (1.98:1) */
+  --terracotta:#8A361C;
+  --line:rgba(48,30,21,.22);
+  --line-soft:rgba(48,30,21,.12);
+  --hatch:rgba(48,30,21,.10);
+  --wf-bg:#F3ECE9;       /* wireframe canvas */
+  --wf-box:#DCCFC9;      /* wireframe blocks */
+  --wf-ink:#4A3A32;
+  --on-dark:#E3D5CF;
+  --dark:#301E15;
+  --f-display:"Cormorant SC","Cormorant Garamond","Mrs Eaves",Georgia,serif;
+  --f-body:"Cormorant Garamond","Mrs Eaves",Georgia,"Times New Roman",serif;
+  --f-script:"Pinyon Script","Sinfonietta","Snell Roundhand",cursive;
+  --f-ui:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --step--1:.875rem; --step-0:1.125rem; --step-1:1.35rem; --step-2:1.75rem; --step-3:2.4rem; --step-4:clamp(2.6rem,6vw,4.4rem);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#2A1A12; --surface:#352218; --sunk:#22150E; --ink:#E3D5CF; --ink-2:#CDBFAE; --gold:#B89367; --terracotta:#C46A47;
+    --line:rgba(227,213,207,.22); --line-soft:rgba(227,213,207,.12); --hatch:rgba(227,213,207,.08);
+    --wf-bg:#3A271C; --wf-box:#4E3628; --wf-ink:#E3D5CF; --on-dark:#E3D5CF; --dark:#1C110B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#2A1A12; --surface:#352218; --sunk:#22150E; --ink:#E3D5CF; --ink-2:#CDBFAE; --gold:#B89367; --terracotta:#C46A47;
+  --line:rgba(227,213,207,.22); --line-soft:rgba(227,213,207,.12); --hatch:rgba(227,213,207,.08);
+  --wf-bg:#3A271C; --wf-box:#4E3628; --wf-ink:#E3D5CF; --on-dark:#E3D5CF; --dark:#1C110B; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink-2);outline-offset:3px;border-radius:2px}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto}
+.read{max-width:42rem}
+.eyebrow{font-family:var(--f-display);font-size:var(--step--1);letter-spacing:.14em;color:var(--ink-2)}
+.ui{font-family:var(--f-ui);font-size:.78rem;letter-spacing:.02em}
+.muted{color:var(--ink-2)}
+.script{font-family:var(--f-script);font-weight:400;letter-spacing:0}
+
+/* ---------- masthead ---------- */
+.masthead{padding-block:2.5rem 1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.masthead .ui{color:var(--ink-2)}
+.logo-slot{display:inline-flex;align-items:center;justify-content:center;border:1px dashed var(--line);padding:.25rem .7rem;
+  font-family:var(--f-ui);font-size:.68rem;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase;white-space:nowrap}
+.intro{padding-block:4rem 3rem;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3rem;align-items:end}
+.intro h1{font-size:var(--step-4);letter-spacing:.01em}
+.intro .lede{font-size:var(--step-1);margin-top:1.4rem;max-width:34rem}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);}
+.facts div{padding:.9rem .2rem 0}
+.facts b{display:block;font-family:var(--f-display);font-size:var(--step-3);font-weight:500;line-height:1;font-variant-numeric:lining-nums}
+.facts span{font-size:var(--step--1);color:var(--ink-2)}
+@media (max-width:820px){.intro{grid-template-columns:1fr;gap:2rem;padding-block:2.5rem 2rem}}
+
+/* ---------- toc ---------- */
+.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-block:1px solid var(--line);
+  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.toc ol{list-style:none;margin:0 auto;padding:0;display:flex;gap:1.6rem;overflow-x:auto;max-width:1180px;scrollbar-width:none}
+.toc a{display:block;padding:.75rem 0;text-decoration:none;font-family:var(--f-display);font-size:var(--step--1);letter-spacing:.1em;white-space:nowrap;color:var(--ink-2)}
+.toc a:hover{color:var(--ink)}
+
+/* ---------- sections ---------- */
+section.block{padding-block:4.5rem 1rem;scroll-margin-top:3.2rem}
+.sec-head{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;margin-bottom:2.5rem}
+.sec-head h2{font-size:var(--step-3)}
+.sec-head p{max-width:40rem}
+.sec-head p + p{margin-top:.8rem}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr;gap:.8rem}}
+.roman{font-family:var(--f-display);color:var(--ink-2);font-size:var(--step-1)}
+
+/* ---------- sitemap ---------- */
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tree{min-width:900px;padding-bottom:1rem}
+.node{border:1px solid var(--line);background:var(--surface);padding:.6rem .8rem;border-radius:2px}
+.node h4{font-size:1.05rem;letter-spacing:.04em}
+.node code{font-family:var(--f-ui);font-size:.72rem;color:var(--ink-2);display:block;margin-top:.15rem}
+.node.root{background:var(--dark);color:var(--on-dark);border-color:var(--dark);text-align:center;padding:.9rem}
+.node.root code{color:var(--on-dark);opacity:.8}
+.node.dyn{border-style:dashed}
+.tier{display:grid;gap:1rem;position:relative}
+.t1{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:2rem}
+.connector{height:2rem;border-left:1px solid var(--ink);margin-left:50%}
+.t1::before{content:"";position:absolute;top:-1rem;left:10%;right:10%;border-top:1px solid var(--ink)}
+.t1>.col{position:relative}
+.t1>.col::before{content:"";position:absolute;top:-1rem;left:50%;height:1rem;border-left:1px solid var(--ink)}
+.col{display:flex;flex-direction:column;gap:.6rem}
+.sub{margin-left:.9rem;padding-left:.9rem;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem}
+.sub .node{background:transparent}
+.chip-list{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
+.chip-list span{font-family:var(--f-ui);font-size:.68rem;border:1px solid var(--line);padding:.1rem .4rem;border-radius:99px;color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.2rem;font-size:var(--step--1);color:var(--ink-2)}
+.legend i{display:inline-block;width:1.4rem;height:.8rem;border:1px solid var(--line);vertical-align:-1px;margin-right:.4rem;background:var(--surface)}
+.legend i.d{border-style:dashed;background:transparent}
+.legend i.r{background:var(--dark)}
+.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin-top:2.5rem}
+.note-grid h3{font-size:var(--step-1);margin-bottom:.4rem}
+.note-grid p{font-size:1rem}
+@media (max-width:820px){.note-grid{grid-template-columns:1fr;gap:1.4rem}}
+
+/* ---------- journey ---------- */
+.journey{min-width:960px;display:grid;grid-template-columns:9rem repeat(6,minmax(0,1fr));border-top:1px solid var(--ink)}
+.journey>div{padding:.8rem .7rem;border-bottom:1px solid var(--line-soft);font-size:.98rem}
+.journey .rh{font-family:var(--f-display);font-size:.8rem;letter-spacing:.12em;color:var(--ink-2);padding-left:0}
+.journey .stage{font-family:var(--f-display);font-size:1.25rem;border-bottom:1px solid var(--line)}
+.journey .stage small{display:block;font-family:var(--f-ui);font-size:.68rem;letter-spacing:.08em;color:var(--ink-2)}
+.journey .feel{font-style:italic}
+.journey ul{margin:0;padding-left:1rem}
+.journey li{margin:.1rem 0}
+.lanes{margin-top:3rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem}
+.lane h3{font-size:var(--step-1);margin-bottom:1rem;display:flex;gap:.6rem;align-items:baseline}
+.lane h3 span{font-family:var(--f-ui);font-size:.72rem;color:var(--ink-2);letter-spacing:.04em}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.steps li{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.8rem;padding:.55rem 0;border-top:1px solid var(--line-soft)}
+.steps li b{font-family:var(--f-display);font-weight:500;color:var(--ink-2)}
+.steps li em{display:block;font-size:.92rem;color:var(--ink-2);font-style:normal}
+.steps li.end{border-top:1px solid var(--ink)}
+.shortcuts{margin-top:2rem;background:var(--dark);color:var(--on-dark);padding:1.4rem 1.6rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem}
+.shortcuts h4{font-size:1.1rem;margin-bottom:.3rem}
+.shortcuts p{font-size:.95rem;opacity:.85}
+@media (max-width:820px){.lanes{grid-template-columns:1fr}.shortcuts{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.shortcuts{grid-template-columns:1fr}}
+
+/* ---------- wireframe index ---------- */
+.screens-index{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.screens-index a{text-decoration:none;border:1px solid var(--line);padding:.35rem .8rem;border-radius:99px;font-family:var(--f-display);font-size:.85rem;letter-spacing:.08em}
+.screens-index a:hover{background:var(--surface)}
+.screen{padding-block:2.5rem;border-top:1px solid var(--line);scroll-margin-top:3.2rem}
+.screen-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.screen-head h3{font-size:var(--step-2)}
+.screen-head .ui{color:var(--ink-2)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2rem;align-items:start}
+@media (max-width:980px){.pair{grid-template-columns:minmax(0,1fr)}}
+.annot{margin-top:1.4rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem 2rem;font-size:.98rem;max-width:62rem}
+.annot li{list-style:none;display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:.4rem}
+.annot{padding:0}
+@media (max-width:700px){.annot{grid-template-columns:1fr}}
+
+/* ---------- wireframe primitives ---------- */
+.frame-label{font-family:var(--f-ui);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.4rem}
+.desk-scroll{overflow-x:auto}
+.desk{min-width:720px;background:var(--wf-bg);border:1px solid var(--line);border-radius:6px;overflow:hidden;color:var(--wf-ink);font-family:var(--f-ui);font-size:11px;line-height:1.4}
+.chrome{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1px solid var(--line-soft);background:var(--sunk)}
+.chrome i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.chrome span{margin-left:10px;flex:1;background:var(--wf-bg);border-radius:4px;padding:2px 8px;color:var(--ink-2);font-size:10px}
+.mob{width:300px;max-width:100%;background:var(--wf-bg);border:1px solid var(--line);border-radius:26px;overflow:hidden;color:var(--wf-ink);font-family:var(--f-ui);font-size:10.5px;line-height:1.4;padding-bottom:10px;position:relative}
+.mob .notch{height:20px;display:flex;justify-content:center;align-items:center}
+.mob .notch i{width:70px;height:6px;border-radius:6px;background:var(--line)}
+
+.wf{display:flex;flex-direction:column}
+.row{display:flex;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pad{padding:14px 18px}
+.pad-s{padding:10px 12px}
+.img{position:relative;background:repeating-linear-gradient(135deg,var(--wf-box) 0 6px,var(--hatch) 6px 12px);border:1px solid var(--line-soft);
+  display:flex;align-items:flex-end;justify-content:flex-start;min-height:60px}
+.img.dk{background:repeating-linear-gradient(135deg,#4A3125 0 6px,#53382B 6px 12px)}
+.img span{background:var(--wf-bg);padding:1px 5px;margin:5px;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.dark-band{background:var(--dark);color:var(--on-dark)}
+.dark-band .ln{background:rgba(227,213,207,.35)}
+.dark-band .btn-o{border-color:var(--on-dark);color:var(--on-dark)}
+.tex{background:repeating-radial-gradient(circle at 30% 40%,rgba(138,54,28,.55) 0 3px,rgba(138,54,28,.42) 3px 7px);color:#F3E7E1}
+.tex .ln{background:rgba(243,231,225,.45)}
+.ln{height:5px;border-radius:3px;background:var(--wf-box);margin:4px 0}
+.ln.w90{width:90%}.ln.w70{width:70%}.ln.w50{width:50%}.ln.w30{width:30%}
+.h-wf{font-family:var(--f-display);font-size:17px;line-height:1.15;letter-spacing:.04em}
+.h-wf.lg{font-size:24px}
+.h-wf.sm{font-size:13px}
+.sc{font-family:var(--f-display);letter-spacing:.12em;font-size:10px}
+.s-wf{font-family:var(--f-script);font-size:19px;line-height:1.1}
+.s-wf.lg{font-size:28px}
+.btn,.btn-o{display:inline-block;padding:5px 10px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);white-space:nowrap}
+.btn{background:var(--dark);color:var(--on-dark);border-color:var(--dark)}
+.btn-o{color:var(--wf-ink);border-color:var(--wf-ink)}
+.btn.block,.btn-o.block{display:block;text-align:center}
+a.btn:hover,a.btn-o:hover{outline:2px solid var(--gold);outline-offset:1px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:9px 18px;gap:10px}
+.nav .side{display:flex;gap:14px}
+.nav a{text-decoration:none}
+.nav a:hover{text-decoration:underline}
+.mark{border:1px dashed currentColor;padding:2px 8px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;white-space:nowrap}
+.overlay-nav{position:absolute;top:0;left:0;right:0;color:var(--on-dark)}
+.price{font-family:var(--f-display);font-size:12px;letter-spacing:.06em}
+.card{display:flex;flex-direction:column;gap:4px}
+.card .img{aspect-ratio:3/4;min-height:0}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:var(--gold);color:#301E15;font-family:var(--f-ui);font-size:9.5px;font-weight:600;flex:none}
+.pinned{position:relative}
+.pinned>.pin{position:absolute;top:6px;right:6px;z-index:2}
+.annot .pin{width:20px;height:20px;font-size:10.5px}
+.foot-wf{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px}
+.divider{border-top:1px solid var(--line-soft)}
+.sticky-buy{position:sticky;bottom:0;background:var(--wf-bg);border-top:1px solid var(--line);padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:2px 8px;font-size:9.5px}
+.chips span.on{background:var(--dark);color:var(--on-dark);border-color:var(--dark)}
+.notes3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;text-align:center}
+.notes3>div{border-top:1px solid var(--line);padding-top:6px}
+.vials{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;text-align:center}
+.vial{height:54px;width:16px;margin:0 auto 4px;border:1px solid var(--wf-ink);border-radius:3px 3px 5px 5px;background:var(--wf-box)}
+.drawer-wrap{position:relative;display:grid;grid-template-columns:1fr 290px;min-height:360px}
+.scrim{background:rgba(48,30,21,.35)}
+.drawer{background:var(--wf-bg);border-left:1px solid var(--line);display:flex;flex-direction:column}
+.line-item{display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line-soft)}
+.line-item .img{min-height:56px}
+.hscroll{display:flex;gap:8px;overflow:hidden}
+.hscroll>.card{flex:0 0 42%}
+.chapter-a{background:#E9DCD6}
+.chapter-b{background:#D9C5BC}
+:root[data-theme="dark"] .chapter-a{background:#3E2A1F}
+:root[data-theme="dark"] .chapter-b{background:#4A2C1F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chapter-a{background:#3E2A1F}:root:not([data-theme="light"]) .chapter-b{background:#4A2C1F}}
+
+/* ---------- interactions ---------- */
+.ix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.ix>div{padding:1.3rem 1.5rem 1.4rem 0;border-bottom:1px solid var(--line-soft)}
+.ix>div:nth-child(2n){padding-left:1.5rem;border-left:1px solid var(--line-soft)}
+.ix h3{font-size:var(--step-1);margin-bottom:.4rem}
+.ix p{font-size:1rem}
+.ix .ui{display:block;margin-top:.5rem;color:var(--ink-2)}
+@media (max-width:760px){.ix{grid-template-columns:1fr}.ix>div:nth-child(2n){padding-left:0;border-left:0}}
+
+/* ---------- tables ---------- */
+table{border-collapse:collapse;width:100%;font-size:1rem}
+th,td{text-align:left;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th{font-family:var(--f-display);font-weight:500;letter-spacing:.1em;font-size:.85rem;color:var(--ink-2);border-bottom:1px solid var(--ink)}
+td code{font-family:var(--f-ui);font-size:.78rem;background:var(--surface);padding:.05rem .35rem;border-radius:2px}
+.swatch{display:inline-block;width:2.2rem;height:1.3rem;vertical-align:middle;border:1px solid var(--line);font-family:var(--f-display);font-size:.8rem;text-align:center;line-height:1.2rem}
+.pass{font-family:var(--f-ui);font-size:.74rem;padding:.1rem .45rem;border-radius:99px;border:1px solid var(--line);white-space:nowrap}
+.pass.ok{background:var(--surface)}
+.pass.no{background:var(--terracotta);color:#F6ECE7;border-color:var(--terracotta)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem}
+@media (max-width:900px){.two{grid-template-columns:1fr;gap:2.5rem}}
+.two h3{font-size:var(--step-1);margin-bottom:.8rem}
+
+/* ---------- open items ---------- */
+.open{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem}
+.open li{display:grid;grid-template-columns:1.4rem minmax(0,1fr) auto;gap:.6rem;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--line-soft)}
+.open li::before{content:"";width:.85rem;height:.85rem;border:1px solid var(--ink);display:block;transform:translateY(.1rem)}
+.open small{font-family:var(--f-ui);font-size:.7rem;color:var(--ink-2);letter-spacing:.04em;white-space:nowrap}
+@media (max-width:820px){.open{grid-template-columns:1fr}}
+.signoff{margin-top:3.5rem;background:var(--dark);color:var(--on-dark);padding:2.2rem;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem}
+.signoff h3{font-size:var(--step-2);margin-bottom:.6rem}
+.signoff ol{margin:0;padding-left:1.2rem}
+.signoff li{margin:.25rem 0}
+@media (max-width:820px){.signoff{grid-template-columns:1fr;padding:1.5rem}}
+footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--ink-2)}
+.stand-in{margin-top:1rem;font-size:.92rem;color:var(--ink-2);border-left:2px solid var(--gold);padding-left:.8rem;max-width:40rem}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <span class="logo-slot" title="Supplied wordmark artwork goes here">Odirah wordmark · supplied artwork</span>
+    <span class="ui">Website proposal · Phase 1 · For approval · 27 November 2026 · v0.1</span>
+  </header>
+
+  <div class="intro">
+    <div>
+      <p class="eyebrow">Sitemap · Journey map · Wireframes</p>
+      <h1>A house for the worlds within you</h1>
+      <p class="lede">This is the proposed structure for odirah.com at launch, as the brief requires before development starts. It shows how a visitor can lose themselves in the six archetypes, or buy in three taps, and how the site will take on new collections without being rebuilt.</p>
+    </div>
+    <div>
+      <div class="facts">
+        <div><b>1</b><span>Collection</span></div>
+        <div><b>6</b><span>Fragrances</span></div>
+        <div><b>7</b><span>Sellable products</span></div>
+      </div>
+      <p class="stand-in">Typography here uses free stand-ins: Cormorant for Mrs Eaves, Pinyon Script for Sinfonietta. The build will use the licensed faces. The wordmark appears only as a labelled slot because the manual forbids retyping it.</p>
+    </div>
+  </div>
+</div>
+
+<nav class="toc" aria-label="Sections">
+  <ol>
+    <li><a href="#sitemap">I · Sitemap</a></li>
+    <li><a href="#journey">II · Journey map</a></li>
+    <li><a href="#wireframes">III · Wireframes</a></li>
+    <li><a href="#interactions">IV · Motion &amp; performance</a></li>
+    <li><a href="#platform">V · Platform &amp; content model</a></li>
+    <li><a href="#decisions">VI · Open items &amp; sign-off</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+<!-- ================= I. SITEMAP ================= -->
+<section class="block" id="sitemap">
+  <div class="sec-head">
+    <div><span class="roman">I</span><h2>Sitemap</h2></div>
+    <div>
+      <p>Every product can be reached from the navigation in one click and from the homepage in one scroll. The story pages sit alongside the shop, never in front of it.</p>
+      <p>Collection, fragrance and kit pages are templates filled from product data. A second collection, a men's line or a limited edition becomes a new entry in Shopify, not a new page to design and build.</p>
+    </div>
+  </div>
+
+  <div class="scroll-x">
+    <div class="tree">
+      <div class="node root" style="max-width:260px;margin:0 auto"><h4>Home</h4><code>/</code></div>
+      <div class="connector"></div>
+      <div class="tier t1">
+        <div class="col">
+          <div class="node"><h4>Shop</h4><code>/shop</code>
+            <div class="chip-list"><span>All</span><span>Fragrances</span><span>Discovery Kits</span></div>
+          </div>
+          <p class="ui muted">Every product in one grid. A collection filter appears automatically once a second collection exists.</p>
+        </div>
+        <div class="col">
+          <div class="node"><h4>Collections</h4><code>/collections</code></div>
+          <div class="sub">
+            <div class="node dyn"><h4>The Archetypes: HER</h4><code>/collections/the-archetypes-her</code></div>
+            <div class="sub">
+              <div class="node dyn"><h4>Fragrance ×6</h4><code>/fragrances/silk-and-ashes</code>
+                <div class="chip-list"><span>Silk &amp; Ashes</span><span>Skin &amp; Shadow</span><span>Ember &amp; Desire</span><span>Stars &amp; Whisper</span><span>Velvet &amp; Poise</span><span>Rain &amp; Solace</span></div>
+              </div>
+              <div class="node dyn"><h4>Discovery Kit</h4><code>/kits/the-archetypes-her</code></div>
+            </div>
+            <div class="node dyn" style="opacity:.6"><h4>Collection 02…</h4><code>future, no code change</code></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="node"><h4>The House</h4><code>/the-house</code></div>
+          <div class="sub">
+            <div class="node"><h4>Vision &amp; Manifesto</h4><code>#manifesto</code></div>
+          </div>
+          <p class="ui muted">The brand story in one page: vision, positioning, “Here’s to the unseen.” Linked from the hero and the footer.</p>
+        </div>
+        <div class="col">
+          <div class="node"><h4>Bag</h4><code>drawer, every page</code></div>
+          <div class="sub">
+            <div class="node"><h4>Checkout</h4><code>Shopify checkout</code></div>
+            <div class="node"><h4>Account</h4><code>Shopify customer accounts</code></div>
+          </div>
+          <div class="node"><h4>Search</h4><code>overlay</code></div>
+        </div>
+        <div class="col">
+          <div class="node"><h4>Service</h4><code>footer</code></div>
+          <div class="sub">
+            <div class="node"><h4>Contact</h4><code>/contact</code></div>
+            <div class="node"><h4>FAQ, Shipping &amp; Returns</h4><code>/help</code></div>
+            <div class="node"><h4>Legal</h4><code>/legal/terms · privacy · cookies</code></div>
+            <div class="node"><h4>Not found</h4><code>404</code></div>
+          </div>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="r"></i>Entry point</span>
+        <span><i></i>Fixed page</span>
+        <span><i class="d"></i>Template, generated from Shopify data</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-grid">
+    <div><h3>Navigation</h3><p>Desktop: <b>Shop</b>, <b>The Archetypes</b>, <b>The House</b> on the left; the wordmark centred; <b>Search</b>, <b>Account</b>, <b>Bag</b> on the right. This follows the website mock-up on page 32 of the manual. Contact moves to the footer to make room for the bag.</p></div>
+    <div><h3>URLs</h3><p>Fragrances get their own top-level path (<code class="ui">/fragrances/…</code>) rather than sitting under a collection. If a scent is later moved or re-released in a limited edition, its link and search ranking stay intact.</p></div>
+    <div><h3>Growth</h3><p>A “Collections” menu appears in the navigation only when there are two or more collections. Until then, “The Archetypes” links straight to the one collection, so launch visitors never meet an index with a single entry.</p></div>
+  </div>
+</section>
+
+<!-- ================= II. JOURNEY ================= -->
+<section class="block" id="journey">
+  <div class="sec-head">
+    <div><span class="roman">II</span><h2>Journey map</h2></div>
+    <div>
+      <p>The six stages come from the brief. Each column shows which page carries that stage and which components do the work. The bottom row shows how a visitor can jump straight to buying from that stage.</p>
+    </div>
+  </div>
+
+  <div class="scroll-x">
+    <div class="journey" role="table" aria-label="Customer journey by stage">
+      <div class="rh" role="columnheader">Stage</div>
+      <div class="stage">Attraction<small>01</small></div>
+      <div class="stage">Immersion<small>02</small></div>
+      <div class="stage">Exploration<small>03</small></div>
+      <div class="stage">Connection<small>04</small></div>
+      <div class="stage">Selection<small>05</small></div>
+      <div class="stage">Purchase<small>06</small></div>
+
+      <div class="rh">Customer feels</div>
+      <div class="feel">I am intrigued.</div>
+      <div class="feel">I want to understand more.</div>
+      <div class="feel">Something here resonates with me.</div>
+      <div class="feel">I recognise something of myself.</div>
+      <div class="feel">I want to experience this.</div>
+      <div class="feel">I feel confident in my choice.</div>
+
+      <div class="rh">Where</div>
+      <div>Home hero, social and campaign landing</div>
+      <div>Home manifesto band, The House</div>
+      <div>Collection page, Home archetype row</div>
+      <div>Fragrance page</div>
+      <div>Fragrance page, Discovery Kit page, Shop</div>
+      <div>Bag drawer, Shopify checkout</div>
+
+      <div class="rh">Components</div>
+      <div><ul><li>Full-bleed film or still</li><li>One-line headline</li><li>“Shop the collection”</li></ul></div>
+      <div><ul><li>Manifesto excerpt</li><li>Vision with mirror image</li><li>Tagline texture band</li></ul></div>
+      <div><ul><li>Six archetype chapters</li><li>Colour shift per chapter</li><li>Chapter index</li></ul></div>
+      <div><ul><li>Narrative and illustration</li><li>Olfactory pyramid</li><li>Bottle and box gallery</li></ul></div>
+      <div><ul><li>Price and size up front</li><li>Add to bag</li><li>“Try all six first” link</li></ul></div>
+      <div><ul><li>Bag opens on add</li><li>Shop Pay, Apple Pay</li><li>Delivery estimate</li></ul></div>
+
+      <div class="rh">Shortcut to buy</div>
+      <div>Hero button goes straight to the collection</div>
+      <div>Shop is always in the navigation</div>
+      <div>Price and add to bag on every chapter</div>
+      <div>Sticky add to bag on mobile</div>
+      <div>Kit offered as the low-risk choice</div>
+      <div>Express checkout from the bag</div>
+    </div>
+  </div>
+
+  <div class="lanes">
+    <div class="lane">
+      <h3>The explorer <span>about 5 screens</span></h3>
+      <ol class="steps">
+        <li><b>1</b><div>Home<em>Hero, manifesto, the six archetypes</em></div></li>
+        <li><b>2</b><div>The House <em>Optional: vision and full manifesto</em></div></li>
+        <li><b>3</b><div>The Archetypes: HER<em>Scrolls through six chapters, one recognises her</em></div></li>
+        <li><b>4</b><div>Fragrance page<em>Narrative, notes, her world</em></div></li>
+        <li class="end"><b>5</b><div>Add to bag, then checkout<em>Or the Discovery Kit, if undecided</em></div></li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h3>The direct shopper <span>3 taps to checkout</span></h3>
+      <ol class="steps">
+        <li><b>1</b><div>Shop, from any page<em>All seven products with prices</em></div></li>
+        <li><b>2</b><div>Add to bag from the grid, or open the product<em>The card shows name, archetype, size and price</em></div></li>
+        <li class="end"><b>3</b><div>Checkout from the bag drawer<em>Shopify checkout with saved details and express pay</em></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="shortcuts">
+    <div><h4>Shop is always visible</h4><p>In the header on every page and in the first item of the mobile menu.</p></div>
+    <div><h4>Prices are never hidden</h4><p>Every product card and chapter shows the price and size next to the name.</p></div>
+    <div><h4>Buy without leaving the story</h4><p>Add to bag opens the drawer over the page you were reading.</p></div>
+    <div><h4>Undecided has a path</h4><p>Each fragrance page offers the Discovery Kit as a way to try all six first.</p></div>
+  </div>
+</section>
+
+<!-- ================= III. WIREFRAMES ================= -->
+<section class="block" id="wireframes">
+  <div class="sec-head">
+    <div><span class="roman">III</span><h2>Wireframes</h2></div>
+    <div>
+      <p>Each screen is shown at desktop and mobile width. Hatched boxes stand for photography, illustration or texture. Gold numbers refer to the notes under each screen. Buttons and navigation inside the frames link to the screen they lead to.</p>
+      <p>These set out structure and priority. Final art direction, image crops and motion come after approval.</p>
+    </div>
+  </div>
+
+  <nav class="screens-index" aria-label="Screens">
+    <a href="#home">Home</a><a href="#collection">Collection</a><a href="#fragrance">Fragrance</a><a href="#kit">Discovery Kit</a><a href="#shop">Shop</a><a href="#bag">Bag drawer</a><a href="#house">The House</a><a href="#menu">Mobile menu</a>
+  </nav>
+
+  <!-- HOME -->
+  <article class="screen" id="home">
+    <div class="screen-head"><h3>Home</h3><span class="ui">Stages 01 to 03 · Both journeys start here</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com</span></div>
+          <div class="wf">
+            <div class="pinned" style="position:relative">
+              <span class="pin" style="top:40px">1</span>
+              <div class="img dk" style="min-height:300px"><span>Hero film · desert, fabric in wind</span></div>
+              <div class="overlay-nav nav">
+                <div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div>
+                <span class="mark">Wordmark</span>
+                <div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div>
+              </div>
+              <div style="position:absolute;left:18px;bottom:18px;color:var(--on-dark);max-width:300px">
+                <div class="h-wf" style="text-transform:none">This is what it feels like to arrive.</div>
+                <div style="margin:6px 0 10px;opacity:.9">A scent stirs a memory. A feeling returns. ODIRAH creates fragrances that bring you closer to the many parts of yourself.</div>
+              </div>
+              <div style="position:absolute;right:18px;bottom:18px;display:flex;gap:6px">
+                <a class="btn-o" href="#house" style="border-color:var(--on-dark);color:var(--on-dark)">Discover Odirah</a>
+                <a class="btn" href="#collection" style="background:var(--on-dark);color:#301E15;border-color:var(--on-dark)">Shop the collection</a>
+              </div>
+            </div>
+            <div class="pad pinned" style="text-align:center;padding-block:26px">
+              <span class="pin">2</span>
+              <div class="sc">Manifesto</div>
+              <div class="h-wf lg" style="margin:4px 0 8px">Here’s to the unseen.</div>
+              <div style="max-width:360px;margin:0 auto;font-style:italic;font-family:var(--f-body);font-size:13px">To the invisible self. To the worlds we carry within us. Some are quiet. Some hold fire. Some are softly lit.</div>
+              <a href="#house" style="display:inline-block;margin-top:8px">Read the manifesto</a>
+            </div>
+            <div class="pad pinned">
+              <span class="pin">3</span>
+              <div class="row" style="justify-content:space-between;align-items:baseline;margin-bottom:10px">
+                <div><div class="sc">Collection 01</div><div class="h-wf">The Archetypes: HER</div></div>
+                <a href="#collection">Explore the collection</a>
+              </div>
+              <div class="grid3">
+                <div class="card"><div class="img"><span>Illustration</span></div><div class="sc">The Maiden</div><a href="#fragrance" class="s-wf" style="text-decoration:none">Silk &amp; Ashes</a><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Illustration</span></div><div class="sc">The Lover</div><div class="s-wf">Skin &amp; Shadow</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Illustration</span></div><div class="sc">The Seductress</div><div class="s-wf">Ember &amp; Desire</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+              </div>
+              <div class="ui muted" style="margin-top:8px;font-size:9.5px">+ The Wanderer, The Queen, The Healer in a second row</div>
+            </div>
+            <div class="dark-band pinned" style="display:grid;grid-template-columns:1fr 1fr">
+              <span class="pin">4</span>
+              <div class="img dk" style="min-height:150px;border:0"><span>Discovery Kit box</span></div>
+              <div class="pad" style="align-self:center">
+                <div class="sc">Discovery Kit</div>
+                <div class="h-wf" style="margin:3px 0">Meet all six before you choose.</div>
+                <div class="ln w70"></div><div class="ln w50"></div>
+                <div class="row" style="align-items:center;margin-top:8px"><span class="price">6 × 7/10 ml · € —</span><a class="btn-o" href="#kit">View the kit</a></div>
+              </div>
+            </div>
+            <div class="tex pad pinned" style="text-align:center;padding-block:24px">
+              <span class="pin">5</span>
+              <div class="sc" style="color:#F3E7E1">Terracotta texture</div>
+              <div class="s-wf lg" style="font-family:var(--f-body);font-style:italic;font-size:26px">Intimately you™</div>
+            </div>
+            <div class="pad divider foot-wf">
+              <div><span class="mark">Wordmark</span><div class="ln w70" style="margin-top:8px"></div><div class="row" style="margin-top:6px"><span class="ln w50" style="width:90px;height:16px;border:1px solid var(--line);background:transparent"></span><span class="btn-o">Join</span></div></div>
+              <div><b>Shop</b><div>All products</div><div>The Archetypes</div><div>Discovery Kit</div></div>
+              <div><b>House</b><div>The House</div><div>Contact</div><div>Instagram</div></div>
+              <div><b>Help</b><div>Shipping &amp; returns</div><div>FAQ</div><div>Legal</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div style="position:relative">
+            <div class="img dk" style="min-height:330px"><span>Hero film, portrait crop</span></div>
+            <div class="overlay-nav nav" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+            <div style="position:absolute;left:12px;right:12px;bottom:12px;color:var(--on-dark)">
+              <div class="h-wf sm">This is what it feels like to arrive.</div>
+              <a class="btn block" href="#collection" style="margin-top:8px;background:var(--on-dark);color:#301E15;border-color:var(--on-dark)">Shop the collection</a>
+            </div>
+          </div>
+          <div class="pad-s" style="text-align:center;padding-block:16px">
+            <div class="h-wf">Here’s to the unseen.</div><div class="ln w90" style="margin:6px auto"></div><div class="ln w70" style="margin:0 auto"></div>
+          </div>
+          <div class="pad-s">
+            <div class="sc">The Archetypes: HER</div>
+            <div class="hscroll" style="margin-top:6px">
+              <div class="card"><div class="img"><span>Art</span></div><div class="s-wf" style="font-size:15px">Silk &amp; Ashes</div><span class="price" style="font-size:10px">€ —</span></div>
+              <div class="card"><div class="img"><span>Art</span></div><div class="s-wf" style="font-size:15px">Skin &amp; Shadow</div><span class="price" style="font-size:10px">€ —</span></div>
+              <div class="card"><div class="img"><span>Art</span></div></div>
+            </div>
+            <div class="ui muted" style="font-size:9px;margin-top:4px">Swipe · 6 cards</div>
+          </div>
+          <div class="dark-band pad-s" style="margin-top:6px">
+            <div class="img dk" style="min-height:110px;border:0"><span>Kit</span></div>
+            <div class="h-wf sm" style="margin-top:6px">Meet all six before you choose.</div>
+            <a class="btn-o block" href="#kit" style="margin-top:6px">View the kit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span><b>Attraction.</b> A muted full-bleed film with a static poster frame for slow connections. Two buttons let the explorer and the shopper choose their path from the first screen.</span></li>
+      <li><span class="pin">2</span><span><b>Immersion.</b> Three lines of the manifesto, on blush, set in italic. The full text lives on The House.</span></li>
+      <li><span class="pin">3</span><span><b>Exploration.</b> All six archetypes with name, archetype, size and price. “Add” goes straight to the bag without leaving the page.</span></li>
+      <li><span class="pin">4</span><span><b>Selection.</b> The Discovery Kit as the answer for visitors who are drawn in but undecided.</span></li>
+      <li><span class="pin">5</span><span>Tagline on a brand texture (Terracotta, Copper Veil or Engraved Bronze), rotated by season or campaign.</span></li>
+    </ol>
+  </article>
+
+  <!-- COLLECTION -->
+  <article class="screen" id="collection">
+    <div class="screen-head"><h3>Collection · The Archetypes: HER</h3><span class="ui">Stages 03 to 05 · The heart of the explorer journey</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/collections/the-archetypes-her</span></div>
+          <div class="wf">
+            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
+            <div class="pad pinned" style="text-align:center;padding-block:26px">
+              <span class="pin">1</span>
+              <div class="sc">Collection 01</div>
+              <div class="h-wf lg">The Archetypes: HER</div>
+              <div style="max-width:380px;margin:6px auto 0;font-family:var(--f-body);font-size:13px">Six fragrances, six feminine archetypes. Each one a passage into a world already within you.</div>
+            </div>
+            <div class="pinned divider" style="padding:7px 18px;display:flex;justify-content:center;gap:16px;font-size:10px">
+              <span class="pin">2</span>
+              <b>I Maiden</b><span>II Lover</span><span>III Seductress</span><span>IV Wanderer</span><span>V Queen</span><span>VI Healer</span><span>· Kit</span>
+            </div>
+            <div class="chapter-a pinned" style="display:grid;grid-template-columns:1.1fr 1fr">
+              <span class="pin">3</span>
+              <div class="img" style="min-height:250px;border:0"><span>Illustration · mirror, silk, ash light</span></div>
+              <div class="pad" style="align-self:center">
+                <div class="sc">I · The Maiden</div>
+                <div class="s-wf lg" style="margin:4px 0">Silk &amp; Ashes</div>
+                <div style="font-family:var(--f-body);font-size:13px;font-style:italic;margin-bottom:6px">One line on who she is, in the brand voice.</div>
+                <div class="ui" style="font-size:9.5px">Top — · Heart — · Base —</div>
+                <div class="row" style="align-items:center;margin-top:10px"><span class="price">100 ml · € —</span><a class="btn" href="#bag">Add to bag</a><a href="#fragrance">Enter her world</a></div>
+              </div>
+            </div>
+            <div class="chapter-b pinned" style="display:grid;grid-template-columns:1fr 1.1fr">
+              <span class="pin">4</span>
+              <div class="pad" style="align-self:center">
+                <div class="sc">II · The Lover</div>
+                <div class="s-wf lg" style="margin:4px 0">Skin &amp; Shadow</div>
+                <div class="ln w70"></div><div class="ln w50"></div>
+                <div class="row" style="align-items:center;margin-top:10px"><span class="price">100 ml · € —</span><a class="btn" href="#bag">Add to bag</a><a href="#fragrance">Enter her world</a></div>
+              </div>
+              <div class="img" style="min-height:220px;border:0"><span>Illustration</span></div>
+            </div>
+            <div class="pad" style="text-align:center;color:var(--ink-2)">III to VI follow, alternating image left and right</div>
+            <div class="dark-band pad pinned" style="text-align:center;padding-block:22px">
+              <span class="pin">5</span>
+              <div class="sc">Not sure yet?</div>
+              <div class="h-wf" style="margin:4px 0 10px">Try all six with the Discovery Kit.</div>
+              <a class="btn-o" href="#kit">View the kit · € —</a>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="pad-s" style="text-align:center"><div class="sc">Collection 01</div><div class="h-wf">The Archetypes: HER</div></div>
+          <div class="divider" style="padding:6px 12px;display:flex;gap:10px;font-size:9.5px;overflow:hidden;white-space:nowrap"><b>I Maiden</b><span>II Lover</span><span>III Seductress</span><span>IV Wanderer</span></div>
+          <div class="chapter-a">
+            <div class="img" style="min-height:220px;border:0"><span>Illustration, 4:5</span></div>
+            <div class="pad-s">
+              <div class="sc">I · The Maiden</div>
+              <div class="s-wf">Silk &amp; Ashes</div>
+              <div class="ln w90"></div>
+              <div class="row" style="justify-content:space-between;align-items:center;margin-top:6px"><span class="price">100 ml · € —</span><a class="btn" href="#bag">Add</a></div>
+              <a href="#fragrance" style="display:block;margin-top:6px">Enter her world</a>
+            </div>
+          </div>
+          <div class="chapter-b">
+            <div class="img" style="min-height:90px;border:0"><span>Next chapter</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>Short collection intro taken from the brand positioning. No banner image here, so the first chapter arrives quickly.</span></li>
+      <li><span class="pin">2</span><span>Chapter index sticks under the header. It shows where you are and lets you jump to an archetype that caught your eye on the homepage.</span></li>
+      <li><span class="pin">3</span><span><b>One chapter per archetype.</b> Illustration, archetype, name in script, one line, notes in brief, price and add to bag. The background shifts to that fragrance’s colour pairing as you scroll in.</span></li>
+      <li><span class="pin">4</span><span>Image and text alternate sides on desktop. On mobile every chapter stacks image first, text second.</span></li>
+      <li><span class="pin">5</span><span>The chapters end on the Discovery Kit, so finishing the collection always leads somewhere.</span></li>
+    </ol>
+  </article>
+
+  <!-- FRAGRANCE -->
+  <article class="screen" id="fragrance">
+    <div class="screen-head"><h3>Fragrance · Silk &amp; Ashes</h3><span class="ui">Stages 04 and 05 · Template for all six</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/fragrances/silk-and-ashes</span></div>
+          <div class="wf">
+            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
+            <div style="padding:6px 18px;font-size:9.5px;color:var(--ink-2)"><a href="#collection">The Archetypes: HER</a> / Silk &amp; Ashes</div>
+            <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;padding:4px 18px 18px">
+              <div class="pinned">
+                <span class="pin">1</span>
+                <div class="img" style="min-height:240px"><span>Bottle on stone, campaign light</span></div>
+                <div class="grid4" style="margin-top:6px"><div class="img" style="min-height:40px"></div><div class="img" style="min-height:40px"></div><div class="img" style="min-height:40px"></div><div class="img" style="min-height:40px"></div></div>
+              </div>
+              <div class="pinned" style="align-self:center">
+                <span class="pin">2</span>
+                <div class="sc">I · The Maiden</div>
+                <div class="s-wf lg">Silk &amp; Ashes</div>
+                <div style="margin:2px 0 10px">Eau de parfum · 100 ml</div>
+                <div class="price" style="font-size:15px">€ —</div>
+                <a class="btn block" href="#bag" style="margin:10px 0 6px">Add to bag</a>
+                <div style="font-size:9.5px">Not sure? <a href="#kit">Try all six in the Discovery Kit</a></div>
+                <div class="divider" style="margin-top:12px;padding-top:6px">Ingredients <span style="float:right">+</span></div>
+                <div class="divider" style="padding-top:6px;margin-top:6px">Delivery &amp; returns <span style="float:right">+</span></div>
+              </div>
+            </div>
+            <div class="chapter-a pinned" style="display:grid;grid-template-columns:1fr 1fr">
+              <span class="pin">3</span>
+              <div class="pad" style="align-self:center">
+                <div class="sc">Her world</div>
+                <div class="h-wf" style="margin:4px 0 6px">Narrative headline</div>
+                <div class="ln w90"></div><div class="ln w90"></div><div class="ln w70"></div><div class="ln w50"></div>
+              </div>
+              <div class="img" style="min-height:200px;border:0"><span>Full illustration</span></div>
+            </div>
+            <div class="pad pinned" style="padding-block:18px">
+              <span class="pin">4</span>
+              <div class="sc" style="text-align:center;margin-bottom:8px">Olfactory profile</div>
+              <div class="notes3">
+                <div><b>Top</b><div class="ln w70" style="margin:4px auto"></div><div class="ln w50" style="margin:0 auto"></div></div>
+                <div><b>Heart</b><div class="ln w70" style="margin:4px auto"></div><div class="ln w50" style="margin:0 auto"></div></div>
+                <div><b>Base</b><div class="ln w70" style="margin:4px auto"></div><div class="ln w50" style="margin:0 auto"></div></div>
+              </div>
+            </div>
+            <div class="pad divider pinned">
+              <span class="pin">5</span>
+              <div class="sc" style="margin-bottom:6px">The other archetypes</div>
+              <div class="grid4"><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Skin &amp; Shadow</span></div><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Ember &amp; Desire</span></div><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Stars &amp; Whisper</span></div><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Velvet &amp; Poise</span></div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="img" style="min-height:250px;border:0"><span>Gallery · swipe · 1/5</span></div>
+          <div class="pad-s">
+            <div class="sc">I · The Maiden</div>
+            <div class="s-wf lg" style="font-size:24px">Silk &amp; Ashes</div>
+            <div>Eau de parfum · 100 ml · <span class="price">€ —</span></div>
+            <div style="font-size:9.5px;margin-top:6px"><a href="#kit">Try all six in the Discovery Kit</a></div>
+          </div>
+          <div class="chapter-a pad-s"><div class="sc">Her world</div><div class="ln w90"></div><div class="ln w70"></div></div>
+          <div class="pad-s"><div class="notes3"><div>Top</div><div>Heart</div><div>Base</div></div></div>
+          <div class="sticky-buy pinned"><span class="pin" style="position:static">6</span><span class="price">€ —</span><a class="btn" href="#bag">Add to bag</a></div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>Gallery: campaign still, bottle, box, the illustration, and a texture detail. Zoom on desktop, swipe on mobile.</span></li>
+      <li><span class="pin">2</span><span><b>Everything needed to buy sits above the fold:</b> archetype, name, size, price, add to bag. The kit link catches visitors who aren’t ready to commit to a full size.</span></li>
+      <li><span class="pin">3</span><span><b>Connection.</b> The narrative is paired with the full illustration, on the fragrance’s own colour pairing.</span></li>
+      <li><span class="pin">4</span><span>Olfactory pyramid in three columns. If notes come with images, each note can show a small swatch.</span></li>
+      <li><span class="pin">5</span><span>The other five archetypes, so the visitor can keep comparing without going back.</span></li>
+      <li><span class="pin">6</span><span>On mobile, a slim add-to-bag bar appears once the main button scrolls out of view.</span></li>
+    </ol>
+  </article>
+
+  <!-- KIT -->
+  <article class="screen" id="kit">
+    <div class="screen-head"><h3>Discovery Kit</h3><span class="ui">Stage 05 · One sellable product, belongs to the collection</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/kits/the-archetypes-her</span></div>
+          <div class="wf">
+            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
+            <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;padding:14px 18px">
+              <div class="img" style="min-height:220px"><span>Kit box, open, six vials</span></div>
+              <div class="pinned" style="align-self:center">
+                <span class="pin">1</span>
+                <div class="sc">The Archetypes: HER</div>
+                <div class="h-wf lg">Discovery Kit</div>
+                <div style="margin:4px 0 10px">6 × 7 or 10 ml (to be confirmed) · all six fragrances</div>
+                <div class="price" style="font-size:15px">€ —</div>
+                <a class="btn block" href="#bag" style="margin-top:10px">Add to bag</a>
+              </div>
+            </div>
+            <div class="pad divider pinned">
+              <span class="pin">2</span>
+              <div class="sc" style="text-align:center;margin-bottom:10px">What’s inside</div>
+              <div class="vials">
+                <div><div class="vial"></div><a href="#fragrance" class="s-wf" style="font-size:12px;text-decoration:none">Silk &amp; Ashes</a><div class="sc" style="font-size:8px">Maiden</div></div>
+                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Skin &amp; Shadow</span><div class="sc" style="font-size:8px">Lover</div></div>
+                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Ember &amp; Desire</span><div class="sc" style="font-size:8px">Seductress</div></div>
+                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Stars &amp; Whisper</span><div class="sc" style="font-size:8px">Wanderer</div></div>
+                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Velvet &amp; Poise</span><div class="sc" style="font-size:8px">Queen</div></div>
+                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Rain &amp; Solace</span><div class="sc" style="font-size:8px">Healer</div></div>
+              </div>
+            </div>
+            <div class="chapter-a pad pinned">
+              <span class="pin">3</span>
+              <div class="sc" style="margin-bottom:8px">How to choose your full size</div>
+              <div class="grid3">
+                <div><b>1 · Wear one a day</b><div class="ln w90"></div></div>
+                <div><b>2 · Notice which one stays</b><div class="ln w90"></div></div>
+                <div><b>3 · Choose her in 100 ml</b><div class="ln w90"></div></div>
+              </div>
+            </div>
+            <div class="pad divider"><div>Questions about the kit <span style="float:right">+</span></div></div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="img" style="min-height:200px;border:0"><span>Kit box</span></div>
+          <div class="pad-s"><div class="h-wf">Discovery Kit</div><div>6 × 7/10 ml · <span class="price">€ —</span></div></div>
+          <div class="pad-s"><div class="vials" style="grid-template-columns:repeat(3,1fr)"><div><div class="vial"></div>Maiden</div><div><div class="vial"></div>Lover</div><div><div class="vial"></div>Seductress</div><div><div class="vial"></div>Wanderer</div><div><div class="vial"></div>Queen</div><div><div class="vial"></div>Healer</div></div></div>
+          <div class="sticky-buy"><span class="price">€ —</span><a class="btn" href="#bag">Add to bag</a></div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>Bought as one complete set, as the brief specifies. The vial size is shown as soon as it is confirmed.</span></li>
+      <li><span class="pin">2</span><span>Each vial links to its full-size fragrance page, so the kit also works as a map of the collection.</span></li>
+      <li><span class="pin">3</span><span>A short ritual for choosing. If the client wants to offer a kit credit toward a full size, it goes in step 3 (see open items).</span></li>
+    </ol>
+  </article>
+
+  <!-- SHOP -->
+  <article class="screen" id="shop">
+    <div class="screen-head"><h3>Shop</h3><span class="ui">Direct shopper · Every product in one grid</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/shop</span></div>
+          <div class="wf">
+            <div class="nav divider"><div class="side"><a href="#shop"><b>Shop</b></a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
+            <div class="pad pinned">
+              <span class="pin">1</span>
+              <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:12px">
+                <div class="h-wf">Shop</div>
+                <div class="chips"><span class="on">All · 7</span><span>Fragrances · 6</span><span>Discovery Kit · 1</span></div>
+              </div>
+              <div class="grid4 pinned">
+                <span class="pin" style="top:-8px">2</span>
+                <div class="card"><div class="img"><span>Bottle</span></div><a href="#fragrance" class="s-wf" style="font-size:15px;text-decoration:none">Silk &amp; Ashes</a><div class="sc">The Maiden</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Skin &amp; Shadow</span><div class="sc">The Lover</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Ember &amp; Desire</span><div class="sc">The Seductress</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Stars &amp; Whisper</span><div class="sc">The Wanderer</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Velvet &amp; Poise</span><div class="sc">The Queen</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Rain &amp; Solace</span><div class="sc">The Healer</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
+                <div class="card" style="grid-column:span 2"><div class="img" style="aspect-ratio:auto;flex:1;min-height:120px"><span>Discovery Kit</span></div><a href="#kit" class="h-wf sm" style="text-decoration:none">Discovery Kit</a><div class="row" style="justify-content:space-between"><span class="price">6 × 7/10 ml · € —</span><a href="#bag">Add</a></div></div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="pad-s"><div class="h-wf">Shop</div><div class="chips" style="margin-top:6px"><span class="on">All</span><span>Fragrances</span><span>Kit</span></div></div>
+          <div class="pad-s grid2">
+            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Silk &amp; Ashes</span><span class="price" style="font-size:10px">€ —</span></div>
+            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Skin &amp; Shadow</span><span class="price" style="font-size:10px">€ —</span></div>
+            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Ember &amp; Desire</span><span class="price" style="font-size:10px">€ —</span></div>
+            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Stars &amp; Whisper</span><span class="price" style="font-size:10px">€ —</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>Filters by format today. A filter by collection is added automatically once there is more than one.</span></li>
+      <li><span class="pin">2</span><span>Uniform bottle shots on a neutral ground, so the grid reads quickly. Name, archetype, size and price on every card, with add to bag on the card itself.</span></li>
+    </ol>
+  </article>
+
+  <!-- BAG -->
+  <article class="screen" id="bag">
+    <div class="screen-head"><h3>Bag drawer → Checkout</h3><span class="ui">Stage 06 · Opens on every add to bag</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/fragrances/silk-and-ashes</span></div>
+          <div class="drawer-wrap">
+            <div class="scrim"></div>
+            <div class="drawer pinned">
+              <span class="pin" style="right:auto;left:-26px">1</span>
+              <div class="pad-s divider" style="display:flex;justify-content:space-between"><b class="sc" style="font-size:11px">Your bag · 1</b><span>Close</span></div>
+              <div class="pad-s" style="flex:1">
+                <div class="line-item"><div class="img"></div><div><div class="s-wf" style="font-size:14px">Silk &amp; Ashes</div><div>100 ml · − 1 +</div></div><span class="price">€ —</span></div>
+                <div class="pinned" style="margin-top:10px;border:1px solid var(--line);padding:8px">
+                  <span class="pin">2</span>
+                  <div class="sc">Complete the ritual</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><span>Discovery Kit · € —</span><a href="#kit">Add</a></div>
+                </div>
+              </div>
+              <div class="pad-s divider pinned">
+                <span class="pin">3</span>
+                <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span class="price">€ —</span></div>
+                <div style="font-size:9.5px;color:var(--ink-2);margin:2px 0 8px">Shipping and taxes calculated at checkout</div>
+                <span class="btn block">Checkout</span>
+                <div class="row" style="margin-top:6px"><span class="btn-o" style="flex:1;text-align:center">Shop Pay</span><span class="btn-o" style="flex:1;text-align:center">Apple Pay</span></div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob" style="background:rgba(48,30,21,.35)">
+          <div class="notch"><i></i></div>
+          <div style="height:90px"></div>
+          <div style="background:var(--wf-bg);border-radius:16px 16px 0 0;margin-bottom:-10px">
+            <div style="width:40px;height:4px;border-radius:4px;background:var(--line);margin:8px auto"></div>
+            <div class="pad-s"><b class="sc" style="font-size:11px">Your bag · 1</b>
+              <div class="line-item"><div class="img"></div><div><div class="s-wf" style="font-size:13px">Silk &amp; Ashes</div><div>100 ml</div></div><span class="price">€ —</span></div>
+              <div style="display:flex;justify-content:space-between;margin-top:8px"><span>Subtotal</span><span class="price">€ —</span></div>
+              <span class="btn block" style="margin-top:8px">Checkout</span>
+              <div class="row" style="margin-top:6px;padding-bottom:16px"><span class="btn-o" style="flex:1;text-align:center">Shop Pay</span><span class="btn-o" style="flex:1;text-align:center">Apple Pay</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>A side drawer on desktop and a bottom sheet on mobile. The page stays behind it, so the explorer can carry on reading.</span></li>
+      <li><span class="pin">2</span><span>One quiet suggestion at most: the Discovery Kit if it isn’t already in the bag, or a full size if the kit is.</span></li>
+      <li><span class="pin">3</span><span>Checkout goes to Shopify’s hosted checkout, branded with ODIRAH colours and type. Express wallets skip the form entirely.</span></li>
+    </ol>
+  </article>
+
+  <!-- HOUSE -->
+  <article class="screen" id="house">
+    <div class="screen-head"><h3>The House</h3><span class="ui">Stage 02 · Vision, positioning, manifesto</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/the-house</span></div>
+          <div class="wf">
+            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house"><b>The House</b></a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr">
+              <div class="pad" style="align-self:center;text-align:center">
+                <div class="h-wf lg">Our vision</div>
+                <div style="font-family:var(--f-body);font-style:italic;font-size:13px;max-width:280px;margin:6px auto 0">To create a fragrance collection that transcends trends and becomes a mirror of the self.</div>
+              </div>
+              <div class="img" style="min-height:220px;border:0"><span>Mirror monolith in the desert</span></div>
+            </div>
+            <div class="pad pinned" style="padding-block:22px">
+              <span class="pin">1</span>
+              <div class="sc">Positioning</div>
+              <div class="h-wf" style="text-transform:none;font-family:var(--f-body);font-size:18px;max-width:520px;margin-top:4px">Fragrance not as an accessory but as a <u>mirror of the soul</u>, an invitation to explore <u>inner archetypes</u>, an <u>act of self-discovery</u>.</div>
+            </div>
+            <div class="pad divider pinned" style="text-align:center;padding-block:22px">
+              <span class="pin">2</span>
+              <div class="sc">Manifesto</div>
+              <div class="h-wf lg">Here’s to the unseen.</div>
+              <div style="max-width:300px;margin:8px auto"><div class="ln w90" style="margin:4px auto"></div><div class="ln w70" style="margin:4px auto"></div><div class="ln w90" style="margin:4px auto"></div><div class="ln w50" style="margin:4px auto"></div></div>
+              <div style="font-family:var(--f-body);font-style:italic;font-size:13px">You are not one version of yourself.</div>
+            </div>
+            <div class="dark-band pad" style="text-align:center"><a class="btn-o" href="#collection">Meet the six archetypes</a></div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="img" style="min-height:200px;border:0"><span>Mirror</span></div>
+          <div class="pad-s" style="text-align:center"><div class="h-wf">Our vision</div><div class="ln w90" style="margin:6px auto"></div><div class="ln w70" style="margin:0 auto"></div></div>
+          <div class="pad-s divider" style="text-align:center"><div class="h-wf">Here’s to the unseen.</div><div class="ln w90" style="margin:6px auto"></div><div class="ln w70" style="margin:0 auto"></div><div class="ln w90" style="margin:6px auto"></div></div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>Positioning text from the brand manual, with its three phrases underlined as in the manual.</span></li>
+      <li><span class="pin">2</span><span>The full manifesto. Lines fade in gently as they scroll into view, and are plain text for anyone who prefers reduced motion.</span></li>
+    </ol>
+  </article>
+
+  <!-- MENU -->
+  <article class="screen" id="menu">
+    <div class="screen-head"><h3>Mobile menu</h3><span class="ui">Mobile only · Shop is the first item</span></div>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start">
+      <div class="mob" style="background:var(--dark);color:var(--on-dark)">
+        <div class="notch"><i></i></div>
+        <div class="nav" style="padding:8px 12px"><span>Close</span><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+        <div class="pad-s" style="display:flex;flex-direction:column;gap:10px;padding-block:18px">
+          <a href="#shop" class="h-wf" style="text-decoration:none">Shop</a>
+          <a href="#collection" class="h-wf" style="text-decoration:none">The Archetypes: HER</a>
+          <a href="#kit" class="h-wf" style="text-decoration:none">Discovery Kit</a>
+          <a href="#house" class="h-wf" style="text-decoration:none">The House</a>
+        </div>
+        <div class="img dk" style="min-height:120px;margin:0 12px;border:0"><span>Current campaign</span></div>
+        <div class="pad-s" style="display:flex;gap:14px;opacity:.85"><span>Search</span><span>Account</span><span>Contact</span></div>
+      </div>
+      <p class="read" style="max-width:26rem">A full-screen overlay on deep brown. The four main destinations are set large. Search, account and contact sit below. A single campaign image keeps it from feeling like a plain list. The tagline version of the logo can appear here, where there is room for it to be read.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ================= IV. INTERACTIONS ================= -->
+<section class="block" id="interactions">
+  <div class="sec-head">
+    <div><span class="roman">IV</span><h2>Motion &amp; performance</h2></div>
+    <div><p>The brief asks for refined animation that never gets in the way of buying. Every effect below has a still version for visitors who set their device to reduce motion, and none of them delays a price or a button from appearing.</p></div>
+  </div>
+  <div class="ix">
+    <div><h3>Colour shift between archetypes</h3><p>On the collection page, the background eases from one fragrance’s colour pairing to the next as each chapter takes over the screen, like light changing in a room.</p><span class="ui">CSS custom properties, scroll-driven, about 600 ms</span></div>
+    <div><h3>Slow reveals</h3><p>Illustrations open from a soft crop to full frame; manifesto lines fade in one after another. Text is always readable from the first frame.</p><span class="ui">IntersectionObserver · respects reduced motion</span></div>
+    <div><h3>Page transitions</h3><p>A short cross-fade between pages. A card’s image grows into the product page’s hero, so the visitor keeps their place.</p><span class="ui">View Transitions API, with a plain navigation fallback</span></div>
+    <div><h3>Restraint</h3><p>No parallax on mobile, no scroll-jacking, no autoplay sound. The hero film is muted, loops, and is replaced by a still image on slow connections or when data saver is on.</p><span class="ui">Save-Data and network hints</span></div>
+    <div><h3>Performance budget</h3><p>Largest content painted in under 2.5 s on a mid-range phone over 4G. Lighthouse mobile score of 90 or more on every template.</p><span class="ui">AVIF and WebP, responsive sizes, lazy loading below the fold</span></div>
+    <div><h3>Accessibility</h3><p>WCAG 2.2 AA: keyboard-operable drawer and menu, visible focus, alt text for every illustration, and only the colour pairings that pass contrast (see section V).</p><span class="ui">Tested with VoiceOver and keyboard only</span></div>
+  </div>
+</section>
+
+<!-- ================= V. PLATFORM ================= -->
+<section class="block" id="platform">
+  <div class="sec-head">
+    <div><span class="roman">V</span><h2>Platform &amp; content model</h2></div>
+    <div><p>Shopify runs products, stock, payments, checkout and customer accounts. A custom Next.js front end draws every page, which gives full control over the storytelling and motion. Checkout stays on Shopify, which is secure, fast and familiar to shoppers.</p></div>
+  </div>
+  <div class="two">
+    <div>
+      <h3>How a product is described</h3>
+      <div class="scroll-x"><table>
+        <thead><tr><th>Field</th><th>Example</th><th>Stored as</th></tr></thead>
+        <tbody>
+          <tr><td>Collection</td><td>The Archetypes: HER</td><td><code>Shopify collection</code></td></tr>
+          <tr><td>Format</td><td>Fragrance · Discovery Kit · Limited Edition</td><td><code>product_type</code></td></tr>
+          <tr><td>Archetype</td><td>The Maiden</td><td><code>metafield</code></td></tr>
+          <tr><td>Name artwork</td><td>Silk &amp; Ashes in Sinfonietta</td><td><code>metafield · SVG</code></td></tr>
+          <tr><td>Narrative</td><td>Her world, in the brand voice</td><td><code>metafield · rich text</code></td></tr>
+          <tr><td>Olfactory notes</td><td>Top · Heart · Base</td><td><code>metaobject list</code></td></tr>
+          <tr><td>Colour pairing</td><td>Background and text from the palette</td><td><code>metafield</code></td></tr>
+          <tr><td>Illustration &amp; texture</td><td>Painterly scene, Copper Veil</td><td><code>files</code></td></tr>
+          <tr><td>Kit contents</td><td>The six fragrances</td><td><code>product references</code></td></tr>
+        </tbody>
+      </table></div>
+      <p class="stand-in" style="margin-top:1.2rem">Adding a second collection means creating a collection and its products in Shopify and filling these fields. The menu, shop filters, collection page and product pages build themselves from that data.</p>
+    </div>
+    <div>
+      <h3>Colour pairings, checked for contrast</h3>
+      <div class="scroll-x"><table>
+        <thead><tr><th>Text on background</th><th>Ratio</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch" style="background:#301E15;color:#E3D5CF">Aa</span> Blush on deep brown</td><td>11.1 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#E3D5CF;color:#301E15">Aa</span> Deep brown on blush</td><td>11.1 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#CDBFAE;color:#301E15">Aa</span> Deep brown on cream</td><td>8.8 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#6A4130;color:#E3D5CF">Aa</span> Blush on brown</td><td>6.1 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#B89367;color:#301E15">Aa</span> Deep brown on gold</td><td>5.6 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#8A361C;color:#E3D5CF">Aa</span> Blush on terracotta</td><td>5.6 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#A38E83;color:#301E15">Aa</span> Deep brown on rose-taupe</td><td>5.1 : 1</td><td><span class="pass ok">All text</span></td></tr>
+          <tr><td><span class="swatch" style="background:#E3D5CF;color:#B89367">Aa</span> Gold on blush</td><td>2.0 : 1</td><td><span class="pass no">Decoration only</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="stand-in" style="margin-top:1.2rem">Gold works as an accent on dark grounds and for lines and ornaments on blush, but not for text or prices on blush. This matches the manual’s own colour combinations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VI. DECISIONS ================= -->
+<section class="block" id="decisions">
+  <div class="sec-head">
+    <div><span class="roman">VI</span><h2>Open items &amp; sign-off</h2></div>
+    <div><p>None of these block approval of the structure. Each one is needed before or during the build, and is marked with when.</p></div>
+  </div>
+  <ul class="open">
+    <li><span>Discovery Kit vial size, 7 or 10 ml</span><small>before build</small></li>
+    <li><span>Prices for each fragrance and the kit, and launch currencies</span><small>before build</small></li>
+    <li><span>Markets and languages at launch (shipping countries, EN only or more)</span><small>before build</small></li>
+    <li><span>Web licences for Mrs Eaves and Sinfonietta, or the Sinfonietta names as SVG artwork</span><small>before build</small></li>
+    <li><span>Wordmark and tagline lock-up as SVG files</span><small>before build</small></li>
+    <li><span>Hex values for the burgundy, olive and navy named in the manual</span><small>before build</small></li>
+    <li><span>Narrative copy and top, heart and base notes for all six</span><small>during build</small></li>
+    <li><span>Full-resolution illustrations, textures, campaign photography and hero film</span><small>during build</small></li>
+    <li><span>Kit credit toward a full size: yes or no</span><small>during build</small></li>
+    <li><span>Customer accounts at launch, or guest checkout only</span><small>during build</small></li>
+    <li><span>Five to eight testers matching the target customer, for usability testing</span><small>after prototype</small></li>
+    <li><span>Legal texts: terms, privacy, cookies, returns</span><small>before launch</small></li>
+  </ul>
+
+  <div class="signoff">
+    <div>
+      <h3>To approve</h3>
+      <ol>
+        <li>The sitemap and URL structure</li>
+        <li>The journey map and the two routes to checkout</li>
+        <li>The screen layouts for desktop and mobile</li>
+        <li>Shopify with a custom front end as the platform</li>
+      </ol>
+    </div>
+    <div>
+      <h3>What happens next</h3>
+      <p>After approval we design high-fidelity screens for the homepage, collection and fragrance templates with real imagery, then build a clickable prototype on a Shopify development store with all seven products. Usability testing runs on that prototype before launch.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap end">
+  <span class="logo-slot">Odirah wordmark · supplied artwork</span>
+  <span class="ui">Website proposal v0.1 · Confidential, prepared for ODIRAH</span>
+</footer>
+
+</html>

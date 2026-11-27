@@ -1,0 +1,26 @@
+# ODIRAH — website
+
+E-commerce website for ODIRAH, a fragrance house. Launch scope: one collection, **The Archetypes: HER**: six 100 ml fragrances plus a Discovery Kit, seven sellable products in total.
+
+## Status
+
+**Phase 1: approval pack.** As the brief requires, the sitemap, customer journey map and desktop/mobile wireframes are presented for client approval before development starts.
+
+- [`docs/approval/index.html`](docs/approval/index.html): open it in a browser. It is self-contained, apart from Google Fonts stand-ins for the licensed brand faces.
+
+## Phase 2: build (after approval)
+
+| Layer | Choice |
+| --- | --- |
+| Commerce | Shopify (products, stock, payments, customer accounts, hosted checkout) |
+| Front end | Next.js (App Router, TypeScript) on the Shopify Storefront API |
+| Content model | Shopify collections, `product_type` (Fragrance / Discovery Kit / Limited Edition), metafields and metaobjects for archetype, narrative, notes, colour pairing and artwork |
+| Styling | Brand tokens as CSS custom properties; Mrs Eaves and Sinfonietta self-hosted once licensed |
+| Hosting | Vercel |
+| Quality | Lighthouse mobile ≥ 90, WCAG 2.2 AA, Playwright tests for the explorer and direct-shopper journeys |
+
+New collections, kits and limited editions are added as data in Shopify. The site architecture does not change.
+
+## Brand reference
+
+The ODIRAH Brand Guidelines v1.0 (November 2026) are the source for colours, typography, logo usage and imagery. They are kept out of this repository because they are marked confidential.
