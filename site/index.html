@@ -1,224 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-base="">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ODIRAH · Intimately you</title>
 <meta name="description" content="ODIRAH is a house of fragrance. The Archetypes: HER, six fragrances for the worlds within you.">
 <meta name="theme-color" content="#301E15">
+<link rel="icon" href="assets/brand/odirah-wordmark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@500;600&family=Pinyon+Script&display=swap">
-<link rel="preload" as="image" href="assets/img/hero-desert-1280.webp" imagesrcset="assets/img/hero-desert-1280.webp 1280w, assets/img/hero-desert-2400.webp 2400w" imagesizes="100vw">
-<style>
-/* ODIRAH concept homepage: a modular mosaic. Panels sit edge to edge, divided by
-   thin gutters of the darker ground. Brand tokens from the Brand Guidelines v1.0.
-   Type stand-ins: Cormorant for Mrs Eaves, Pinyon Script for Sinfonietta. */
-:root{
-  --deep:#301E15; --brown:#6A4130; --gold:#B89367; --blush:#E3D5CF;
-  --terracotta:#8A361C; --rose:#A38E83; --cream:#CDBFAE;
-  --tile:#F1EAE6;            /* panel surface */
-  --ground:#D9CBC4;          /* gutter colour between panels */
-  --line:rgba(48,30,21,.16);
-  --line-light:rgba(227,213,207,.26);
-  --gap:6px;
-  --pad:clamp(20px,2.6vw,40px);
-  --f-sc:"Cormorant SC","Mrs Eaves",Georgia,serif;
-  --f-serif:"Cormorant Garamond","Mrs Eaves",Georgia,"Times New Roman",serif;
-  --f-script:"Pinyon Script","Sinfonietta","Snell Roundhand",cursive;
-  --ease:cubic-bezier(.22,.61,.36,1);
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ground);color:var(--deep);font-family:var(--f-serif);font-size:clamp(1.05rem,.98rem + .25vw,1.16rem);line-height:1.55;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}
-h1,h2,h3{font-family:var(--f-serif);font-weight:500;line-height:1;letter-spacing:-.01em;margin:0;text-wrap:balance}
-p{margin:0}
-.label{font-family:var(--f-sc);font-weight:600;font-size:.78rem;letter-spacing:.16em;line-height:1.3}
-.script{font-family:var(--f-script);font-weight:400;line-height:1.05;letter-spacing:0}
-.skip{position:absolute;left:-9999px;top:8px;background:var(--deep);color:var(--blush);padding:8px 14px;z-index:100}
-.skip:focus{left:8px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* mosaic */
-.mosaic{display:grid;gap:var(--gap);padding:0 max(var(--gap),env(safe-area-inset-right)) var(--gap) max(var(--gap),env(safe-area-inset-left))}
-.panel{background:var(--tile);position:relative;min-width:0;overflow:hidden}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.9em;min-height:44px;padding:0 20px;font-family:var(--f-sc);font-weight:600;font-size:.78rem;letter-spacing:.18em;text-decoration:none;border:1px solid currentColor;transition:background-color .35s var(--ease),color .35s var(--ease)}
-.btn svg{width:14px;height:10px;transition:transform .35s var(--ease)}
-.btn:hover svg{transform:translateX(3px)}
-.btn--dark{background:var(--deep);color:var(--blush);border-color:var(--deep)}
-.btn--dark:hover{background:var(--brown);border-color:var(--brown)}
-.btn--light{background:var(--blush);color:var(--deep);border-color:var(--blush)}
-.btn--light:hover{background:transparent;color:var(--blush)}
-
-/* header */
-.site-header{position:fixed;inset:0 0 auto;z-index:40;color:var(--blush);padding-top:env(safe-area-inset-top);transition:background-color .45s var(--ease),color .45s var(--ease),box-shadow .45s var(--ease)}
-.site-header.is-solid{background:var(--tile);color:var(--deep);box-shadow:0 1px 0 var(--line)}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:84px;padding:0 max(clamp(20px,3.4vw,48px),env(safe-area-inset-right)) 0 max(clamp(20px,3.4vw,48px),env(safe-area-inset-left))}
-.logo{display:block;width:clamp(108px,9vw,132px);color:inherit}
-.logo svg{display:block;width:100%;height:auto}
-.nav-links{list-style:none;margin:0;padding:0;display:flex;align-items:center}
-.nav-links li{display:flex;align-items:center}
-.nav-links li::before{content:"";width:1px;height:11px;background:currentColor;opacity:.6;margin:0 clamp(12px,1.4vw,20px)}
-.nav-links li:last-child::after{content:"";width:1px;height:11px;background:currentColor;opacity:.6;margin-left:clamp(12px,1.4vw,20px)}
-.nav a,.nav button{font-family:var(--f-sc);font-weight:600;font-size:.76rem;letter-spacing:.16em;text-decoration:none;white-space:nowrap}
-.nav a:hover,.nav button:hover{opacity:.65}
-.nav-end{display:flex;justify-content:flex-end;gap:clamp(16px,2vw,28px)}
-.menu-btn{display:none}
-@media (max-width:960px){
-  .nav-links,.nav-end .hide-m{display:none}
-  .menu-btn{display:inline-block;justify-self:start}
-  .nav{height:64px}
-  .nav .logo{justify-self:center}
-}
-
-/* mobile menu */
-.menu{position:fixed;inset:0;z-index:60;background:var(--deep);color:var(--blush);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top) + 16px) max(20px,env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + 28px) max(20px,env(safe-area-inset-left));transform:translateY(-100%);visibility:hidden;transition:transform .55s var(--ease),visibility 0s linear .55s}
-.menu.is-open{transform:none;visibility:visible;transition:transform .55s var(--ease)}
-.menu-top{display:flex;justify-content:space-between;align-items:center;height:44px}
-.menu nav{display:flex;flex-direction:column;margin-top:40px;border-top:1px solid var(--line-light)}
-.menu nav a{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line-light);font-size:1.9rem;text-decoration:none;line-height:1}
-.menu nav a span{font-family:var(--f-sc);font-size:.75rem;letter-spacing:.16em;opacity:.6}
-.menu .utility{margin-top:auto;display:flex;gap:24px}
-
-/* hero */
-.hero{position:relative;height:max(620px,94svh);color:var(--blush);background:var(--brown);overflow:hidden}
-.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 40%}
-.hero img{transform:scale(1.05);animation:settle 2.6s var(--ease) forwards}
-.hero video{opacity:0;transition:opacity 1.6s var(--ease)}
-.hero video.is-playing{opacity:1}
-.film-toggle{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-sc);font-weight:600;font-size:.72rem;letter-spacing:.16em;color:rgba(243,236,233,.85)}
-.film-toggle:hover{color:var(--blush)}
-.film-toggle i{width:22px;height:22px;border:1px solid currentColor;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
-.film-toggle svg{width:8px;height:8px}
-.film-toggle[hidden]{display:none}
-@keyframes settle{to{transform:none}}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(48,30,21,.6) 0%,rgba(48,30,21,0) 42%),linear-gradient(90deg,rgba(48,30,21,.4) 0%,rgba(48,30,21,0) 50%)}
-.hero-foot{position:absolute;z-index:1;left:0;right:0;bottom:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:32px;align-items:end;padding:0 max(clamp(20px,3.4vw,48px),env(safe-area-inset-right)) clamp(28px,4.5vh,52px) max(clamp(20px,3.4vw,48px),env(safe-area-inset-left))}
-.hero h1{font-size:clamp(2.6rem,1.6rem + 3.8vw,5rem);max-width:17ch}
-.hero-side{display:grid;gap:18px;justify-items:start}
-.hero-side p{font-size:1.05rem;line-height:1.45;color:rgba(243,236,233,.92);max-width:20rem}
-@media (max-width:760px){.hero-foot{grid-template-columns:1fr;gap:20px}.hero::after{background:linear-gradient(0deg,rgba(48,30,21,.78) 0%,rgba(48,30,21,.1) 60%)}.hero img,.hero video{object-position:70% 40%}}
-
-/* fragrance tiles */
-.tiles{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:var(--gap)}
-.tile{display:flex;flex-direction:column;padding:var(--pad);transition:background-color .7s var(--ease)}
-.tile:hover{background:var(--tone,var(--tile))}
-.tile-top{display:flex;justify-content:space-between;align-items:baseline;font-variant-numeric:lining-nums}
-.tile-top .label{color:var(--brown)}
-.arch{display:block;width:min(62%,300px);margin:clamp(28px,4vw,56px) auto clamp(28px,4vw,52px);aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:var(--cream);box-shadow:0 30px 40px -28px rgba(48,30,21,.45)}
-.arch img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
-.tile:hover .arch img{transform:scale(1.05)}
-.tile-name{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.tile-name h3{font-family:var(--f-script);font-weight:400;font-size:clamp(1.9rem,1.5rem + 1vw,2.5rem);letter-spacing:0;line-height:1.05}
-.tile-name .vol{font-size:1rem;white-space:nowrap}
-.tile .arch-name{margin-top:4px;color:var(--brown)}
-.tile .story{margin-top:10px;font-size:.98rem;color:rgba(48,30,21,.62);max-width:30ch;min-height:3em}
-.tile .add{align-self:flex-start;margin-top:18px;font-family:var(--f-sc);font-weight:600;font-size:.74rem;letter-spacing:.16em;padding:8px 0;border-bottom:1px solid currentColor}
-.tile .add:hover{color:var(--brown)}
-@media (max-width:1060px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){
-  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .tiles::-webkit-scrollbar{display:none}
-  .tiles .tile{flex:0 0 84%;scroll-snap-align:center}
-}
-
-/* feature split: big image + dense text panel */
-.split{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
-.split.rev{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
-.split .media{min-height:clamp(520px,62vw,880px)}
-.split .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.text-panel{display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:var(--pad)}
-.dense{text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-size:clamp(1.02rem,.95rem + .25vw,1.14rem);line-height:1.5}
-.dense em{font-style:italic}
-.dense strong{font-weight:600}
-@media (max-width:600px){.dense{text-align:left}}
-.panel-foot{display:grid;gap:28px}
-.panel-foot .row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
-.panel-foot h2{font-size:clamp(2rem,1.4rem + 2vw,3.1rem)}
-.big-mark{display:block;width:100%;color:var(--deep)}
-.big-mark svg{width:100%;height:auto;display:block}
-@media (max-width:860px){.split,.split.rev{grid-template-columns:1fr}.split .media{min-height:0;aspect-ratio:4/5}.split.rev .media{order:-1}.split .media.wide{aspect-ratio:4/3}}
-
-/* kit panel */
-.kit-panel{background:var(--deep);color:var(--blush)}
-.kit-panel h2{font-size:clamp(2.1rem,1.5rem + 2vw,3.3rem)}
-.kit-panel .lede{margin-top:20px;color:rgba(227,213,207,.84);max-width:24rem}
-.spec{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-light)}
-.spec li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line-light);font-variant-numeric:lining-nums}
-.spec li span:first-child{font-family:var(--f-sc);font-weight:600;font-size:.74rem;letter-spacing:.16em;color:var(--gold);padding-top:4px}
-
-/* closing row */
-.trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)}
-.trio .media{aspect-ratio:4/5}
-.trio .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.quote-panel{display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:var(--pad)}
-.quote-panel blockquote{margin:0;font-style:italic;font-size:clamp(1.4rem,1.1rem + 1.1vw,2.1rem);line-height:1.28}
-.quote-panel .attr{color:var(--brown)}
-.tag-panel{display:flex;flex-direction:column;justify-content:flex-end;padding:var(--pad);color:var(--blush);background:var(--terracotta) url("assets/img/terracotta-velvet-1600.webp") center/cover}
-.tag-panel p.big{font-style:italic;font-size:clamp(2.4rem,1.6rem + 2.4vw,4rem);line-height:.95;white-space:nowrap}
-.tag-panel sup{font-style:normal;font-family:var(--f-sc);font-size:.2em;vertical-align:2.8em;margin-left:.1em}
-.tag-panel .sub{margin-top:18px;max-width:20rem;font-size:1rem;color:rgba(243,236,233,.86)}
-@media (max-width:960px){.trio{grid-template-columns:1fr 1fr}.trio .tag-panel{grid-column:1/-1;min-height:360px}}
-@media (max-width:600px){.trio{grid-template-columns:1fr}}
-
-/* footer */
-.footer{grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr))}
-.footer .panel{padding:var(--pad)}
-.foot-news .logo{width:140px;color:var(--deep)}
-.foot-news p{margin:20px 0 22px;max-width:22rem;color:var(--brown)}
-.foot-news form{display:flex;max-width:26rem;border-bottom:1px solid var(--deep)}
-.foot-news input{flex:1;min-width:0;background:transparent;border:0;font:inherit;color:var(--deep);padding:10px 0}
-.foot-news input::placeholder{color:rgba(48,30,21,.45)}
-.foot-news input:focus{outline:none}
-.foot-news button{font-family:var(--f-sc);font-weight:600;font-size:.76rem;letter-spacing:.16em;padding-left:14px}
-.foot-news .msg{min-height:1.5em;margin-top:10px;font-style:italic;color:var(--brown)}
-.footer ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
-.footer h3{font-family:var(--f-sc);font-weight:600;font-size:.76rem;letter-spacing:.16em}
-.footer ul a{text-decoration:none}
-.footer ul a:hover{text-decoration:underline}
-.foot-base{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.92rem;color:var(--brown);padding:18px var(--pad) calc(18px + env(safe-area-inset-bottom))}
-@media (max-width:860px){.footer{grid-template-columns:1fr 1fr}.foot-news{grid-column:1/-1}.footer .links:last-of-type{grid-column:1/-1}}
-
-/* bag drawer */
-.scrim{position:fixed;inset:0;z-index:70;background:rgba(48,30,21,.42);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s linear .45s}
-.scrim.is-open{opacity:1;visibility:visible;transition:opacity .45s var(--ease)}
-.bag{position:fixed;z-index:80;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--tile);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .55s var(--ease),visibility 0s linear .55s;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
-.bag.is-open{transform:none;visibility:visible;transition:transform .55s var(--ease)}
-.bag header{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid var(--line)}
-.bag header h2{font-size:1.6rem}
-.bag .items{flex:1;overflow:auto;padding:8px 28px}
-.bag .empty{padding:40px 0;font-style:italic;color:var(--brown)}
-.line-item{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
-.line-item img{width:64px;aspect-ratio:3/4;object-fit:cover;border-radius:999px 999px 0 0}
-.line-item .script{font-size:1.6rem}
-.qty{display:inline-flex;align-items:center;gap:12px;margin-top:4px;font-size:.95rem}
-.qty button{width:28px;height:28px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center}
-.remove{font-size:.85rem;text-decoration:underline;color:var(--brown)}
-.bag footer{padding:22px 28px 28px;border-top:1px solid var(--line);display:grid;gap:12px}
-.bag .row{display:flex;justify-content:space-between}
-.bag .note{font-size:.9rem;color:var(--brown);font-style:italic}
-.bag .btn{width:100%}
-
-/* reveal */
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.js .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .reveal{opacity:1;transform:none}
-  .hero img{transform:none}
-}
-</style>
+<link rel="stylesheet" href="assets/css/odirah.css">
+<script src="assets/js/odirah.js" defer></script>
 </head>
-<body>
+<body class="has-hero">
 <a class="skip" href="#main">Skip to content</a>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="wordmark" viewBox="0 0 1104.91 221.00"><path fill="currentColor" d="M117.01 0.09 C127.99 0.09 138.52 1.36 148.51 3.98 C158.49 6.60 167.93 10.21 176.56 15.00 C185.27 19.70 193.08 25.39 200.16 32.08 C207.24 38.67 213.23 46.08 218.31 54.12 C223.40 62.16 227.30 70.93 230.02 80.23 C232.75 89.54 234.11 99.30 234.11 109.42 C234.11 119.54 232.75 129.47 230.02 138.96 C227.30 148.45 223.40 157.39 218.31 165.61 C213.23 173.93 207.15 181.43 200.16 188.20 C193.08 194.98 185.27 200.85 176.56 205.73 C167.84 210.61 158.49 214.40 148.51 217.02 C138.43 219.64 127.99 221.00 117.01 221.00 C100.58 221.00 85.24 218.11 70.99 212.24 C56.73 206.36 44.39 198.41 33.86 188.29 C23.33 178.17 15.07 166.34 9.08 152.79 C3.00 139.23 0.00 124.78 0.00 109.42 C0.00 99.30 1.36 89.63 4.08 80.23 C6.81 70.93 10.71 62.16 15.70 54.12 C20.70 46.08 26.78 38.67 33.86 32.08 C40.94 25.48 48.84 19.79 57.46 15.00 C66.08 10.30 75.43 6.60 85.51 3.98 C95.49 1.36 106.02 0.09 117.01 0.09 Z M320.98 4.79 C342.76 4.79 361.46 6.78 377.17 10.84 C392.87 14.91 405.94 21.32 416.38 30.27 C428.36 40.48 437.35 52.13 443.34 65.33 C449.33 78.52 452.42 92.88 452.42 108.51 C452.42 124.14 449.70 137.33 444.34 150.44 C438.98 163.54 431.09 174.92 420.65 184.59 C410.21 194.35 397.41 202.03 382.07 207.63 C366.73 213.23 349.21 216.03 329.51 216.03 L250.26 216.03 L250.26 4.79 L320.98 4.79 Z M512.69 216.03 L477.02 216.03 L477.02 4.79 L512.69 4.79 L512.69 216.03 Z M914.46 216.03 L878.15 216.03 L845.83 145.65 L754.79 145.65 L721.38 216.03 L721.11 216.03 L721.11 216.03 L679.63 216.03 L605.83 116.83 L580.87 116.83 L580.87 216.03 L545.19 216.03 L545.19 4.79 L618.72 4.79 C631.43 4.79 642.59 6.14 652.12 8.86 C661.74 11.57 669.73 15.36 676.18 20.24 C682.62 25.12 687.43 30.90 690.70 37.68 C693.97 44.45 695.60 51.77 695.60 59.72 C695.60 66.32 694.33 72.46 691.88 78.25 C689.43 84.03 685.89 89.18 681.35 93.79 C676.81 98.39 671.37 102.37 664.92 105.71 C658.48 109.05 651.49 111.67 643.77 113.57 L710.23 201.61 L805.62 0.00 L814.61 0.00 L914.46 216.03 Z M962.66 101.01 L1069.23 101.01 L1069.23 4.79 L1104.91 4.79 L1104.91 216.03 L1069.23 216.03 L1069.23 114.75 L962.66 114.75 L962.66 216.03 L926.99 216.03 L926.99 4.79 L962.66 4.79 L962.66 101.01 Z M117.01 10.30 C104.84 10.30 93.77 12.74 84.42 17.53 C75.07 22.32 67.26 29.18 60.91 37.95 C54.55 46.71 49.74 57.10 46.57 69.21 C43.39 81.32 41.76 94.69 41.76 109.24 C41.76 123.78 43.39 137.43 46.57 149.71 C49.74 162.00 54.56 172.66 60.91 181.70 C67.26 190.73 75.07 197.78 84.42 202.84 C93.77 207.90 104.57 210.43 117.01 210.43 C129.17 210.43 139.88 207.90 149.23 202.84 C158.58 197.78 166.48 190.73 172.83 181.70 C179.28 172.66 184.09 162.00 187.36 149.71 C190.63 137.43 192.26 123.87 192.26 109.24 C192.26 94.60 190.63 81.32 187.36 69.21 C184.09 57.10 179.28 46.62 172.83 37.95 C166.39 29.18 158.58 22.41 149.23 17.53 C139.88 12.65 129.17 10.30 117.01 10.30 Z M285.85 200.49 L285.94 200.58 L323.88 200.58 C335.86 200.58 347.12 198.59 357.65 194.71 C368.18 190.82 377.44 184.95 385.25 177.18 C393.05 169.41 399.32 159.92 403.76 148.54 C408.30 137.25 410.57 124.14 410.57 109.24 C410.57 96.13 408.39 84.21 404.13 73.28 C399.86 62.43 393.87 53.04 386.15 45.18 C378.44 37.32 369.36 31.17 358.74 26.84 C348.12 22.50 336.50 20.33 323.97 20.33 L285.85 20.33 L285.85 200.49 Z M760.96 131.91 L839.21 131.91 L800.63 48.25 L760.96 131.91 Z M580.77 106.07 L601.38 106.07 C609.37 106.07 616.81 104.99 623.53 102.91 C630.34 100.83 636.15 97.76 641.14 93.88 C646.13 89.99 649.94 85.29 652.76 79.78 C655.48 74.27 656.93 68.04 656.93 61.17 C656.93 54.75 655.84 48.97 653.67 43.64 C651.49 38.31 648.40 33.79 644.41 30.00 C640.41 26.20 635.69 23.31 630.16 21.14 C624.62 18.98 618.63 17.98 612.18 17.98 L580.77 17.98 L580.77 106.07 Z"/></symbol>
   <symbol id="arrow" viewBox="0 0 14 10"><path d="M0 5h12.5M8.5 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
@@ -227,17 +23,11 @@ p{margin:0}
 <header class="site-header" id="top">
   <div class="nav">
     <button class="menu-btn" type="button" aria-controls="menu" aria-expanded="false" data-open-menu>Menu</button>
-    <a class="logo" href="#top" aria-label="ODIRAH, home"><svg viewBox="0 0 1104.91 221.00" aria-hidden="true"><use href="#wordmark"/></svg></a>
-    <ul class="nav-links">
-      <li><a href="#fragrances">Fragrances</a></li>
-      <li><a href="#kit">Discovery Kit</a></li>
-      <li><a href="#house">The House</a></li>
-      <li><a href="#manifesto">Manifesto</a></li>
-      <li><a href="#fragrances">Shop</a></li>
-    </ul>
+    <a class="logo" href="index.html" aria-label="ODIRAH, home"><svg viewBox="0 0 1104.91 221.00" aria-hidden="true"><use href="#wordmark"/></svg></a>
+    <ul class="nav-links"><li><a href="collection.html">Fragrances</a></li><li><a href="discovery-kit.html">Discovery Kit</a></li><li><a href="the-house.html">The House</a></li><li><a href="the-house.html#manifesto">Manifesto</a></li><li><a href="shop.html">Shop</a></li></ul>
     <div class="nav-end">
-      <a class="hide-m" href="#search">Search</a>
-      <a class="hide-m" href="#account">Account</a>
+      <a class="hide-m" href="shop.html">Search</a>
+      <a class="hide-m" href="#account" data-soon="Accounts arrive with the Shopify build.">Account</a>
       <button type="button" data-open-bag aria-controls="bag">Bag (<span data-count>0</span>)</button>
     </div>
   </div>
@@ -249,16 +39,12 @@ p{margin:0}
     <span class="logo" style="width:108px"><svg viewBox="0 0 1104.91 221.00" aria-hidden="true"><use href="#wordmark"/></svg></span>
     <button type="button" class="label" data-open-bag>Bag</button>
   </div>
-  <nav aria-label="Main">
-    <a href="#fragrances" data-close-menu>Fragrances<span>VI</span></a>
-    <a href="#kit" data-close-menu>Discovery Kit<span>6 vials</span></a>
-    <a href="#house" data-close-menu>The House</a>
-    <a href="#manifesto" data-close-menu>Manifesto</a>
-  </nav>
-  <div class="utility label"><a href="#search">Search</a><a href="#account">Account</a><a href="#contact">Contact</a></div>
+  <nav aria-label="Main"><a href="collection.html" data-close-menu>The Archetypes: HER</a><a href="discovery-kit.html" data-close-menu>Discovery Kit</a><a href="shop.html" data-close-menu>Shop</a><a href="the-house.html" data-close-menu>The House</a></nav>
+  <div class="utility label"><a href="shop.html">Search</a><a href="#account" data-soon="Accounts arrive with the Shopify build.">Account</a><a href="contact.html">Contact</a></div>
 </div>
 
 <main id="main">
+
   <section class="hero" aria-labelledby="hero-title">
     <img src="assets/img/hero-desert-1280.webp" srcset="assets/img/hero-desert-1280.webp 1280w, assets/img/hero-desert-2400.webp 2400w" sizes="100vw" width="2400" height="1357" alt="A woman wrapped in sand-coloured silk stands on a dune at dusk, the fabric lifting in the wind." fetchpriority="high">
     <video muted loop playsinline preload="none" aria-hidden="true" data-film data-src-small="assets/video/hero-1280.mp4"><source src="assets/video/hero-1920.webm" type="video/webm"><source src="assets/video/hero-1920.mp4" type="video/mp4"></video>
@@ -266,7 +52,7 @@ p{margin:0}
       <h1 id="hero-title">This is what it feels like to arrive.</h1>
       <div class="hero-side">
         <p>Six fragrances for the many parts of yourself. A scent stirs a memory, a feeling returns.</p>
-        <a class="btn btn--light" href="#fragrances">Shop the collection<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        <a class="btn btn--light" href="shop.html">Shop the collection<svg aria-hidden="true"><use href="#arrow"/></svg></a>
         <button type="button" class="film-toggle" data-film-toggle aria-pressed="false" hidden><i><svg viewBox="0 0 8 8" aria-hidden="true"><path data-icon d="M1 0h2v8H1zM5 0h2v8H5z" fill="currentColor"/></svg></i><span data-film-label>Pause film</span></button>
       </div>
     </div>
@@ -281,7 +67,7 @@ p{margin:0}
       <div class="panel-foot reveal">
         <div class="row">
           <h2 id="manifesto-title">Here’s to the unseen.</h2>
-          <a class="btn btn--dark" href="#house">Explore<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="btn btn--dark" href="the-house.html">Explore<svg aria-hidden="true"><use href="#arrow"/></svg></a>
         </div>
         <span class="big-mark"><svg viewBox="0 0 1104.91 221.00" role="img" aria-label="ODIRAH"><use href="#wordmark"/></svg></span>
       </div>
@@ -300,7 +86,7 @@ p{margin:0}
           <li><span>Vials</span><span>6 × 7 or 10 ml</span></li>
           <li><span>Box</span><span>Dedicated Discovery Kit box</span></li>
         </ul>
-        <button type="button" class="btn btn--light" data-add="kit">Add the kit to bag<svg aria-hidden="true"><use href="#arrow"/></svg></button>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><button type="button" class="btn btn--light" data-add="kit">Add the kit to bag<svg aria-hidden="true"><use href="#arrow"/></svg></button><a class="btn" style="color:var(--blush)" href="discovery-kit.html">View the kit</a></div>
       </div>
     </div>
     <figure class="panel media wide" style="margin:0"><img src="assets/img/discovery-kit-1600.webp" srcset="assets/img/discovery-kit-800.webp 800w, assets/img/discovery-kit-1600.webp 1600w" sizes="(max-width:860px) 100vw, 66vw" width="1600" height="1200" loading="lazy" decoding="async" alt="The Discovery Kit: an open brown linen box holding six slim glass vials of amber fragrance with stone caps."></figure>
@@ -313,7 +99,7 @@ p{margin:0}
       <blockquote class="reveal">To create a fragrance collection that transcends trends and becomes a mirror of the self.</blockquote>
       <div class="reveal" style="display:grid;gap:18px;justify-items:start">
         <p class="attr">Memory, intimacy, desire and mystery, translated into scent. This is the house of ODIRAH.</p>
-        <a class="btn btn--dark" href="#manifesto">Our vision<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        <a class="btn btn--dark" href="the-house.html">Our vision<svg aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
     </div>
     <div class="panel tag-panel">
@@ -321,6 +107,7 @@ p{margin:0}
       <p class="sub reveal">Bringing you closer to the many parts of yourself, through scent.</p>
     </div>
   </section>
+
 </main>
 
 <footer class="mosaic footer" id="contact">
@@ -334,9 +121,9 @@ p{margin:0}
     </form>
     <p class="msg" aria-live="polite" data-news-msg></p>
   </div>
-  <div class="panel links"><h3>Shop</h3><ul><li><a href="#fragrances">All fragrances</a></li><li><a href="#fragrances">The Archetypes: HER</a></li><li><a href="#kit">Discovery Kit</a></li></ul></div>
-  <div class="panel links"><h3>House</h3><ul><li><a href="#house">The House</a></li><li><a href="#manifesto">Manifesto</a></li><li><a href="#contact">Contact</a></li></ul></div>
-  <div class="panel links"><h3>Help</h3><ul><li><a href="#contact">Shipping &amp; returns</a></li><li><a href="#contact">FAQ</a></li><li><a href="#contact">Legal</a></li></ul></div>
+  <div class="panel links"><h3>Shop</h3><ul><li><a href="shop.html">All fragrances</a></li><li><a href="collection.html">The Archetypes: HER</a></li><li><a href="discovery-kit.html">Discovery Kit</a></li></ul></div>
+  <div class="panel links"><h3>House</h3><ul><li><a href="the-house.html">The House</a></li><li><a href="the-house.html#manifesto">Manifesto</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="panel links"><h3>Help</h3><ul><li><a href="contact.html#help">Shipping &amp; returns</a></li><li><a href="contact.html#help">FAQ</a></li><li><a href="contact.html#legal">Legal</a></li></ul></div>
   <div class="panel foot-base"><span>© 2026 ODIRAH. All rights reserved.</span><span>Concept preview. Prices, vial size and fragrance copy to be confirmed.</span></div>
 </footer>
 
@@ -352,87 +139,5 @@ p{margin:0}
   </footer>
 </aside>
 
-<script>
-(function(){
-  var root=document.documentElement; root.classList.add('js');
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var esc=function(s){return s.replace(/&/g,'&amp;');};
-
-  var archetypes=[
-    {id:'silk-and-ashes',n:'I',arch:'The Maiden',name:'Silk & Ashes',story:'Silver morning light on silk. The self before the world arrived.',tone:'#EDE5E1'},
-    {id:'skin-and-shadow',n:'II',arch:'The Lover',name:'Skin & Shadow',story:'Warm skin, a shadow on the wall, the hour no one else sees.',tone:'#E8DCD2'},
-    {id:'ember-and-desire',n:'III',arch:'The Seductress',name:'Ember & Desire',story:'Velvet, ember and a mirror that keeps your secret.',tone:'#EBD9D3'},
-    {id:'stars-and-whisper',n:'IV',arch:'The Wanderer',name:'Stars & Whisper',story:'A tent of light under the open sky. Home is where you breathe.',tone:'#E4E0E2'},
-    {id:'velvet-and-poise',n:'V',arch:'The Queen',name:'Velvet & Poise',story:'Stillness, gold, and a key she has always held.',tone:'#E9E0DD'},
-    {id:'rain-and-solace',n:'VI',arch:'The Healer',name:'Rain & Solace',story:'Rain on old stone. The quiet that puts you back together.',tone:'#E5E4DA'}
-  ];
-  var products={kit:{name:'Discovery Kit',meta:'6 × 7/10 ml',img:'assets/img/discovery-kit-800.webp',script:false}};
-  archetypes.forEach(function(a){products[a.id]={name:a.name,meta:'100 ml · '+a.arch,img:'assets/img/'+a.id+'-640.webp',script:true};});
-
-  document.querySelector('[data-tiles]').innerHTML=archetypes.map(function(a){
-    return '<article class="panel tile" style="--tone:'+a.tone+'">'+
-      '<div class="tile-top"><span class="label">'+a.n+'</span></div>'+
-      '<a class="arch" href="#'+a.id+'" aria-label="'+esc(a.name)+', '+a.arch+'"><img src="assets/img/'+a.id+'-640.webp" srcset="assets/img/'+a.id+'-640.webp 640w, assets/img/'+a.id+'-1200.webp 1200w" sizes="(max-width:600px) 52vw, (max-width:1060px) 30vw, 20vw" width="1200" height="1490" loading="lazy" decoding="async" alt="Painterly illustration of '+a.arch+'’s world for '+esc(a.name)+'."></a>'+
-      '<div class="tile-name"><h3>'+esc(a.name)+'</h3><span class="vol">100 ml</span></div>'+
-      '<p class="arch-name label">'+a.arch+'</p>'+
-      '<p class="story">'+a.story+'</p>'+
-      '<button type="button" class="add" data-add="'+a.id+'">Add to bag</button></article>';
-  }).join('');
-
-
-  // Hero film: muted, looping, never on reduced motion or data saver
-  var film=document.querySelector('[data-film]'), ft=document.querySelector('[data-film-toggle]');
-  var saveData=navigator.connection&&navigator.connection.saveData;
-  if(film&&!reduce&&!saveData){
-    if(window.matchMedia('(max-width: 900px)').matches){film.innerHTML='<source src="'+film.dataset.srcSmall+'" type="video/mp4">';}
-    film.preload='auto'; film.load();
-    film.addEventListener('playing',function(){film.classList.add('is-playing');ft.hidden=false;},{once:true});
-    var p=film.play(); if(p&&p.catch)p.catch(function(){});
-    ft.addEventListener('click',function(){
-      var paused=!film.paused; if(paused)film.pause(); else film.play();
-      ft.setAttribute('aria-pressed',paused);
-      document.querySelector('[data-film-label]').textContent=paused?'Play film':'Pause film';
-      ft.querySelector('[data-icon]').setAttribute('d',paused?'M1 0l7 4-7 4z':'M1 0h2v8H1zM5 0h2v8H5z');
-    });
-  } else if(film){film.remove();}
-  var header=document.querySelector('.site-header'), hero=document.querySelector('.hero');
-  function onScroll(){header.classList.toggle('is-solid',window.scrollY>hero.offsetHeight-84);}
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
-
-  var els=[].slice.call(document.querySelectorAll('.reveal'));
-  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});}
-  else{
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){var el=en.target;var sib=[].slice.call(el.parentNode.children).filter(function(x){return x.classList.contains('reveal');});el.style.transitionDelay=Math.min(sib.indexOf(el),4)*110+'ms';el.classList.add('in');io.unobserve(el);}});},{rootMargin:'0px 0px -6% 0px',threshold:.08});
-    els.forEach(function(el){io.observe(el);});
-  }
-
-  var menu=document.getElementById('menu'), menuBtn=document.querySelector('[data-open-menu]');
-  function setMenu(open){menu.classList.toggle('is-open',open);menuBtn.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';if(open)menu.querySelector('[data-close-menu]').focus();}
-  menuBtn.addEventListener('click',function(){setMenu(true);});
-  menu.addEventListener('click',function(e){if(e.target.closest('[data-close-menu]'))setMenu(false);});
-
-  var bag=document.getElementById('bag'), scrim=document.querySelector('[data-scrim]'), itemsEl=document.querySelector('[data-items]'), counts=document.querySelectorAll('[data-count]'), cart={}, lastFocus=null;
-  function render(){
-    var ids=Object.keys(cart), total=ids.reduce(function(s,k){return s+cart[k];},0);
-    counts.forEach(function(c){c.textContent=total;});
-    itemsEl.innerHTML=ids.length?ids.map(function(id){var p=products[id];return '<div class="line-item"><img src="'+p.img+'" alt=""><div><div class="'+(p.script?'script':'label')+'">'+esc(p.name)+'</div><div class="qty"><button type="button" aria-label="Remove one" data-dec="'+id+'">−</button><span>'+cart[id]+'</span><button type="button" aria-label="Add one" data-inc="'+id+'">+</button></div><div style="font-size:.9rem;color:var(--brown)">'+p.meta+'</div></div><button type="button" class="remove" data-remove="'+id+'">Remove</button></div>';}).join(''):'<p class="empty">Your bag is empty. Begin with the archetype you recognise.</p>';
-  }
-  function setBag(open){bag.classList.toggle('is-open',open);scrim.classList.toggle('is-open',open);document.body.style.overflow=open?'hidden':'';if(open){lastFocus=document.activeElement;bag.querySelector('[data-close-bag]').focus();}else if(lastFocus){lastFocus.focus();}}
-  document.addEventListener('click',function(e){
-    var t;
-    if((t=e.target.closest('[data-add]'))){var id=t.dataset.add;cart[id]=(cart[id]||0)+1;render();setMenu(false);setBag(true);}
-    else if(e.target.closest('[data-open-bag]')){setMenu(false);setBag(true);}
-    else if(e.target.closest('[data-close-bag]')||e.target===scrim){setBag(false);}
-    else if((t=e.target.closest('[data-inc]'))){cart[t.dataset.inc]++;render();}
-    else if((t=e.target.closest('[data-dec]'))){var k=t.dataset.dec;cart[k]--;if(cart[k]<=0)delete cart[k];render();}
-    else if((t=e.target.closest('[data-remove]'))){delete cart[t.dataset.remove];render();}
-    else if(e.target.closest('[data-checkout]')){document.querySelector('[data-checkout-msg]').textContent='In the live site this opens Shopify checkout.';}
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setBag(false);setMenu(false);}});
-  render();
-
-  document.querySelector('[data-news]').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('news-email').value.trim();var m=document.querySelector('[data-news-msg]');m.textContent=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'Thank you. The first letter will find you soon.':'Please enter a valid email address.';});
-})();
-</script>
 </body>
 </html>
