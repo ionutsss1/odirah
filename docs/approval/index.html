@@ -54,7 +54,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:v
   -webkit-font-smoothing:antialiased}
 a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink-2);outline-offset:3px;border-radius:2px}
-h1,h2,h3,h4{font-family:var(--f-display);font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+h1,h2,h3,h4{font-family:var(--f-body);font-weight:500;line-height:1.02;letter-spacing:-.01em;text-wrap:balance;margin:0}
 p{margin:0}
 .wrap{max-width:1180px;margin:0 auto}
 .read{max-width:42rem}
@@ -273,6 +273,69 @@ td code{font-family:var(--f-ui);font-size:.78rem;background:var(--surface);paddi
 @media (max-width:820px){.signoff{grid-template-columns:1fr;padding:1.5rem}}
 footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--ink-2)}
 .stand-in{margin-top:1rem;font-size:.92rem;color:var(--ink-2);border-left:2px solid var(--gold);padding-left:.8rem;max-width:40rem}
+
+/* ---------- mosaic wireframes ---------- */
+:root{--wf-ground:#D9CBC4;--wf-panel:#F3ECE9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--wf-ground:#22150E;--wf-panel:#3A271C}}
+:root[data-theme="dark"]{--wf-ground:#22150E;--wf-panel:#3A271C}
+.desk,.mob{background:var(--wf-ground)}
+.mz{display:grid;gap:3px;padding:3px;background:var(--wf-ground)}
+.mz > *,.mz .g3 > *,.mz .g4 > *,.mz .g5 > *{min-width:0}
+.mz .g3,.mz .g4,.mz .g5,.mz .s21,.mz .s12,.mz .mz-in,.foot-mz{display:grid;gap:3px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.s21{grid-template-columns:2fr 1fr}.s12{grid-template-columns:1fr 2fr}
+.mz-in{grid-template-columns:1fr 1fr}.mz-in .wide{grid-column:1/-1}
+.foot-mz{grid-template-columns:2fr 1fr 1fr 1fr}
+.pn{background:var(--wf-panel);padding:12px;position:relative;min-width:0}
+.pn.dk{background:var(--dark);color:var(--on-dark)}
+.pn.dk .ln{background:rgba(227,213,207,.35)}
+.pn.tc{background:#8A361C;color:#F3E7E1}
+.spread{display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.short{min-height:82px}
+.corner{font-family:var(--f-display);font-size:9.5px;letter-spacing:.12em;color:var(--ink-2)}
+.pn.dk .corner{color:var(--gold)}
+.serif{font-family:var(--f-body);text-transform:none;letter-spacing:-.01em;line-height:1.02;font-weight:500}
+.h-wf.lg.serif{font-size:26px}
+.serif-it{font-family:var(--f-body);font-style:italic;font-size:13px;line-height:1.35}
+.serif-it.big{font-size:24px;line-height:1}
+.tiny{font-size:9px;color:var(--ink-2)}
+.u{text-decoration:underline;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase}
+.tile-wf{display:flex;flex-direction:column;gap:3px}
+.tile-wf.short{min-height:40px}
+.archbox{display:block;width:52%;aspect-ratio:3/4;margin:10px auto 12px;border-radius:999px 999px 0 0;background:repeating-linear-gradient(135deg,var(--wf-box) 0 6px,var(--hatch) 6px 12px)}
+.tile-wf.sm .archbox{width:58%;margin:6px auto 8px}
+.tile-wf .s-wf{font-size:15px}
+.tn{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.tn span:last-child{font-size:9.5px}
+.hero-wf{position:relative}
+.hero-copy{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;color:var(--on-dark)}
+.hero-side{display:grid;gap:6px;justify-items:start;max-width:170px;font-size:10px}
+.hero-side .tiny{color:var(--on-dark);opacity:.8}
+.pipes{display:flex;align-items:center}
+.pipes a{text-decoration:none;padding:0 8px;border-left:1px solid currentColor;line-height:1}
+.pipes a:last-child{border-right:1px solid currentColor}
+.navbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:8px 14px;background:var(--wf-panel);border-bottom:1px solid var(--line-soft)}
+.navbar .side{display:flex;gap:12px;justify-content:flex-end}
+.navbar.m{display:flex;justify-content:space-between}
+.navbar a{text-decoration:none}
+.overlay-nav{display:grid!important;grid-template-columns:1fr auto 1fr}
+.overlay-nav .side{justify-content:flex-end}
+.navbar .mark,.overlay-nav .mark{justify-self:start;width:max-content}
+.hero-wf .img{align-items:flex-start;padding-top:30px}
+.mark.wide{display:block;text-align:center;margin-top:10px;padding:8px}
+.spec{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--line-soft);font-size:10px}
+.pn.dk .spec{border-color:rgba(227,213,207,.25)}
+.buyrow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:6px;border-top:1px solid var(--line-soft);font-size:10px;flex-wrap:wrap}
+.accrow{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid var(--line-soft);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.idx{display:grid;border-top:1px solid var(--line-soft);margin-top:10px}
+.idx > *{display:grid;grid-template-columns:22px 1fr auto;align-items:baseline;gap:6px;padding:4px 0;border-bottom:1px solid var(--line-soft);text-decoration:none}
+.idx .s-wf{font-size:14px}
+.swipe{display:flex;gap:3px;overflow:hidden}
+.swipe > .pn{flex:0 0 78%}
+.field-wf{border-bottom:1px solid var(--wf-ink);padding:10px 0 3px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.menu-wf{display:flex;flex-direction:column;margin-top:24px}
+.menu-wf a{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-top:1px solid rgba(227,213,207,.28);font-family:var(--f-body);font-size:20px;text-decoration:none}
+.menu-wf a span{font-size:9px;letter-spacing:.14em;opacity:.6}
 </style>
 
 <div class="wrap">
@@ -283,7 +346,6 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 
   <div class="intro">
     <div>
-      <p class="eyebrow">Sitemap · Journey map · Wireframes</p>
       <h1>A house for the worlds within you</h1>
       <p class="lede">This is the proposed structure for odirah.com at launch, as the brief requires before development starts. It shows how a visitor can lose themselves in the six archetypes, or buy in three taps, and how the site will take on new collections without being rebuilt.</p>
     </div>
@@ -314,7 +376,7 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 <!-- ================= I. SITEMAP ================= -->
 <section class="block" id="sitemap">
   <div class="sec-head">
-    <div><span class="roman">I</span><h2>Sitemap</h2></div>
+    <div><h2>Sitemap</h2></div>
     <div>
       <p>Every product can be reached from the navigation in one click and from the homepage in one scroll. The story pages sit alongside the shop, never in front of it.</p>
       <p>Collection, fragrance and kit pages are templates filled from product data. A second collection, a men's line or a limited edition becomes a new entry in Shopify, not a new page to design and build.</p>
@@ -388,7 +450,7 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 <!-- ================= II. JOURNEY ================= -->
 <section class="block" id="journey">
   <div class="sec-head">
-    <div><span class="roman">II</span><h2>Journey map</h2></div>
+    <div><h2>Journey map</h2></div>
     <div>
       <p>The six stages come from the brief. Each column shows which page carries that stage and which components do the work. The bottom row shows how a visitor can jump straight to buying from that stage.</p>
     </div>
@@ -470,84 +532,60 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 <!-- ================= III. WIREFRAMES ================= -->
 <section class="block" id="wireframes">
   <div class="sec-head">
-    <div><span class="roman">III</span><h2>Wireframes</h2></div>
+    <div><h2>Wireframes</h2></div>
     <div>
-      <p>Each screen is shown at desktop and mobile width. Hatched boxes stand for photography, illustration or texture. Gold numbers refer to the notes under each screen. Buttons and navigation inside the frames link to the screen they lead to.</p>
-      <p>These set out structure and priority. Final art direction, image crops and motion come after approval.</p>
+      <p>Every page is built from one system: edge-to-edge panels separated by thin gutters. A page is a stack of a few panel patterns: a split (an image panel two-thirds wide beside a text panel), a row of product tiles, three text panels side by side, and a full-width panel for the manifesto. Hatched boxes stand for photography, illustration or texture. Gold numbers refer to the notes under each screen, and buttons inside the frames link to the screen they lead to.</p>
+      <p>Each screen is shown at desktop and mobile width. The concept site at <a href="../../site/">site/</a> shows the same layouts with real imagery.</p>
     </div>
   </div>
 
   <nav class="screens-index" aria-label="Screens">
-    <a href="#home">Home</a><a href="#collection">Collection</a><a href="#fragrance">Fragrance</a><a href="#kit">Discovery Kit</a><a href="#shop">Shop</a><a href="#bag">Bag drawer</a><a href="#house">The House</a><a href="#menu">Mobile menu</a>
+    <a href="#home">Home</a><a href="#collection">Collection</a><a href="#fragrance">Fragrance</a><a href="#kit">Discovery Kit</a><a href="#shop">Shop</a><a href="#house">The House</a><a href="#contact">Contact</a><a href="#bag">Bag drawer</a><a href="#menu">Mobile menu</a>
   </nav>
 
   <!-- HOME -->
   <article class="screen" id="home">
-    <div class="screen-head"><h3>Home</h3><span class="ui">Stages 01 to 03 · Both journeys start here</span></div>
+    <div class="screen-head"><h3>Home</h3><span class="ui">Stages 01 to 05 · Both journeys start here</span></div>
     <div class="pair">
       <div>
         <p class="frame-label">Desktop · 1440</p>
         <div class="desk-scroll"><div class="desk">
           <div class="chrome"><i></i><i></i><i></i><span>odirah.com</span></div>
-          <div class="wf">
-            <div class="pinned" style="position:relative">
-              <span class="pin" style="top:40px">1</span>
-              <div class="img dk" style="min-height:300px"><span>Hero film · desert, fabric in wind</span></div>
-              <div class="overlay-nav nav">
-                <div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div>
-                <span class="mark">Wordmark</span>
-                <div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div>
-              </div>
-              <div style="position:absolute;left:18px;bottom:18px;color:var(--on-dark);max-width:300px">
-                <div class="h-wf" style="text-transform:none">This is what it feels like to arrive.</div>
-                <div style="margin:6px 0 10px;opacity:.9">A scent stirs a memory. A feeling returns. ODIRAH creates fragrances that bring you closer to the many parts of yourself.</div>
-              </div>
-              <div style="position:absolute;right:18px;bottom:18px;display:flex;gap:6px">
-                <a class="btn-o" href="#house" style="border-color:var(--on-dark);color:var(--on-dark)">Discover Odirah</a>
-                <a class="btn" href="#collection" style="background:var(--on-dark);color:#301E15;border-color:var(--on-dark)">Shop the collection</a>
+          <div class="mz">
+            <div class="pinned hero-wf">
+              <span class="pin">1</span>
+              <div class="img dk" style="min-height:300px;border:0"><span>Hero film · looping, muted · still as poster</span></div>
+              <div class="overlay-nav nav"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection">Fragrances</a><a href="#kit">Discovery Kit</a><a href="#house">The House</a><a href="#house">Manifesto</a><a href="#shop">Shop</a></div><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
+              <div class="hero-copy">
+                <div class="h-wf lg serif">This is what it feels<br>like to arrive.</div>
+                <div class="hero-side"><div>Six fragrances for the many parts of yourself.</div><a class="btn" href="#shop" style="background:var(--on-dark);color:#301E15;border-color:var(--on-dark)">Shop the collection →</a><span class="tiny">❚❚ Pause film</span></div>
               </div>
             </div>
-            <div class="pad pinned" style="text-align:center;padding-block:26px">
+            <div class="g3 pinned">
               <span class="pin">2</span>
-              <div class="sc">Manifesto</div>
-              <div class="h-wf lg" style="margin:4px 0 8px">Here’s to the unseen.</div>
-              <div style="max-width:360px;margin:0 auto;font-style:italic;font-family:var(--f-body);font-size:13px">To the invisible self. To the worlds we carry within us. Some are quiet. Some hold fire. Some are softly lit.</div>
-              <a href="#house" style="display:inline-block;margin-top:8px">Read the manifesto</a>
+              <div class="pn tile-wf"><span class="corner">I</span><a href="#fragrance" class="archbox"></a><div class="tn"><a href="#fragrance" class="s-wf">Silk &amp; Ashes</a><span>100 ml</span></div><div class="sc">The Maiden</div><div class="ln w70"></div><a href="#bag" class="u">Add to bag</a></div>
+              <div class="pn tile-wf"><span class="corner">II</span><div class="archbox"></div><div class="tn"><span class="s-wf">Skin &amp; Shadow</span><span>100 ml</span></div><div class="sc">The Lover</div><div class="ln w70"></div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf"><span class="corner">III</span><div class="archbox"></div><div class="tn"><span class="s-wf">Ember &amp; Desire</span><span>100 ml</span></div><div class="sc">The Seductress</div><div class="ln w70"></div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf short"><span class="corner">IV · V · VI</span><div class="tiny" style="margin-top:auto">Second row: Stars &amp; Whisper, Velvet &amp; Poise, Rain &amp; Solace</div></div>
+              <div class="pn tile-wf short"></div><div class="pn tile-wf short"></div>
             </div>
-            <div class="pad pinned">
+            <div class="s21 pinned">
               <span class="pin">3</span>
-              <div class="row" style="justify-content:space-between;align-items:baseline;margin-bottom:10px">
-                <div><div class="sc">Collection 01</div><div class="h-wf">The Archetypes: HER</div></div>
-                <a href="#collection">Explore the collection</a>
-              </div>
-              <div class="grid3">
-                <div class="card"><div class="img"><span>Illustration</span></div><div class="sc">The Maiden</div><a href="#fragrance" class="s-wf" style="text-decoration:none">Silk &amp; Ashes</a><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Illustration</span></div><div class="sc">The Lover</div><div class="s-wf">Skin &amp; Shadow</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Illustration</span></div><div class="sc">The Seductress</div><div class="s-wf">Ember &amp; Desire</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-              </div>
-              <div class="ui muted" style="margin-top:8px;font-size:9.5px">+ The Wanderer, The Queen, The Healer in a second row</div>
+              <div class="img" style="min-height:220px;border:0"><span>Bottle on stone</span></div>
+              <div class="pn spread"><div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln w70"></div><div class="tiny">Manifesto, justified</div></div><div><div class="row" style="justify-content:space-between;align-items:flex-end"><div class="h-wf serif">Here’s to the unseen.</div><a class="btn" href="#house">Explore →</a></div><div class="mark wide">Wordmark, full width</div></div></div>
             </div>
-            <div class="dark-band pinned" style="display:grid;grid-template-columns:1fr 1fr">
+            <div class="s12 pinned">
               <span class="pin">4</span>
-              <div class="img dk" style="min-height:150px;border:0"><span>Discovery Kit box</span></div>
-              <div class="pad" style="align-self:center">
-                <div class="sc">Discovery Kit</div>
-                <div class="h-wf" style="margin:3px 0">Meet all six before you choose.</div>
-                <div class="ln w70"></div><div class="ln w50"></div>
-                <div class="row" style="align-items:center;margin-top:8px"><span class="price">6 × 7/10 ml · € —</span><a class="btn-o" href="#kit">View the kit</a></div>
-              </div>
+              <div class="pn dk spread"><div class="h-wf serif">Meet all six before you choose.</div><div><div class="spec"><span>Inside</span><span>All six</span></div><div class="spec"><span>Vials</span><span>6 × 7/10 ml</span></div><div class="spec"><span>Box</span><span>Dedicated box</span></div><a class="btn" href="#kit" style="background:var(--on-dark);color:#301E15;border-color:var(--on-dark);margin-top:8px">Add the kit to bag →</a></div></div>
+              <div class="img" style="min-height:200px;border:0"><span>Discovery Kit box</span></div>
             </div>
-            <div class="tex pad pinned" style="text-align:center;padding-block:24px">
+            <div class="g3 pinned">
               <span class="pin">5</span>
-              <div class="sc" style="color:#F3E7E1">Terracotta texture</div>
-              <div class="s-wf lg" style="font-family:var(--f-body);font-style:italic;font-size:26px">Intimately you™</div>
+              <div class="img" style="min-height:150px;border:0"><span>Mirror in the desert</span></div>
+              <div class="pn spread"><div class="serif-it">To create a fragrance collection that transcends trends and becomes a mirror of the self.</div><a class="btn" href="#house" style="align-self:flex-start">Our vision →</a></div>
+              <div class="pn tc spread"><span></span><div class="serif-it big">Intimately you™</div></div>
             </div>
-            <div class="pad divider foot-wf">
-              <div><span class="mark">Wordmark</span><div class="ln w70" style="margin-top:8px"></div><div class="row" style="margin-top:6px"><span class="ln w50" style="width:90px;height:16px;border:1px solid var(--line);background:transparent"></span><span class="btn-o">Join</span></div></div>
-              <div><b>Shop</b><div>All products</div><div>The Archetypes</div><div>Discovery Kit</div></div>
-              <div><b>House</b><div>The House</div><div>Contact</div><div>Instagram</div></div>
-              <div><b>Help</b><div>Shipping &amp; returns</div><div>FAQ</div><div>Legal</div></div>
-            </div>
+            <div class="foot-mz"><div class="pn"><span class="mark">Wordmark</span><div class="ln w70" style="margin-top:8px"></div><div class="tiny">Email address ——— Join</div></div><div class="pn"><b>Shop</b></div><div class="pn"><b>House</b></div><div class="pn"><b>Help</b></div></div>
           </div>
         </div></div>
       </div>
@@ -555,91 +593,56 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Mobile · 390</p>
         <div class="mob">
           <div class="notch"><i></i></div>
-          <div style="position:relative">
-            <div class="img dk" style="min-height:330px"><span>Hero film, portrait crop</span></div>
-            <div class="overlay-nav nav" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-            <div style="position:absolute;left:12px;right:12px;bottom:12px;color:var(--on-dark)">
-              <div class="h-wf sm">This is what it feels like to arrive.</div>
-              <a class="btn block" href="#collection" style="margin-top:8px;background:var(--on-dark);color:#301E15;border-color:var(--on-dark)">Shop the collection</a>
-            </div>
-          </div>
-          <div class="pad-s" style="text-align:center;padding-block:16px">
-            <div class="h-wf">Here’s to the unseen.</div><div class="ln w90" style="margin:6px auto"></div><div class="ln w70" style="margin:0 auto"></div>
-          </div>
-          <div class="pad-s">
-            <div class="sc">The Archetypes: HER</div>
-            <div class="hscroll" style="margin-top:6px">
-              <div class="card"><div class="img"><span>Art</span></div><div class="s-wf" style="font-size:15px">Silk &amp; Ashes</div><span class="price" style="font-size:10px">€ —</span></div>
-              <div class="card"><div class="img"><span>Art</span></div><div class="s-wf" style="font-size:15px">Skin &amp; Shadow</div><span class="price" style="font-size:10px">€ —</span></div>
-              <div class="card"><div class="img"><span>Art</span></div></div>
-            </div>
-            <div class="ui muted" style="font-size:9px;margin-top:4px">Swipe · 6 cards</div>
-          </div>
-          <div class="dark-band pad-s" style="margin-top:6px">
-            <div class="img dk" style="min-height:110px;border:0"><span>Kit</span></div>
-            <div class="h-wf sm" style="margin-top:6px">Meet all six before you choose.</div>
-            <a class="btn-o block" href="#kit" style="margin-top:6px">View the kit</a>
+          <div class="mz">
+            <div style="position:relative"><div class="img dk" style="min-height:300px;border:0"><span>Film, portrait crop</span></div>
+              <div class="overlay-nav nav" style="padding:8px 10px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+              <div style="position:absolute;left:10px;right:10px;bottom:10px;color:var(--on-dark)"><div class="h-wf serif">This is what it feels like to arrive.</div><a class="btn block" href="#shop" style="margin-top:8px;background:var(--on-dark);color:#301E15;border-color:var(--on-dark)">Shop the collection →</a></div></div>
+            <div class="swipe"><div class="pn tile-wf"><span class="corner">I</span><div class="archbox"></div><div class="tn"><span class="s-wf">Silk &amp; Ashes</span><span>100 ml</span></div><div class="sc">The Maiden</div></div><div class="pn tile-wf"><span class="corner">II</span><div class="archbox"></div></div></div>
+            <div class="img" style="min-height:150px;border:0"><span>Bottle</span></div>
+            <div class="pn"><div class="ln"></div><div class="ln"></div><div class="ln w70"></div><div class="h-wf serif" style="margin-top:8px">Here’s to the unseen.</div></div>
+            <div class="img" style="min-height:110px;border:0"><span>Kit</span></div>
+            <div class="pn dk"><div class="h-wf serif">Meet all six before you choose.</div></div>
           </div>
         </div>
       </div>
     </div>
     <ol class="annot">
-      <li><span class="pin">1</span><span><b>Attraction.</b> A muted full-bleed film with a static poster frame for slow connections. Two buttons let the explorer and the shopper choose their path from the first screen.</span></li>
-      <li><span class="pin">2</span><span><b>Immersion.</b> Three lines of the manifesto, on blush, set in italic. The full text lives on The House.</span></li>
-      <li><span class="pin">3</span><span><b>Exploration.</b> All six archetypes with name, archetype, size and price. “Add” goes straight to the bag without leaving the page.</span></li>
-      <li><span class="pin">4</span><span><b>Selection.</b> The Discovery Kit as the answer for visitors who are drawn in but undecided.</span></li>
-      <li><span class="pin">5</span><span>Tagline on a brand texture (Terracotta, Copper Veil or Engraved Bronze), rotated by season or campaign.</span></li>
+      <li><span class="pin">1</span><span><b>Attraction.</b> A muted, looping film made from the campaign still, with the still shown first so the page loads fast. It does not play for visitors who reduce motion or save data, and has a pause control. Headline bottom-left, shop button bottom-right.</span></li>
+      <li><span class="pin">2</span><span><b>Exploration.</b> Six numbered tiles: arch-cropped illustration, name with size beside it, archetype below, one line of story, add to bag on the tile.</span></li>
+      <li><span class="pin">3</span><span><b>Immersion.</b> The bottle beside a dense, justified manifesto panel that ends on the full-width wordmark.</span></li>
+      <li><span class="pin">4</span><span><b>Selection.</b> The Discovery Kit as the answer for the undecided, on deep brown.</span></li>
+      <li><span class="pin">5</span><span>A closing row of three: the vision image, the vision statement, and the tagline on terracotta velvet.</span></li>
     </ol>
   </article>
 
   <!-- COLLECTION -->
   <article class="screen" id="collection">
-    <div class="screen-head"><h3>Collection · The Archetypes: HER</h3><span class="ui">Stages 03 to 05 · The heart of the explorer journey</span></div>
+    <div class="screen-head"><h3>Collection · The Archetypes: HER</h3><span class="ui">Stages 03 to 05 · The explorer’s main page</span></div>
     <div class="pair">
       <div>
         <p class="frame-label">Desktop · 1440</p>
         <div class="desk-scroll"><div class="desk">
           <div class="chrome"><i></i><i></i><i></i><span>odirah.com/collections/the-archetypes-her</span></div>
-          <div class="wf">
-            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
-            <div class="pad pinned" style="text-align:center;padding-block:26px">
+          <div class="navbar"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection"><u>Fragrances</u></a><a href="#kit">Discovery Kit</a><a href="#house">The House</a><a href="#house">Manifesto</a><a href="#shop">Shop</a></div><div class="side"><span>Search</span><a href="#bag">Bag (0)</a></div></div>
+          <div class="mz">
+            <div class="s12 pinned">
               <span class="pin">1</span>
-              <div class="sc">Collection 01</div>
-              <div class="h-wf lg">The Archetypes: HER</div>
-              <div style="max-width:380px;margin:6px auto 0;font-family:var(--f-body);font-size:13px">Six fragrances, six feminine archetypes. Each one a passage into a world already within you.</div>
+              <div class="pn spread"><div><div class="h-wf lg serif">The Archetypes: HER</div><div class="ln w90" style="margin-top:8px"></div><div class="ln w70"></div></div>
+                <div class="idx"><a href="#fragrance"><span>I</span><span class="s-wf">Silk &amp; Ashes</span><span class="sc">Maiden</span></a><div><span>II</span><span class="s-wf">Skin &amp; Shadow</span><span class="sc">Lover</span></div><div><span>III</span><span class="s-wf">Ember &amp; Desire</span><span class="sc">Seductress</span></div><div><span>…</span><span class="tiny">to VI</span><span></span></div></div></div>
+              <div class="img" style="min-height:240px;border:0"><span>Mirror in the desert</span></div>
             </div>
-            <div class="pinned divider" style="padding:7px 18px;display:flex;justify-content:center;gap:16px;font-size:10px">
+            <div class="s21 pinned">
               <span class="pin">2</span>
-              <b>I Maiden</b><span>II Lover</span><span>III Seductress</span><span>IV Wanderer</span><span>V Queen</span><span>VI Healer</span><span>· Kit</span>
+              <div class="img" style="min-height:250px;border:0"><span>Illustration · The Maiden</span></div>
+              <div class="pn spread" style="background:#EDE5E1"><span class="corner">I</span><div><div class="s-wf lg">Silk &amp; Ashes</div><div class="sc">The Maiden</div><div class="serif-it" style="margin-top:6px">Silver morning light on silk.</div><div class="ln" style="margin-top:6px"></div><div class="ln w90"></div><div class="ln w70"></div></div><div class="buyrow"><span>Eau de parfum · 100 ml</span><span><a class="btn" href="#bag">Add to bag</a> <a class="btn-o" href="#fragrance">Discover →</a></span></div></div>
             </div>
-            <div class="chapter-a pinned" style="display:grid;grid-template-columns:1.1fr 1fr">
+            <div class="s12 pinned">
               <span class="pin">3</span>
-              <div class="img" style="min-height:250px;border:0"><span>Illustration · mirror, silk, ash light</span></div>
-              <div class="pad" style="align-self:center">
-                <div class="sc">I · The Maiden</div>
-                <div class="s-wf lg" style="margin:4px 0">Silk &amp; Ashes</div>
-                <div style="font-family:var(--f-body);font-size:13px;font-style:italic;margin-bottom:6px">One line on who she is, in the brand voice.</div>
-                <div class="ui" style="font-size:9.5px">Top — · Heart — · Base —</div>
-                <div class="row" style="align-items:center;margin-top:10px"><span class="price">100 ml · € —</span><a class="btn" href="#bag">Add to bag</a><a href="#fragrance">Enter her world</a></div>
-              </div>
+              <div class="pn spread" style="background:#E8DCD2"><span class="corner">II</span><div><div class="s-wf lg">Skin &amp; Shadow</div><div class="sc">The Lover</div><div class="ln w90" style="margin-top:6px"></div><div class="ln w70"></div></div><div class="buyrow"><span>Eau de parfum · 100 ml</span><span><span class="btn">Add to bag</span> <span class="btn-o">Discover →</span></span></div></div>
+              <div class="img" style="min-height:220px;border:0"><span>Illustration · The Lover</span></div>
             </div>
-            <div class="chapter-b pinned" style="display:grid;grid-template-columns:1fr 1.1fr">
-              <span class="pin">4</span>
-              <div class="pad" style="align-self:center">
-                <div class="sc">II · The Lover</div>
-                <div class="s-wf lg" style="margin:4px 0">Skin &amp; Shadow</div>
-                <div class="ln w70"></div><div class="ln w50"></div>
-                <div class="row" style="align-items:center;margin-top:10px"><span class="price">100 ml · € —</span><a class="btn" href="#bag">Add to bag</a><a href="#fragrance">Enter her world</a></div>
-              </div>
-              <div class="img" style="min-height:220px;border:0"><span>Illustration</span></div>
-            </div>
-            <div class="pad" style="text-align:center;color:var(--ink-2)">III to VI follow, alternating image left and right</div>
-            <div class="dark-band pad pinned" style="text-align:center;padding-block:22px">
-              <span class="pin">5</span>
-              <div class="sc">Not sure yet?</div>
-              <div class="h-wf" style="margin:4px 0 10px">Try all six with the Discovery Kit.</div>
-              <a class="btn-o" href="#kit">View the kit · € —</a>
-            </div>
+            <div class="pn" style="text-align:center;color:var(--ink-2)">Chapters III to VI follow, alternating image side</div>
+            <div class="s12 pinned"><span class="pin">4</span><div class="pn dk"><div class="h-wf serif">Meet all six before you choose.</div></div><div class="img" style="min-height:110px;border:0"><span>Kit</span></div></div>
           </div>
         </div></div>
       </div>
@@ -647,86 +650,47 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Mobile · 390</p>
         <div class="mob">
           <div class="notch"><i></i></div>
-          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-          <div class="pad-s" style="text-align:center"><div class="sc">Collection 01</div><div class="h-wf">The Archetypes: HER</div></div>
-          <div class="divider" style="padding:6px 12px;display:flex;gap:10px;font-size:9.5px;overflow:hidden;white-space:nowrap"><b>I Maiden</b><span>II Lover</span><span>III Seductress</span><span>IV Wanderer</span></div>
-          <div class="chapter-a">
-            <div class="img" style="min-height:220px;border:0"><span>Illustration, 4:5</span></div>
-            <div class="pad-s">
-              <div class="sc">I · The Maiden</div>
-              <div class="s-wf">Silk &amp; Ashes</div>
-              <div class="ln w90"></div>
-              <div class="row" style="justify-content:space-between;align-items:center;margin-top:6px"><span class="price">100 ml · € —</span><a class="btn" href="#bag">Add</a></div>
-              <a href="#fragrance" style="display:block;margin-top:6px">Enter her world</a>
-            </div>
-          </div>
-          <div class="chapter-b">
-            <div class="img" style="min-height:90px;border:0"><span>Next chapter</span></div>
+          <div class="navbar m"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="mz">
+            <div class="img" style="min-height:150px;border:0"><span>Mirror</span></div>
+            <div class="pn"><div class="h-wf serif">The Archetypes: HER</div><div class="idx"><div><span>I</span><span class="s-wf">Silk &amp; Ashes</span><span></span></div><div><span>II</span><span class="s-wf">Skin &amp; Shadow</span><span></span></div></div></div>
+            <div class="img" style="min-height:240px;border:0"><span>Illustration, 4:5</span></div>
+            <div class="pn" style="background:#EDE5E1"><span class="corner">I</span><div class="s-wf lg">Silk &amp; Ashes</div><div class="sc">The Maiden</div><div class="ln w90"></div><div class="buyrow"><span>100 ml</span><a class="btn" href="#bag">Add</a></div></div>
           </div>
         </div>
       </div>
     </div>
     <ol class="annot">
-      <li><span class="pin">1</span><span>Short collection intro taken from the brand positioning. No banner image here, so the first chapter arrives quickly.</span></li>
-      <li><span class="pin">2</span><span>Chapter index sticks under the header. It shows where you are and lets you jump to an archetype that caught your eye on the homepage.</span></li>
-      <li><span class="pin">3</span><span><b>One chapter per archetype.</b> Illustration, archetype, name in script, one line, notes in brief, price and add to bag. The background shifts to that fragrance’s colour pairing as you scroll in.</span></li>
-      <li><span class="pin">4</span><span>Image and text alternate sides on desktop. On mobile every chapter stacks image first, text second.</span></li>
-      <li><span class="pin">5</span><span>The chapters end on the Discovery Kit, so finishing the collection always leads somewhere.</span></li>
+      <li><span class="pin">1</span><span>The page opens with the collection title and an index of all six archetypes, so a visitor can jump straight to the one they noticed on the homepage.</span></li>
+      <li><span class="pin">2</span><span><b>One chapter per archetype.</b> The illustration takes two-thirds. The text panel, tinted to that fragrance, carries the name, archetype, story, a short paragraph, and a buy row with add to bag and a link to the full page.</span></li>
+      <li><span class="pin">3</span><span>Image and text swap sides from chapter to chapter. On mobile every chapter stacks image first.</span></li>
+      <li><span class="pin">4</span><span>The chapters end on the Discovery Kit, so finishing the collection always leads somewhere.</span></li>
     </ol>
   </article>
 
   <!-- FRAGRANCE -->
   <article class="screen" id="fragrance">
-    <div class="screen-head"><h3>Fragrance · Silk &amp; Ashes</h3><span class="ui">Stages 04 and 05 · Template for all six</span></div>
+    <div class="screen-head"><h3>Fragrance · Stars &amp; Whisper</h3><span class="ui">Stages 04 and 05 · Template for all six</span></div>
     <div class="pair">
       <div>
         <p class="frame-label">Desktop · 1440</p>
         <div class="desk-scroll"><div class="desk">
-          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/fragrances/silk-and-ashes</span></div>
-          <div class="wf">
-            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
-            <div style="padding:6px 18px;font-size:9.5px;color:var(--ink-2)"><a href="#collection">The Archetypes: HER</a> / Silk &amp; Ashes</div>
-            <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;padding:4px 18px 18px">
-              <div class="pinned">
-                <span class="pin">1</span>
-                <div class="img" style="min-height:240px"><span>Bottle on stone, campaign light</span></div>
-                <div class="grid4" style="margin-top:6px"><div class="img" style="min-height:40px"></div><div class="img" style="min-height:40px"></div><div class="img" style="min-height:40px"></div><div class="img" style="min-height:40px"></div></div>
-              </div>
-              <div class="pinned" style="align-self:center">
-                <span class="pin">2</span>
-                <div class="sc">I · The Maiden</div>
-                <div class="s-wf lg">Silk &amp; Ashes</div>
-                <div style="margin:2px 0 10px">Eau de parfum · 100 ml</div>
-                <div class="price" style="font-size:15px">€ —</div>
-                <a class="btn block" href="#bag" style="margin:10px 0 6px">Add to bag</a>
-                <div style="font-size:9.5px">Not sure? <a href="#kit">Try all six in the Discovery Kit</a></div>
-                <div class="divider" style="margin-top:12px;padding-top:6px">Ingredients <span style="float:right">+</span></div>
-                <div class="divider" style="padding-top:6px;margin-top:6px">Delivery &amp; returns <span style="float:right">+</span></div>
-              </div>
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/fragrances/stars-and-whisper</span></div>
+          <div class="navbar"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection"><u>Fragrances</u></a><a href="#kit">Discovery Kit</a><a href="#house">The House</a><a href="#house">Manifesto</a><a href="#shop">Shop</a></div><div class="side"><span>Search</span><a href="#bag">Bag (0)</a></div></div>
+          <div class="mz">
+            <div class="s21 pinned">
+              <span class="pin" style="right:auto;left:6px">1</span>
+              <div class="mz-in"><div class="img" style="min-height:170px;border:0"><span>Bottle</span></div><div class="img" style="min-height:170px;border:0"><span>Illustration</span></div><div class="img wide" style="min-height:70px;border:0"><span>Texture</span></div></div>
+              <div class="pn spread pinned"><span class="pin" style="top:6px">2</span><span class="corner">IV</span><div><div class="s-wf lg">Stars &amp; Whisper</div><div class="sc">The Wanderer</div><div class="serif-it">A tent of light under the open sky.</div></div><div><div class="buyrow"><span>Eau de parfum · 100 ml</span><span>Price on launch</span></div><a class="btn block" href="#bag" style="margin:8px 0">Add to bag →</a><a href="#kit" class="tiny">Not sure yet? Try all six in the Discovery Kit →</a><div class="accrow">Olfactory notes <span>+</span></div><div class="accrow">Ingredients <span>+</span></div><div class="accrow">Delivery &amp; returns <span>+</span></div></div></div>
             </div>
-            <div class="chapter-a pinned" style="display:grid;grid-template-columns:1fr 1fr">
+            <div class="s21 pinned">
               <span class="pin">3</span>
-              <div class="pad" style="align-self:center">
-                <div class="sc">Her world</div>
-                <div class="h-wf" style="margin:4px 0 6px">Narrative headline</div>
-                <div class="ln w90"></div><div class="ln w90"></div><div class="ln w70"></div><div class="ln w50"></div>
-              </div>
-              <div class="img" style="min-height:200px;border:0"><span>Full illustration</span></div>
+              <div class="img" style="min-height:190px;border:0"><span>Full illustration</span></div>
+              <div class="pn spread" style="background:#E4E0E2"><div class="h-wf serif">Her world</div><div><div class="ln"></div><div class="ln"></div><div class="ln w70"></div></div></div>
             </div>
-            <div class="pad pinned" style="padding-block:18px">
-              <span class="pin">4</span>
-              <div class="sc" style="text-align:center;margin-bottom:8px">Olfactory profile</div>
-              <div class="notes3">
-                <div><b>Top</b><div class="ln w70" style="margin:4px auto"></div><div class="ln w50" style="margin:0 auto"></div></div>
-                <div><b>Heart</b><div class="ln w70" style="margin:4px auto"></div><div class="ln w50" style="margin:0 auto"></div></div>
-                <div><b>Base</b><div class="ln w70" style="margin:4px auto"></div><div class="ln w50" style="margin:0 auto"></div></div>
-              </div>
-            </div>
-            <div class="pad divider pinned">
-              <span class="pin">5</span>
-              <div class="sc" style="margin-bottom:6px">The other archetypes</div>
-              <div class="grid4"><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Skin &amp; Shadow</span></div><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Ember &amp; Desire</span></div><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Stars &amp; Whisper</span></div><div class="card"><div class="img"></div><span class="s-wf" style="font-size:14px">Velvet &amp; Poise</span></div></div>
-            </div>
+            <div class="g3 pinned"><span class="pin">4</span><div class="pn spread short"><span class="corner">I</span><div class="h-wf sm serif">Top</div></div><div class="pn spread short"><span class="corner">II</span><div class="h-wf sm serif">Heart</div></div><div class="pn spread short"><span class="corner">III</span><div class="h-wf sm serif">Base</div></div></div>
+            <div class="pn"><div class="h-wf serif">The other archetypes</div></div>
+            <div class="g5 pinned"><span class="pin">5</span><div class="pn tile-wf sm"><div class="archbox"></div><span class="s-wf">Silk &amp; Ashes</span></div><div class="pn tile-wf sm"><div class="archbox"></div><span class="s-wf">Skin &amp; Shadow</span></div><div class="pn tile-wf sm"><div class="archbox"></div><span class="s-wf">Ember &amp; Desire</span></div><div class="pn tile-wf sm"><div class="archbox"></div><span class="s-wf">Velvet &amp; Poise</span></div><div class="pn tile-wf sm"><div class="archbox"></div><span class="s-wf">Rain &amp; Solace</span></div></div>
           </div>
         </div></div>
       </div>
@@ -734,73 +698,48 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Mobile · 390</p>
         <div class="mob">
           <div class="notch"><i></i></div>
-          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-          <div class="img" style="min-height:250px;border:0"><span>Gallery · swipe · 1/5</span></div>
-          <div class="pad-s">
-            <div class="sc">I · The Maiden</div>
-            <div class="s-wf lg" style="font-size:24px">Silk &amp; Ashes</div>
-            <div>Eau de parfum · 100 ml · <span class="price">€ —</span></div>
-            <div style="font-size:9.5px;margin-top:6px"><a href="#kit">Try all six in the Discovery Kit</a></div>
+          <div class="navbar m"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="mz">
+            <div class="mz-in"><div class="img" style="min-height:140px;border:0"><span>Bottle</span></div><div class="img" style="min-height:140px;border:0"><span>Art</span></div></div>
+            <div class="pn"><span class="corner">IV</span><div class="s-wf lg">Stars &amp; Whisper</div><div class="sc">The Wanderer</div><div class="buyrow"><span>100 ml</span><span>Price on launch</span></div><a class="btn block" href="#bag" style="margin-top:6px">Add to bag →</a></div>
+            <div class="pn" style="background:#E4E0E2"><div class="h-wf sm serif">Her world</div><div class="ln w90"></div></div>
+            <div class="pn"><div class="h-wf sm serif">Top</div></div>
+            <div class="sticky-buy pinned"><span class="pin" style="position:static">6</span><span class="s-wf">Stars &amp; Whisper</span><a class="btn" href="#bag">Add to bag</a></div>
           </div>
-          <div class="chapter-a pad-s"><div class="sc">Her world</div><div class="ln w90"></div><div class="ln w70"></div></div>
-          <div class="pad-s"><div class="notes3"><div>Top</div><div>Heart</div><div>Base</div></div></div>
-          <div class="sticky-buy pinned"><span class="pin" style="position:static">6</span><span class="price">€ —</span><a class="btn" href="#bag">Add to bag</a></div>
         </div>
       </div>
     </div>
     <ol class="annot">
-      <li><span class="pin">1</span><span>Gallery: campaign still, bottle, box, the illustration, and a texture detail. Zoom on desktop, swipe on mobile.</span></li>
-      <li><span class="pin">2</span><span><b>Everything needed to buy sits above the fold:</b> archetype, name, size, price, add to bag. The kit link catches visitors who aren’t ready to commit to a full size.</span></li>
-      <li><span class="pin">3</span><span><b>Connection.</b> The narrative is paired with the full illustration, on the fragrance’s own colour pairing.</span></li>
-      <li><span class="pin">4</span><span>Olfactory pyramid in three columns. If notes come with images, each note can show a small swatch.</span></li>
-      <li><span class="pin">5</span><span>The other five archetypes, so the visitor can keep comparing without going back.</span></li>
+      <li><span class="pin">1</span><span>Gallery as panels: the bottle and the illustration side by side, the packaging texture below.</span></li>
+      <li><span class="pin">2</span><span><b>Everything needed to buy sits in the first view:</b> name, archetype, story, size, price, add to bag. The kit link catches visitors who aren’t ready for a full size, and the details fold into three rows.</span></li>
+      <li><span class="pin">3</span><span><b>Connection.</b> “Her world”: the narrative on the fragrance’s own tint, beside the full illustration.</span></li>
+      <li><span class="pin">4</span><span>Top, heart and base notes as three numbered panels, filled when the client supplies the notes.</span></li>
+      <li><span class="pin">5</span><span>The other five archetypes as tiles, so the visitor can keep comparing without going back.</span></li>
       <li><span class="pin">6</span><span>On mobile, a slim add-to-bag bar appears once the main button scrolls out of view.</span></li>
     </ol>
   </article>
 
   <!-- KIT -->
   <article class="screen" id="kit">
-    <div class="screen-head"><h3>Discovery Kit</h3><span class="ui">Stage 05 · One sellable product, belongs to the collection</span></div>
+    <div class="screen-head"><h3>Discovery Kit</h3><span class="ui">Stage 05 · One product, belongs to the collection</span></div>
     <div class="pair">
       <div>
         <p class="frame-label">Desktop · 1440</p>
         <div class="desk-scroll"><div class="desk">
           <div class="chrome"><i></i><i></i><i></i><span>odirah.com/kits/the-archetypes-her</span></div>
-          <div class="wf">
-            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
-            <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;padding:14px 18px">
-              <div class="img" style="min-height:220px"><span>Kit box, open, six vials</span></div>
-              <div class="pinned" style="align-self:center">
-                <span class="pin">1</span>
-                <div class="sc">The Archetypes: HER</div>
-                <div class="h-wf lg">Discovery Kit</div>
-                <div style="margin:4px 0 10px">6 × 7 or 10 ml (to be confirmed) · all six fragrances</div>
-                <div class="price" style="font-size:15px">€ —</div>
-                <a class="btn block" href="#bag" style="margin-top:10px">Add to bag</a>
-              </div>
+          <div class="navbar"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection">Fragrances</a><a href="#kit"><u>Discovery Kit</u></a><a href="#house">The House</a><a href="#house">Manifesto</a><a href="#shop">Shop</a></div><div class="side"><span>Search</span><a href="#bag">Bag (0)</a></div></div>
+          <div class="mz">
+            <div class="s21 pinned"><span class="pin">1</span><div class="img" style="min-height:200px;border:0"><span>Kit box, open, six vials</span></div>
+              <div class="pn spread"><div><div class="h-wf lg serif">Discovery Kit</div><div class="sc">The Archetypes: HER</div></div><div><div class="spec"><span>Inside</span><span>All six</span></div><div class="spec"><span>Vials</span><span>6 × 7/10 ml</span></div><div class="buyrow"><span>Complete set</span><span>Price on launch</span></div><a class="btn block" href="#bag" style="margin-top:6px">Add to bag →</a></div></div></div>
+            <div class="pn"><div class="h-wf serif">What’s inside</div></div>
+            <div class="g3 pinned"><span class="pin">2</span>
+              <div class="pn tile-wf sm"><span class="corner">I</span><a href="#fragrance" class="archbox"></a><div class="tn"><span class="s-wf">Silk &amp; Ashes</span><span>7/10 ml</span></div></div>
+              <div class="pn tile-wf sm"><span class="corner">II</span><div class="archbox"></div><div class="tn"><span class="s-wf">Skin &amp; Shadow</span><span>7/10 ml</span></div></div>
+              <div class="pn tile-wf sm"><span class="corner">III</span><div class="archbox"></div><div class="tn"><span class="s-wf">Ember &amp; Desire</span><span>7/10 ml</span></div></div>
             </div>
-            <div class="pad divider pinned">
-              <span class="pin">2</span>
-              <div class="sc" style="text-align:center;margin-bottom:10px">What’s inside</div>
-              <div class="vials">
-                <div><div class="vial"></div><a href="#fragrance" class="s-wf" style="font-size:12px;text-decoration:none">Silk &amp; Ashes</a><div class="sc" style="font-size:8px">Maiden</div></div>
-                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Skin &amp; Shadow</span><div class="sc" style="font-size:8px">Lover</div></div>
-                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Ember &amp; Desire</span><div class="sc" style="font-size:8px">Seductress</div></div>
-                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Stars &amp; Whisper</span><div class="sc" style="font-size:8px">Wanderer</div></div>
-                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Velvet &amp; Poise</span><div class="sc" style="font-size:8px">Queen</div></div>
-                <div><div class="vial"></div><span class="s-wf" style="font-size:12px">Rain &amp; Solace</span><div class="sc" style="font-size:8px">Healer</div></div>
-              </div>
-            </div>
-            <div class="chapter-a pad pinned">
-              <span class="pin">3</span>
-              <div class="sc" style="margin-bottom:8px">How to choose your full size</div>
-              <div class="grid3">
-                <div><b>1 · Wear one a day</b><div class="ln w90"></div></div>
-                <div><b>2 · Notice which one stays</b><div class="ln w90"></div></div>
-                <div><b>3 · Choose her in 100 ml</b><div class="ln w90"></div></div>
-              </div>
-            </div>
-            <div class="pad divider"><div>Questions about the kit <span style="float:right">+</span></div></div>
+            <div class="pn tiny" style="text-align:center">IV to VI in a second row</div>
+            <div class="g3 pinned"><span class="pin">3</span><div class="pn spread short"><span class="corner">1</span><div class="h-wf sm serif">Wear one a day</div></div><div class="pn spread short"><span class="corner">2</span><div class="h-wf sm serif">Notice which one stays</div></div><div class="pn spread short"><span class="corner">3</span><div class="h-wf sm serif">Choose her in 100 ml</div></div></div>
+            <div class="s12"><div class="pn spread"><div class="h-wf serif">Questions about the kit</div><div><div class="accrow">Can I buy a single vial? <span>+</span></div><div class="accrow">How large are the vials? <span>+</span></div></div></div><div class="img" style="min-height:140px;border:0"><span>Bottle</span></div></div>
           </div>
         </div></div>
       </div>
@@ -808,18 +747,20 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Mobile · 390</p>
         <div class="mob">
           <div class="notch"><i></i></div>
-          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-          <div class="img" style="min-height:200px;border:0"><span>Kit box</span></div>
-          <div class="pad-s"><div class="h-wf">Discovery Kit</div><div>6 × 7/10 ml · <span class="price">€ —</span></div></div>
-          <div class="pad-s"><div class="vials" style="grid-template-columns:repeat(3,1fr)"><div><div class="vial"></div>Maiden</div><div><div class="vial"></div>Lover</div><div><div class="vial"></div>Seductress</div><div><div class="vial"></div>Wanderer</div><div><div class="vial"></div>Queen</div><div><div class="vial"></div>Healer</div></div></div>
-          <div class="sticky-buy"><span class="price">€ —</span><a class="btn" href="#bag">Add to bag</a></div>
+          <div class="navbar m"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="mz">
+            <div class="img" style="min-height:160px;border:0"><span>Kit box</span></div>
+            <div class="pn"><div class="h-wf serif">Discovery Kit</div><div class="buyrow"><span>6 × 7/10 ml</span><span>Price on launch</span></div><a class="btn block" href="#bag" style="margin-top:6px">Add to bag →</a></div>
+            <div class="swipe"><div class="pn tile-wf"><span class="corner">I</span><div class="archbox"></div></div><div class="pn tile-wf"><span class="corner">II</span><div class="archbox"></div></div></div>
+            <div class="pn"><span class="corner">1</span><div class="h-wf sm serif">Wear one a day</div></div>
+          </div>
         </div>
       </div>
     </div>
     <ol class="annot">
-      <li><span class="pin">1</span><span>Bought as one complete set, as the brief specifies. The vial size is shown as soon as it is confirmed.</span></li>
-      <li><span class="pin">2</span><span>Each vial links to its full-size fragrance page, so the kit also works as a map of the collection.</span></li>
-      <li><span class="pin">3</span><span>A short ritual for choosing. If the client wants to offer a kit credit toward a full size, it goes in step 3 (see open items).</span></li>
+      <li><span class="pin">1</span><span>Sold as one complete set, as the brief specifies. The vial size is shown as soon as it is confirmed.</span></li>
+      <li><span class="pin">2</span><span>Six tiles, one per vial. Each leads to its full-size fragrance, so the kit also works as a map of the collection.</span></li>
+      <li><span class="pin">3</span><span>A three-step ritual for choosing, as numbered panels. A kit credit toward a full size, if offered, goes in step 3.</span></li>
     </ol>
   </article>
 
@@ -831,24 +772,17 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Desktop · 1440</p>
         <div class="desk-scroll"><div class="desk">
           <div class="chrome"><i></i><i></i><i></i><span>odirah.com/shop</span></div>
-          <div class="wf">
-            <div class="nav divider"><div class="side"><a href="#shop"><b>Shop</b></a><a href="#collection">The Archetypes</a><a href="#house">The House</a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
-            <div class="pad pinned">
-              <span class="pin">1</span>
-              <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:12px">
-                <div class="h-wf">Shop</div>
-                <div class="chips"><span class="on">All · 7</span><span>Fragrances · 6</span><span>Discovery Kit · 1</span></div>
-              </div>
-              <div class="grid4 pinned">
-                <span class="pin" style="top:-8px">2</span>
-                <div class="card"><div class="img"><span>Bottle</span></div><a href="#fragrance" class="s-wf" style="font-size:15px;text-decoration:none">Silk &amp; Ashes</a><div class="sc">The Maiden</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Skin &amp; Shadow</span><div class="sc">The Lover</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Ember &amp; Desire</span><div class="sc">The Seductress</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Stars &amp; Whisper</span><div class="sc">The Wanderer</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Velvet &amp; Poise</span><div class="sc">The Queen</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card"><div class="img"><span>Bottle</span></div><span class="s-wf" style="font-size:15px">Rain &amp; Solace</span><div class="sc">The Healer</div><div class="row" style="justify-content:space-between"><span class="price">100 ml · € —</span><a href="#bag">Add</a></div></div>
-                <div class="card" style="grid-column:span 2"><div class="img" style="aspect-ratio:auto;flex:1;min-height:120px"><span>Discovery Kit</span></div><a href="#kit" class="h-wf sm" style="text-decoration:none">Discovery Kit</a><div class="row" style="justify-content:space-between"><span class="price">6 × 7/10 ml · € —</span><a href="#bag">Add</a></div></div>
-              </div>
+          <div class="navbar"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection">Fragrances</a><a href="#kit">Discovery Kit</a><a href="#house">The House</a><a href="#house">Manifesto</a><a href="#shop"><u>Shop</u></a></div><div class="side"><span>Search</span><a href="#bag">Bag (0)</a></div></div>
+          <div class="mz">
+            <div class="pn pinned" style="display:grid;grid-template-columns:1.2fr 1fr;align-items:end;min-height:90px"><span class="pin">1</span><div class="h-wf lg serif">Shop</div><div><div class="ln w90"></div><div class="chips" style="margin-top:6px"><span class="on">All 7</span><span>Fragrances 6</span><span>Discovery Kit 1</span></div></div></div>
+            <div class="g4 pinned"><span class="pin">2</span>
+              <div class="pn tile-wf sm"><span class="corner">I</span><a href="#fragrance" class="archbox"></a><div class="tn"><span class="s-wf">Silk &amp; Ashes</span><span>100 ml</span></div><div class="sc">The Maiden</div><a href="#bag" class="u">Add to bag</a></div>
+              <div class="pn tile-wf sm"><span class="corner">II</span><div class="archbox"></div><div class="tn"><span class="s-wf">Skin &amp; Shadow</span><span>100 ml</span></div><div class="sc">The Lover</div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf sm"><span class="corner">III</span><div class="archbox"></div><div class="tn"><span class="s-wf">Ember &amp; Desire</span><span>100 ml</span></div><div class="sc">The Seductress</div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf sm"><span class="corner">IV</span><div class="archbox"></div><div class="tn"><span class="s-wf">Stars &amp; Whisper</span><span>100 ml</span></div><div class="sc">The Wanderer</div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf sm"><span class="corner">V</span><div class="archbox"></div><div class="tn"><span class="s-wf">Velvet &amp; Poise</span><span>100 ml</span></div><div class="sc">The Queen</div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf sm"><span class="corner">VI</span><div class="archbox"></div><div class="tn"><span class="s-wf">Rain &amp; Solace</span><span>100 ml</span></div><div class="sc">The Healer</div><span class="u">Add to bag</span></div>
+              <div class="pn tile-wf sm" style="grid-column:span 2"><span class="corner">I–VI</span><a href="#kit" class="archbox" style="width:34%"></a><div class="tn"><span class="h-wf sm serif">Discovery Kit</span><span>6 × 7/10 ml</span></div><span class="u">Add to bag</span></div>
             </div>
           </div>
         </div></div>
@@ -857,76 +791,17 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Mobile · 390</p>
         <div class="mob">
           <div class="notch"><i></i></div>
-          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-          <div class="pad-s"><div class="h-wf">Shop</div><div class="chips" style="margin-top:6px"><span class="on">All</span><span>Fragrances</span><span>Kit</span></div></div>
-          <div class="pad-s grid2">
-            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Silk &amp; Ashes</span><span class="price" style="font-size:10px">€ —</span></div>
-            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Skin &amp; Shadow</span><span class="price" style="font-size:10px">€ —</span></div>
-            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Ember &amp; Desire</span><span class="price" style="font-size:10px">€ —</span></div>
-            <div class="card"><div class="img"></div><span class="s-wf" style="font-size:13px">Stars &amp; Whisper</span><span class="price" style="font-size:10px">€ —</span></div>
+          <div class="navbar m"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="mz">
+            <div class="pn"><div class="h-wf serif">Shop</div><div class="chips" style="margin-top:6px"><span class="on">All</span><span>Fragrances</span><span>Kit</span></div></div>
+            <div class="swipe"><div class="pn tile-wf"><span class="corner">I</span><div class="archbox"></div><div class="tn"><span class="s-wf">Silk &amp; Ashes</span><span>100 ml</span></div></div><div class="pn tile-wf"><span class="corner">II</span><div class="archbox"></div></div></div>
           </div>
         </div>
       </div>
     </div>
     <ol class="annot">
-      <li><span class="pin">1</span><span>Filters by format today. A filter by collection is added automatically once there is more than one.</span></li>
-      <li><span class="pin">2</span><span>Uniform bottle shots on a neutral ground, so the grid reads quickly. Name, archetype, size and price on every card, with add to bag on the card itself.</span></li>
-    </ol>
-  </article>
-
-  <!-- BAG -->
-  <article class="screen" id="bag">
-    <div class="screen-head"><h3>Bag drawer → Checkout</h3><span class="ui">Stage 06 · Opens on every add to bag</span></div>
-    <div class="pair">
-      <div>
-        <p class="frame-label">Desktop · 1440</p>
-        <div class="desk-scroll"><div class="desk">
-          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/fragrances/silk-and-ashes</span></div>
-          <div class="drawer-wrap">
-            <div class="scrim"></div>
-            <div class="drawer pinned">
-              <span class="pin" style="right:auto;left:-26px">1</span>
-              <div class="pad-s divider" style="display:flex;justify-content:space-between"><b class="sc" style="font-size:11px">Your bag · 1</b><span>Close</span></div>
-              <div class="pad-s" style="flex:1">
-                <div class="line-item"><div class="img"></div><div><div class="s-wf" style="font-size:14px">Silk &amp; Ashes</div><div>100 ml · − 1 +</div></div><span class="price">€ —</span></div>
-                <div class="pinned" style="margin-top:10px;border:1px solid var(--line);padding:8px">
-                  <span class="pin">2</span>
-                  <div class="sc">Complete the ritual</div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><span>Discovery Kit · € —</span><a href="#kit">Add</a></div>
-                </div>
-              </div>
-              <div class="pad-s divider pinned">
-                <span class="pin">3</span>
-                <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span class="price">€ —</span></div>
-                <div style="font-size:9.5px;color:var(--ink-2);margin:2px 0 8px">Shipping and taxes calculated at checkout</div>
-                <span class="btn block">Checkout</span>
-                <div class="row" style="margin-top:6px"><span class="btn-o" style="flex:1;text-align:center">Shop Pay</span><span class="btn-o" style="flex:1;text-align:center">Apple Pay</span></div>
-              </div>
-            </div>
-          </div>
-        </div></div>
-      </div>
-      <div>
-        <p class="frame-label">Mobile · 390</p>
-        <div class="mob" style="background:rgba(48,30,21,.35)">
-          <div class="notch"><i></i></div>
-          <div style="height:90px"></div>
-          <div style="background:var(--wf-bg);border-radius:16px 16px 0 0;margin-bottom:-10px">
-            <div style="width:40px;height:4px;border-radius:4px;background:var(--line);margin:8px auto"></div>
-            <div class="pad-s"><b class="sc" style="font-size:11px">Your bag · 1</b>
-              <div class="line-item"><div class="img"></div><div><div class="s-wf" style="font-size:13px">Silk &amp; Ashes</div><div>100 ml</div></div><span class="price">€ —</span></div>
-              <div style="display:flex;justify-content:space-between;margin-top:8px"><span>Subtotal</span><span class="price">€ —</span></div>
-              <span class="btn block" style="margin-top:8px">Checkout</span>
-              <div class="row" style="margin-top:6px;padding-bottom:16px"><span class="btn-o" style="flex:1;text-align:center">Shop Pay</span><span class="btn-o" style="flex:1;text-align:center">Apple Pay</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <ol class="annot">
-      <li><span class="pin">1</span><span>A side drawer on desktop and a bottom sheet on mobile. The page stays behind it, so the explorer can carry on reading.</span></li>
-      <li><span class="pin">2</span><span>One quiet suggestion at most: the Discovery Kit if it isn’t already in the bag, or a full size if the kit is.</span></li>
-      <li><span class="pin">3</span><span>Checkout goes to Shopify’s hosted checkout, branded with ODIRAH colours and type. Express wallets skip the form entirely.</span></li>
+      <li><span class="pin">1</span><span>A title panel with format filters. A filter by collection is added automatically once there is more than one collection.</span></li>
+      <li><span class="pin">2</span><span>The same tiles as the homepage, four across. The Discovery Kit tile spans two columns so the grid closes without a gap. Name, archetype and size on every tile, with add to bag on the tile itself.</span></li>
     </ol>
   </article>
 
@@ -938,28 +813,12 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Desktop · 1440</p>
         <div class="desk-scroll"><div class="desk">
           <div class="chrome"><i></i><i></i><i></i><span>odirah.com/the-house</span></div>
-          <div class="wf">
-            <div class="nav divider"><div class="side"><a href="#shop">Shop</a><a href="#collection">The Archetypes</a><a href="#house"><b>The House</b></a></div><span class="mark">Wordmark</span><div class="side"><span>Search</span><span>Account</span><a href="#bag">Bag (0)</a></div></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr">
-              <div class="pad" style="align-self:center;text-align:center">
-                <div class="h-wf lg">Our vision</div>
-                <div style="font-family:var(--f-body);font-style:italic;font-size:13px;max-width:280px;margin:6px auto 0">To create a fragrance collection that transcends trends and becomes a mirror of the self.</div>
-              </div>
-              <div class="img" style="min-height:220px;border:0"><span>Mirror monolith in the desert</span></div>
-            </div>
-            <div class="pad pinned" style="padding-block:22px">
-              <span class="pin">1</span>
-              <div class="sc">Positioning</div>
-              <div class="h-wf" style="text-transform:none;font-family:var(--f-body);font-size:18px;max-width:520px;margin-top:4px">Fragrance not as an accessory but as a <u>mirror of the soul</u>, an invitation to explore <u>inner archetypes</u>, an <u>act of self-discovery</u>.</div>
-            </div>
-            <div class="pad divider pinned" style="text-align:center;padding-block:22px">
-              <span class="pin">2</span>
-              <div class="sc">Manifesto</div>
-              <div class="h-wf lg">Here’s to the unseen.</div>
-              <div style="max-width:300px;margin:8px auto"><div class="ln w90" style="margin:4px auto"></div><div class="ln w70" style="margin:4px auto"></div><div class="ln w90" style="margin:4px auto"></div><div class="ln w50" style="margin:4px auto"></div></div>
-              <div style="font-family:var(--f-body);font-style:italic;font-size:13px">You are not one version of yourself.</div>
-            </div>
-            <div class="dark-band pad" style="text-align:center"><a class="btn-o" href="#collection">Meet the six archetypes</a></div>
+          <div class="navbar"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection">Fragrances</a><a href="#kit">Discovery Kit</a><a href="#house"><u>The House</u></a><a href="#house">Manifesto</a><a href="#shop">Shop</a></div><div class="side"><span>Search</span><a href="#bag">Bag (0)</a></div></div>
+          <div class="mz">
+            <div class="s21 pinned"><span class="pin">1</span><div class="img" style="min-height:220px;border:0"><span>Mirror in the desert</span></div><div class="pn spread"><div class="h-wf lg serif">A mirror of the self</div><div><div class="serif-it">To create a fragrance collection that transcends trends…</div><div class="ln" style="margin-top:6px"></div><div class="ln w70"></div></div></div></div>
+            <div class="g3 pinned"><span class="pin">2</span><div class="pn spread short"><span class="corner">1</span><div class="h-wf sm serif">Mirror of the soul</div></div><div class="pn spread short"><span class="corner">2</span><div class="h-wf sm serif">Inner archetypes</div></div><div class="pn spread short"><span class="corner">3</span><div class="h-wf sm serif">Self-discovery</div></div></div>
+            <div class="pn dk pinned" style="text-align:center;padding-block:22px"><span class="pin">3</span><div class="h-wf lg serif">Here’s to the unseen.</div><div style="max-width:300px;margin:8px auto"><div class="ln w90" style="margin:4px auto"></div><div class="ln w70" style="margin:4px auto"></div><div class="ln w90" style="margin:4px auto"></div></div><div class="serif-it" style="color:var(--gold)">You are not one version of yourself.</div></div>
+            <div class="s21 pinned"><span class="pin">4</span><div class="img dk" style="min-height:150px;border:0"><span>Campaign still</span></div><div class="pn tc spread"><span></span><div><div class="serif-it big">Intimately you™</div><a class="btn" href="#collection" style="background:var(--on-dark);color:#301E15;border-color:var(--on-dark);margin-top:6px">Meet the six archetypes →</a></div></div></div>
           </div>
         </div></div>
       </div>
@@ -967,36 +826,117 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
         <p class="frame-label">Mobile · 390</p>
         <div class="mob">
           <div class="notch"><i></i></div>
-          <div class="nav divider" style="padding:8px 12px"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-          <div class="img" style="min-height:200px;border:0"><span>Mirror</span></div>
-          <div class="pad-s" style="text-align:center"><div class="h-wf">Our vision</div><div class="ln w90" style="margin:6px auto"></div><div class="ln w70" style="margin:0 auto"></div></div>
-          <div class="pad-s divider" style="text-align:center"><div class="h-wf">Here’s to the unseen.</div><div class="ln w90" style="margin:6px auto"></div><div class="ln w70" style="margin:0 auto"></div><div class="ln w90" style="margin:6px auto"></div></div>
+          <div class="navbar m"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="mz">
+            <div class="img" style="min-height:170px;border:0"><span>Mirror</span></div>
+            <div class="pn"><div class="h-wf serif">A mirror of the self</div><div class="ln w90"></div></div>
+            <div class="pn"><span class="corner">1</span><div class="h-wf sm serif">Mirror of the soul</div></div>
+            <div class="pn dk" style="text-align:center"><div class="h-wf serif">Here’s to the unseen.</div><div class="ln w70" style="margin:6px auto"></div></div>
+          </div>
         </div>
       </div>
     </div>
     <ol class="annot">
-      <li><span class="pin">1</span><span>Positioning text from the brand manual, with its three phrases underlined as in the manual.</span></li>
-      <li><span class="pin">2</span><span>The full manifesto. Lines fade in gently as they scroll into view, and are plain text for anyone who prefers reduced motion.</span></li>
+      <li><span class="pin">1</span><span>The vision beside the mirror image from the brand manual.</span></li>
+      <li><span class="pin">2</span><span>The three ideas from the manual’s positioning, as numbered panels.</span></li>
+      <li><span class="pin">3</span><span>The full manifesto on deep brown. Lines fade in gently as they scroll into view and stay plain text for visitors who prefer reduced motion.</span></li>
+      <li><span class="pin">4</span><span>The tagline and its meaning, with a way back to the collection.</span></li>
+    </ol>
+  </article>
+
+  <!-- CONTACT -->
+  <article class="screen" id="contact">
+    <div class="screen-head"><h3>Contact &amp; help</h3><span class="ui">Service · Contact, shipping, returns, legal</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/contact</span></div>
+          <div class="navbar"><span class="mark">Wordmark</span><div class="pipes"><a href="#collection">Fragrances</a><a href="#kit">Discovery Kit</a><a href="#house">The House</a><a href="#house">Manifesto</a><a href="#shop">Shop</a></div><div class="side"><span>Search</span><a href="#bag">Bag (0)</a></div></div>
+          <div class="mz">
+            <div class="s12 pinned"><span class="pin">1</span><div class="pn spread"><div class="h-wf lg serif">Contact</div><div class="serif-it">office@odirah.com <span class="u tiny">Copy</span></div></div>
+              <div class="pn"><div class="field-wf">Name</div><div class="field-wf">Email</div><div class="field-wf">Topic ▾</div><div class="field-wf" style="height:46px">Message</div><span class="btn" style="margin-top:6px">Send message →</span></div></div>
+            <div class="g3 pinned"><span class="pin">2</span><div class="pn spread short"><span></span><div class="h-wf sm serif">Shipping</div></div><div class="pn spread short"><span></span><div class="h-wf sm serif">Returns</div></div><div class="pn spread short"><span></span><div class="h-wf sm serif">Legal</div></div></div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="navbar m"><a href="#menu">Menu</a><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
+          <div class="mz">
+            <div class="pn"><div class="h-wf serif">Contact</div><div class="serif-it">office@odirah.com</div></div>
+            <div class="pn"><div class="field-wf">Email</div><div class="field-wf" style="height:40px">Message</div><span class="btn block" style="margin-top:6px">Send message →</span></div>
+            <div class="pn"><div class="h-wf sm serif">Shipping</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>The house email, with a copy button, beside a short form with a topic choice so messages arrive sorted.</span></li>
+      <li><span class="pin">2</span><span>Shipping, returns and legal as three panels, each linked from the footer. The texts come with the launch.</span></li>
+    </ol>
+  </article>
+
+  <!-- BAG -->
+  <article class="screen" id="bag">
+    <div class="screen-head"><h3>Bag drawer → Checkout</h3><span class="ui">Stage 06 · Opens on every add to bag</span></div>
+    <div class="pair">
+      <div>
+        <p class="frame-label">Desktop · 1440</p>
+        <div class="desk-scroll"><div class="desk">
+          <div class="chrome"><i></i><i></i><i></i><span>odirah.com/fragrances/stars-and-whisper</span></div>
+          <div class="drawer-wrap">
+            <div class="scrim"></div>
+            <div class="drawer pinned">
+              <span class="pin" style="right:auto;left:-26px">1</span>
+              <div class="pad-s divider" style="display:flex;justify-content:space-between"><b class="h-wf sm serif">Your bag</b><span>Close</span></div>
+              <div class="pad-s" style="flex:1">
+                <div class="line-item"><div class="archbox" style="width:40px;margin:0"></div><div><div class="s-wf" style="font-size:14px">Stars &amp; Whisper</div><div>− 1 +</div></div><span class="u">Remove</span></div>
+              </div>
+              <div class="pad-s divider pinned">
+                <span class="pin">2</span>
+                <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>Price on launch</span></div>
+                <div class="tiny" style="margin:2px 0 8px">Shipping and taxes are calculated at checkout</div>
+                <span class="btn block">Checkout</span>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <p class="frame-label">Mobile · 390</p>
+        <div class="mob">
+          <div class="notch"><i></i></div>
+          <div class="pad-s divider" style="display:flex;justify-content:space-between"><b class="h-wf sm serif">Your bag</b><span>Close</span></div>
+          <div class="pad-s"><div class="line-item"><div class="archbox" style="width:36px;margin:0"></div><div><div class="s-wf" style="font-size:13px">Stars &amp; Whisper</div><div>− 1 +</div></div><span class="u">Remove</span></div></div>
+          <div class="pad-s" style="margin-top:200px"><div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>Price on launch</span></div><span class="btn block" style="margin-top:8px">Checkout</span></div>
+        </div>
+      </div>
+    </div>
+    <ol class="annot">
+      <li><span class="pin">1</span><span>A side drawer on desktop and a full-screen sheet on mobile. The page stays behind it, so the explorer can carry on reading. The bag is kept as the visitor moves between pages.</span></li>
+      <li><span class="pin">2</span><span>Checkout goes to Shopify’s hosted checkout, branded with ODIRAH colours and type, with express wallets.</span></li>
     </ol>
   </article>
 
   <!-- MENU -->
   <article class="screen" id="menu">
-    <div class="screen-head"><h3>Mobile menu</h3><span class="ui">Mobile only · Shop is the first item</span></div>
+    <div class="screen-head"><h3>Mobile menu</h3><span class="ui">Mobile only</span></div>
     <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start">
       <div class="mob" style="background:var(--dark);color:var(--on-dark)">
         <div class="notch"><i></i></div>
         <div class="nav" style="padding:8px 12px"><span>Close</span><span class="mark">Wordmark</span><a href="#bag">Bag</a></div>
-        <div class="pad-s" style="display:flex;flex-direction:column;gap:10px;padding-block:18px">
-          <a href="#shop" class="h-wf" style="text-decoration:none">Shop</a>
-          <a href="#collection" class="h-wf" style="text-decoration:none">The Archetypes: HER</a>
-          <a href="#kit" class="h-wf" style="text-decoration:none">Discovery Kit</a>
-          <a href="#house" class="h-wf" style="text-decoration:none">The House</a>
+        <div class="pad-s menu-wf">
+          <a href="#collection">Fragrances <span>VI</span></a>
+          <a href="#kit">Discovery Kit <span>6 vials</span></a>
+          <a href="#house">The House</a>
+          <a href="#house">Manifesto</a>
         </div>
-        <div class="img dk" style="min-height:120px;margin:0 12px;border:0"><span>Current campaign</span></div>
-        <div class="pad-s" style="display:flex;gap:14px;opacity:.85"><span>Search</span><span>Account</span><span>Contact</span></div>
+        <div class="pad-s" style="display:flex;gap:14px;opacity:.85;margin-top:120px"><span>Search</span><span>Account</span><span>Contact</span></div>
       </div>
-      <p class="read" style="max-width:26rem">A full-screen overlay on deep brown. The four main destinations are set large. Search, account and contact sit below. A single campaign image keeps it from feeling like a plain list. The tagline version of the logo can appear here, where there is room for it to be read.</p>
+      <p class="read" style="max-width:26rem">A full-screen overlay on deep brown. The four main destinations are set large on hairline rows, with search, account and contact at the bottom within reach of the thumb.</p>
     </div>
   </article>
 </section>
@@ -1004,7 +944,7 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 <!-- ================= IV. INTERACTIONS ================= -->
 <section class="block" id="interactions">
   <div class="sec-head">
-    <div><span class="roman">IV</span><h2>Motion &amp; performance</h2></div>
+    <div><h2>Motion &amp; performance</h2></div>
     <div><p>The brief asks for refined animation that never gets in the way of buying. Every effect below has a still version for visitors who set their device to reduce motion, and none of them delays a price or a button from appearing.</p></div>
   </div>
   <div class="ix">
@@ -1020,7 +960,7 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 <!-- ================= V. PLATFORM ================= -->
 <section class="block" id="platform">
   <div class="sec-head">
-    <div><span class="roman">V</span><h2>Platform &amp; content model</h2></div>
+    <div><h2>Platform &amp; content model</h2></div>
     <div><p>Shopify runs products, stock, payments, checkout and customer accounts. A custom Next.js front end draws every page, which gives full control over the storytelling and motion. Checkout stays on Shopify, which is secure, fast and familiar to shoppers.</p></div>
   </div>
   <div class="two">
@@ -1065,7 +1005,7 @@ footer.end{padding-block:3rem 4rem;display:flex;justify-content:space-between;ga
 <!-- ================= VI. DECISIONS ================= -->
 <section class="block" id="decisions">
   <div class="sec-head">
-    <div><span class="roman">VI</span><h2>Open items &amp; sign-off</h2></div>
+    <div><h2>Open items &amp; sign-off</h2></div>
     <div><p>None of these block approval of the structure. Each one is needed before or during the build, and is marked with when.</p></div>
   </div>
   <ul class="open">
