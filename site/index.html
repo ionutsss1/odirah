@@ -89,14 +89,22 @@ p{margin:0}
 
 /* hero */
 .hero{position:relative;height:max(620px,94svh);color:var(--blush);background:var(--brown);overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 40%;transform:scale(1.05);animation:settle 2.6s var(--ease) forwards}
+.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 40%}
+.hero img{transform:scale(1.05);animation:settle 2.6s var(--ease) forwards}
+.hero video{opacity:0;transition:opacity 1.6s var(--ease)}
+.hero video.is-playing{opacity:1}
+.film-toggle{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-sc);font-weight:600;font-size:.72rem;letter-spacing:.16em;color:rgba(243,236,233,.85)}
+.film-toggle:hover{color:var(--blush)}
+.film-toggle i{width:22px;height:22px;border:1px solid currentColor;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.film-toggle svg{width:8px;height:8px}
+.film-toggle[hidden]{display:none}
 @keyframes settle{to{transform:none}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(48,30,21,.6) 0%,rgba(48,30,21,0) 42%),linear-gradient(90deg,rgba(48,30,21,.4) 0%,rgba(48,30,21,0) 50%)}
 .hero-foot{position:absolute;z-index:1;left:0;right:0;bottom:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:32px;align-items:end;padding:0 max(clamp(20px,3.4vw,48px),env(safe-area-inset-right)) clamp(28px,4.5vh,52px) max(clamp(20px,3.4vw,48px),env(safe-area-inset-left))}
 .hero h1{font-size:clamp(2.6rem,1.6rem + 3.8vw,5rem);max-width:17ch}
 .hero-side{display:grid;gap:18px;justify-items:start}
 .hero-side p{font-size:1.05rem;line-height:1.45;color:rgba(243,236,233,.92);max-width:20rem}
-@media (max-width:760px){.hero-foot{grid-template-columns:1fr;gap:20px}.hero::after{background:linear-gradient(0deg,rgba(48,30,21,.78) 0%,rgba(48,30,21,.1) 60%)}.hero img{object-position:70% 40%}}
+@media (max-width:760px){.hero-foot{grid-template-columns:1fr;gap:20px}.hero::after{background:linear-gradient(0deg,rgba(48,30,21,.78) 0%,rgba(48,30,21,.1) 60%)}.hero img,.hero video{object-position:70% 40%}}
 
 /* fragrance tiles */
 .tiles{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:var(--gap)}
@@ -253,11 +261,13 @@ p{margin:0}
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
     <img src="assets/img/hero-desert-1280.webp" srcset="assets/img/hero-desert-1280.webp 1280w, assets/img/hero-desert-2400.webp 2400w" sizes="100vw" width="2400" height="1357" alt="A woman wrapped in sand-coloured silk stands on a dune at dusk, the fabric lifting in the wind." fetchpriority="high">
+    <video muted loop playsinline preload="none" aria-hidden="true" data-film data-src-small="assets/video/hero-1280.mp4"><source src="assets/video/hero-1920.webm" type="video/webm"><source src="assets/video/hero-1920.mp4" type="video/mp4"></video>
     <div class="hero-foot">
       <h1 id="hero-title">This is what it feels like to arrive.</h1>
       <div class="hero-side">
         <p>Six fragrances for the many parts of yourself. A scent stirs a memory, a feeling returns.</p>
         <a class="btn btn--light" href="#fragrances">Shop the collection<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        <button type="button" class="film-toggle" data-film-toggle aria-pressed="false" hidden><i><svg viewBox="0 0 8 8" aria-hidden="true"><path data-icon d="M1 0h2v8H1zM5 0h2v8H5z" fill="currentColor"/></svg></i><span data-film-label>Pause film</span></button>
       </div>
     </div>
   </section>
@@ -369,6 +379,22 @@ p{margin:0}
       '<button type="button" class="add" data-add="'+a.id+'">Add to bag</button></article>';
   }).join('');
 
+
+  // Hero film: muted, looping, never on reduced motion or data saver
+  var film=document.querySelector('[data-film]'), ft=document.querySelector('[data-film-toggle]');
+  var saveData=navigator.connection&&navigator.connection.saveData;
+  if(film&&!reduce&&!saveData){
+    if(window.matchMedia('(max-width: 900px)').matches){film.innerHTML='<source src="'+film.dataset.srcSmall+'" type="video/mp4">';}
+    film.preload='auto'; film.load();
+    film.addEventListener('playing',function(){film.classList.add('is-playing');ft.hidden=false;},{once:true});
+    var p=film.play(); if(p&&p.catch)p.catch(function(){});
+    ft.addEventListener('click',function(){
+      var paused=!film.paused; if(paused)film.pause(); else film.play();
+      ft.setAttribute('aria-pressed',paused);
+      document.querySelector('[data-film-label]').textContent=paused?'Play film':'Pause film';
+      ft.querySelector('[data-icon]').setAttribute('d',paused?'M1 0l7 4-7 4z':'M1 0h2v8H1zM5 0h2v8H5z');
+    });
+  } else if(film){film.remove();}
   var header=document.querySelector('.site-header'), hero=document.querySelector('.hero');
   function onScroll(){header.classList.toggle('is-solid',window.scrollY>hero.offsetHeight-84);}
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
