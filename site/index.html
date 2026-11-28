@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ODIRAH · Intimately you</title>
+<meta name="description" content="ODIRAH is a house of fragrance. The Archetypes: HER, six fragrances for the worlds within you.">
+<meta name="theme-color" content="#301E15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+SC:wght@400;500&family=Pinyon+Script&display=swap">
+<link rel="preload" as="image" href="assets/img/hero-desert-1280.webp" imagesrcset="assets/img/hero-desert-1280.webp 1280w, assets/img/hero-desert-2400.webp 2400w" imagesizes="100vw">
+<style>
+/* ODIRAH concept homepage. Brand tokens from the Brand Guidelines v1.0.
+   Type stand-ins: Cormorant for Mrs Eaves, Pinyon Script for Sinfonietta. */
+:root{
+  --deep:#301E15; --brown:#6A4130; --gold:#B89367; --blush:#E3D5CF;
+  --terracotta:#8A361C; --rose:#A38E83; --cream:#CDBFAE;
+  --paper:#EEE5E1;            /* lifted blush for quiet panels */
+  --line:rgba(48,30,21,.18);
+  --line-light:rgba(227,213,207,.28);
+  --tone:var(--blush);        /* archetype section ground, shifts on hover */
+  --f-sc:"Cormorant SC","Mrs Eaves",Georgia,serif;
+  --f-serif:"Cormorant Garamond","Mrs Eaves",Georgia,"Times New Roman",serif;
+  --f-script:"Pinyon Script","Sinfonietta","Snell Roundhand",cursive;
+  --gutter:clamp(20px,4vw,56px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--blush);color:var(--deep);font-family:var(--f-serif);font-size:clamp(1.06rem,.98rem + .3vw,1.2rem);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(var(--gutter),env(safe-area-inset-left));padding-right:max(var(--gutter),env(safe-area-inset-right))}
+.sc{font-family:var(--f-sc);font-weight:500;letter-spacing:.14em;font-size:.82rem;line-height:1.4}
+h1,h2,h3{font-family:var(--f-sc);font-weight:500;line-height:1.08;letter-spacing:.02em;margin:0;text-wrap:balance}
+p{margin:0}
+.script{font-family:var(--f-script);font-weight:400;line-height:1.1;letter-spacing:0}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--deep);color:var(--blush);padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:0 28px;font-family:var(--f-sc);font-weight:500;font-size:.82rem;letter-spacing:.2em;text-decoration:none;border:1px solid currentColor;transition:background-color .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
+.btn--solid{background:var(--deep);color:var(--blush);border-color:var(--deep)}
+.btn--solid:hover{background:var(--brown);border-color:var(--brown)}
+.btn--light{background:var(--blush);color:var(--deep);border-color:var(--blush)}
+.btn--light:hover{background:transparent;color:var(--blush)}
+.btn--ghost-light{color:var(--blush)}
+.btn--ghost-light:hover{background:var(--blush);color:var(--deep)}
+.btn--ghost{color:var(--deep)}
+.btn--ghost:hover{background:var(--deep);color:var(--blush)}
+.link{font-family:var(--f-sc);font-weight:500;font-size:.82rem;letter-spacing:.18em;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:4px;transition:background-size .5s var(--ease)}
+.link:hover{background-size:0 1px;background-position:100% 100%}
+
+/* ---------- header ---------- */
+.site-header{position:fixed;inset:0 0 auto;z-index:40;color:var(--blush);transition:background-color .5s var(--ease),color .5s var(--ease),box-shadow .5s var(--ease);padding-top:env(safe-area-inset-top)}
+.site-header.is-solid{background:rgba(227,213,207,.94);color:var(--deep);box-shadow:0 1px 0 var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(18px,2.4vw,36px)}
+.nav ul:last-child{justify-content:flex-end}
+.nav a,.nav button{font-family:var(--f-sc);font-weight:500;font-size:.8rem;letter-spacing:.18em;text-decoration:none;white-space:nowrap}
+.nav a:hover,.nav button:hover{opacity:.7}
+.logo{display:block;width:clamp(104px,10vw,138px);color:inherit}
+.logo svg{display:block;width:100%;height:auto}
+.bag-count{display:inline-block;min-width:1.4em;text-align:center}
+.menu-btn{display:none}
+@media (max-width:860px){
+  .nav ul .hide-m{display:none}
+  .menu-btn{display:inline-block}
+  .nav{height:64px}
+}
+
+/* ---------- mobile menu ---------- */
+.menu{position:fixed;inset:0;z-index:60;background:var(--deep);color:var(--blush);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top) + 18px) max(var(--gutter),env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + 28px) max(var(--gutter),env(safe-area-inset-left));transform:translateY(-100%);visibility:hidden;transition:transform .6s var(--ease),visibility 0s linear .6s}
+.menu.is-open{transform:none;visibility:visible;transition:transform .6s var(--ease)}
+.menu-top{display:flex;justify-content:space-between;align-items:center;height:46px}
+.menu nav{display:flex;flex-direction:column;gap:18px;margin-top:48px}
+.menu nav a{font-family:var(--f-sc);font-size:2rem;text-decoration:none;letter-spacing:.04em}
+.menu .utility{margin-top:auto;display:flex;gap:28px}
+.menu .tagline{font-style:italic;color:var(--gold);margin-top:28px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(640px,100svh);color:var(--blush);display:flex;align-items:flex-end;overflow:hidden;background:var(--brown)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%;transform:scale(1.06);animation:settle 2.8s var(--ease) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(48,30,21,.66) 0%,rgba(48,30,21,.28) 46%,rgba(48,30,21,0) 70%),linear-gradient(0deg,rgba(48,30,21,.55) 0%,rgba(48,30,21,0) 45%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(56px,9vh,104px)}
+.hero h1{font-size:clamp(2.5rem,1.6rem + 4.2vw,5.4rem);max-width:12ch;margin-top:18px}
+.hero p.lede{max-width:34rem;margin-top:22px;font-size:clamp(1.1rem,1rem + .4vw,1.35rem);color:rgba(243,236,233,.92)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.scroll-cue{position:absolute;z-index:1;right:max(var(--gutter),env(safe-area-inset-right));bottom:clamp(56px,9vh,104px);display:flex;flex-direction:column;align-items:center;gap:14px;font-size:.72rem}
+.scroll-cue i{display:block;width:1px;height:64px;background:linear-gradient(var(--blush),transparent);transform-origin:top;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:860px){.hero::after{background:linear-gradient(0deg,rgba(48,30,21,.82) 0%,rgba(48,30,21,.35) 55%,rgba(48,30,21,.15) 100%)}.scroll-cue{display:none}.hero img{object-position:72% 50%}}
+
+/* ---------- manifesto ---------- */
+.manifesto{padding-block:clamp(96px,14vw,184px);text-align:center}
+.manifesto h2{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.6rem);margin-top:18px}
+.manifesto .lines{margin:40px auto 44px;max-width:36rem;font-style:italic;font-size:clamp(1.2rem,1.05rem + .6vw,1.55rem);line-height:1.7}
+.manifesto .lines span{display:block}
+.ornament{width:56px;height:1px;background:var(--gold);margin:0 auto}
+
+/* ---------- archetypes ---------- */
+.archetypes{background:var(--tone);transition:background-color 1.2s var(--ease);padding-block:clamp(88px,10vw,140px)}
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,26rem);gap:32px;align-items:end;margin-bottom:clamp(48px,6vw,80px)}
+.section-head h2{font-size:clamp(2.2rem,1.4rem + 3.2vw,4.2rem);margin-top:14px}
+.section-head p{color:var(--brown)}
+@media (max-width:860px){.section-head{grid-template-columns:1fr;gap:18px}}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(48px,5vw,72px) clamp(20px,2.4vw,36px)}
+.card{display:flex;flex-direction:column}
+.card-media{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--cream)}
+.card-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.card:hover .card-media img{transform:scale(1.045)}
+.card-media .numeral{position:absolute;top:14px;left:16px;color:var(--blush);font-size:.9rem;text-shadow:0 1px 8px rgba(48,30,21,.5)}
+.card-body{display:flex;flex-direction:column;gap:6px;padding-top:22px}
+.card .archetype{color:var(--brown)}
+.card .name{font-size:clamp(2.1rem,1.7rem + 1vw,2.7rem);margin-top:2px}
+.card .story{font-style:italic;color:var(--brown);max-width:30ch;min-height:3.2em}
+.card .buy{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.card .meta{font-size:.95rem;font-variant-numeric:lining-nums}
+.add{font-family:var(--f-sc);font-weight:500;font-size:.78rem;letter-spacing:.18em;padding:10px 0;border-bottom:1px solid currentColor}
+.add:hover{color:var(--brown)}
+.card-title{text-decoration:none}
+@media (max-width:1024px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1 * max(var(--gutter),env(safe-area-inset-left)));scroll-padding-inline:max(var(--gutter),env(safe-area-inset-left));scrollbar-width:none;padding-bottom:4px}
+  .grid::before,.grid::after{content:"";flex:0 0 calc(max(var(--gutter),env(safe-area-inset-left)) - 16px)}
+  .grid::-webkit-scrollbar{display:none}
+  .card{flex:0 0 78%;scroll-snap-align:start}
+}
+.swipe-hint{display:none;margin-top:20px;color:var(--brown)}
+@media (max-width:640px){.swipe-hint{display:block}}
+
+/* ---------- vessel ---------- */
+.vessel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(92vh,920px);background:var(--paper)}
+.vessel figure{margin:0;position:relative;overflow:hidden;background:var(--cream)}
+.vessel figure img{width:100%;height:100%;object-fit:cover}
+.vessel .copy{display:flex;flex-direction:column;justify-content:center;gap:22px;padding:clamp(56px,7vw,120px) max(var(--gutter),env(safe-area-inset-right)) clamp(56px,7vw,120px) clamp(32px,6vw,112px)}
+.vessel h2{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.8rem)}
+.vessel p{max-width:30rem}
+.vessel dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:12px 0 8px;padding-top:24px;border-top:1px solid var(--line);max-width:30rem}
+.vessel dt{color:var(--brown)}
+.vessel dd{margin:4px 0 0;font-size:1.05rem}
+@media (max-width:860px){.vessel{grid-template-columns:1fr;min-height:0}.vessel figure{aspect-ratio:4/5}.vessel .copy{padding-left:max(var(--gutter),env(safe-area-inset-left))}}
+
+/* ---------- discovery kit ---------- */
+.kit{background:var(--deep);color:var(--blush)}
+.kit .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:center;padding-block:clamp(88px,10vw,150px)}
+.kit .eyebrow{color:var(--gold)}
+.kit h2{font-size:clamp(2.2rem,1.5rem + 2.8vw,4rem);margin-top:14px}
+.kit p{margin-top:22px;max-width:28rem;color:rgba(227,213,207,.86)}
+.kit ul{list-style:none;padding:0;margin:32px 0 36px;display:grid;gap:0;max-width:28rem}
+.kit li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line-light);font-size:1.02rem}
+.kit li:last-child{border-bottom:1px solid var(--line-light)}
+.kit li span:first-child{color:var(--gold);font-family:var(--f-sc);letter-spacing:.14em;font-size:.8rem;padding-top:3px}
+.kit figure{margin:0}
+.kit figure img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.kit figcaption{margin-top:14px;font-size:.92rem;font-style:italic;color:rgba(227,213,207,.66)}
+@media (max-width:860px){.kit .inner{grid-template-columns:1fr}.kit figure{order:-1}}
+
+/* ---------- house ---------- */
+.house{padding-block:clamp(96px,12vw,170px)}
+.house .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,120px);align-items:center}
+.house figure{margin:0}
+.house figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.house blockquote{margin:22px 0 32px;font-style:italic;font-size:clamp(1.5rem,1.2rem + 1.3vw,2.35rem);line-height:1.38;max-width:24em}
+.house .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:8px 0 40px;padding-top:24px;border-top:1px solid var(--line)}
+.house .pillars p{font-size:1rem;color:var(--brown)}
+.house .pillars h3{font-size:1.15rem;margin-bottom:6px}
+@media (max-width:860px){.house .inner{grid-template-columns:1fr}.house .pillars{grid-template-columns:1fr;gap:18px}}
+
+/* ---------- tagline ---------- */
+.tagline-band{position:relative;color:var(--blush);text-align:center;padding-block:clamp(110px,14vw,190px);background:var(--terracotta) url("assets/img/terracotta-velvet-1600.webp") center/cover no-repeat;overflow:hidden}
+.tagline-band p.big{font-style:italic;font-size:clamp(3rem,2rem + 5vw,6.6rem);line-height:1}
+.tagline-band sup{font-style:normal;font-family:var(--f-sc);font-size:.22em;vertical-align:2.6em;margin-left:.15em}
+.tagline-band .sc{margin-top:26px;opacity:.85}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--deep);color:var(--blush);padding-top:clamp(72px,8vw,112px);padding-bottom:calc(env(safe-area-inset-bottom) + 36px)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,.7fr));gap:40px}
+.foot-grid .logo{width:150px}
+.foot-grid h3{font-size:.8rem;letter-spacing:.18em;color:var(--gold);margin-bottom:14px}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot-grid a{text-decoration:none;opacity:.86}
+.foot-grid a:hover{opacity:1;text-decoration:underline}
+.news p{margin:22px 0 18px;max-width:24rem;color:rgba(227,213,207,.8)}
+.news form{display:flex;max-width:26rem;border-bottom:1px solid var(--line-light)}
+.news input{flex:1;min-width:0;background:transparent;border:0;color:var(--blush);font:inherit;padding:12px 0}
+.news input::placeholder{color:rgba(227,213,207,.55)}
+.news input:focus{outline:none}
+.news form:focus-within{border-color:var(--blush)}
+.news button{font-family:var(--f-sc);letter-spacing:.18em;font-size:.8rem;padding-left:16px}
+.news .msg{min-height:1.6em;margin-top:10px;font-style:italic;color:var(--gold)}
+.foot-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:72px;padding-top:24px;border-top:1px solid var(--line-light);font-size:.9rem;color:rgba(227,213,207,.6)}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}.news{grid-column:1/-1}}
+
+/* ---------- bag drawer ---------- */
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(48,30,21,.42);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility 0s linear .5s}
+.scrim.is-open{opacity:1;visibility:visible;transition:opacity .5s var(--ease)}
+.bag{position:fixed;z-index:80;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .6s var(--ease),visibility 0s linear .6s;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.bag.is-open{transform:none;visibility:visible;transition:transform .6s var(--ease)}
+.bag header{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid var(--line)}
+.bag header h2{font-size:1.35rem}
+.bag .items{flex:1;overflow:auto;padding:8px 28px}
+.bag .empty{padding:40px 0;font-style:italic;color:var(--brown)}
+.line-item{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.line-item img{width:72px;aspect-ratio:4/5;object-fit:cover}
+.line-item .script{font-size:1.6rem}
+.qty{display:inline-flex;align-items:center;gap:12px;margin-top:4px;font-size:.95rem}
+.qty button{width:28px;height:28px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center}
+.remove{font-size:.85rem;text-decoration:underline;color:var(--brown)}
+.bag footer{padding:22px 28px 28px;border-top:1px solid var(--line);display:grid;gap:12px}
+.bag .row{display:flex;justify-content:space-between}
+.bag .note{font-size:.9rem;color:var(--brown);font-style:italic}
+.bag .btn{width:100%}
+
+/* ---------- reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .hero img{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wordmark" viewBox="0 0 1104.91 221.00"><path fill="currentColor" d="M117.01 0.09 C127.99 0.09 138.52 1.36 148.51 3.98 C158.49 6.60 167.93 10.21 176.56 15.00 C185.27 19.70 193.08 25.39 200.16 32.08 C207.24 38.67 213.23 46.08 218.31 54.12 C223.40 62.16 227.30 70.93 230.02 80.23 C232.75 89.54 234.11 99.30 234.11 109.42 C234.11 119.54 232.75 129.47 230.02 138.96 C227.30 148.45 223.40 157.39 218.31 165.61 C213.23 173.93 207.15 181.43 200.16 188.20 C193.08 194.98 185.27 200.85 176.56 205.73 C167.84 210.61 158.49 214.40 148.51 217.02 C138.43 219.64 127.99 221.00 117.01 221.00 C100.58 221.00 85.24 218.11 70.99 212.24 C56.73 206.36 44.39 198.41 33.86 188.29 C23.33 178.17 15.07 166.34 9.08 152.79 C3.00 139.23 0.00 124.78 0.00 109.42 C0.00 99.30 1.36 89.63 4.08 80.23 C6.81 70.93 10.71 62.16 15.70 54.12 C20.70 46.08 26.78 38.67 33.86 32.08 C40.94 25.48 48.84 19.79 57.46 15.00 C66.08 10.30 75.43 6.60 85.51 3.98 C95.49 1.36 106.02 0.09 117.01 0.09 Z M320.98 4.79 C342.76 4.79 361.46 6.78 377.17 10.84 C392.87 14.91 405.94 21.32 416.38 30.27 C428.36 40.48 437.35 52.13 443.34 65.33 C449.33 78.52 452.42 92.88 452.42 108.51 C452.42 124.14 449.70 137.33 444.34 150.44 C438.98 163.54 431.09 174.92 420.65 184.59 C410.21 194.35 397.41 202.03 382.07 207.63 C366.73 213.23 349.21 216.03 329.51 216.03 L250.26 216.03 L250.26 4.79 L320.98 4.79 Z M512.69 216.03 L477.02 216.03 L477.02 4.79 L512.69 4.79 L512.69 216.03 Z M914.46 216.03 L878.15 216.03 L845.83 145.65 L754.79 145.65 L721.38 216.03 L721.11 216.03 L721.11 216.03 L679.63 216.03 L605.83 116.83 L580.87 116.83 L580.87 216.03 L545.19 216.03 L545.19 4.79 L618.72 4.79 C631.43 4.79 642.59 6.14 652.12 8.86 C661.74 11.57 669.73 15.36 676.18 20.24 C682.62 25.12 687.43 30.90 690.70 37.68 C693.97 44.45 695.60 51.77 695.60 59.72 C695.60 66.32 694.33 72.46 691.88 78.25 C689.43 84.03 685.89 89.18 681.35 93.79 C676.81 98.39 671.37 102.37 664.92 105.71 C658.48 109.05 651.49 111.67 643.77 113.57 L710.23 201.61 L805.62 0.00 L814.61 0.00 L914.46 216.03 Z M962.66 101.01 L1069.23 101.01 L1069.23 4.79 L1104.91 4.79 L1104.91 216.03 L1069.23 216.03 L1069.23 114.75 L962.66 114.75 L962.66 216.03 L926.99 216.03 L926.99 4.79 L962.66 4.79 L962.66 101.01 Z M117.01 10.30 C104.84 10.30 93.77 12.74 84.42 17.53 C75.07 22.32 67.26 29.18 60.91 37.95 C54.55 46.71 49.74 57.10 46.57 69.21 C43.39 81.32 41.76 94.69 41.76 109.24 C41.76 123.78 43.39 137.43 46.57 149.71 C49.74 162.00 54.56 172.66 60.91 181.70 C67.26 190.73 75.07 197.78 84.42 202.84 C93.77 207.90 104.57 210.43 117.01 210.43 C129.17 210.43 139.88 207.90 149.23 202.84 C158.58 197.78 166.48 190.73 172.83 181.70 C179.28 172.66 184.09 162.00 187.36 149.71 C190.63 137.43 192.26 123.87 192.26 109.24 C192.26 94.60 190.63 81.32 187.36 69.21 C184.09 57.10 179.28 46.62 172.83 37.95 C166.39 29.18 158.58 22.41 149.23 17.53 C139.88 12.65 129.17 10.30 117.01 10.30 Z M285.85 200.49 L285.94 200.58 L323.88 200.58 C335.86 200.58 347.12 198.59 357.65 194.71 C368.18 190.82 377.44 184.95 385.25 177.18 C393.05 169.41 399.32 159.92 403.76 148.54 C408.30 137.25 410.57 124.14 410.57 109.24 C410.57 96.13 408.39 84.21 404.13 73.28 C399.86 62.43 393.87 53.04 386.15 45.18 C378.44 37.32 369.36 31.17 358.74 26.84 C348.12 22.50 336.50 20.33 323.97 20.33 L285.85 20.33 L285.85 200.49 Z M760.96 131.91 L839.21 131.91 L800.63 48.25 L760.96 131.91 Z M580.77 106.07 L601.38 106.07 C609.37 106.07 616.81 104.99 623.53 102.91 C630.34 100.83 636.15 97.76 641.14 93.88 C646.13 89.99 649.94 85.29 652.76 79.78 C655.48 74.27 656.93 68.04 656.93 61.17 C656.93 54.75 655.84 48.97 653.67 43.64 C651.49 38.31 648.40 33.79 644.41 30.00 C640.41 26.20 635.69 23.31 630.16 21.14 C624.62 18.98 618.63 17.98 612.18 17.98 L580.77 17.98 L580.77 106.07 Z"/></symbol>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <ul>
+      <li><button class="menu-btn" type="button" aria-controls="menu" aria-expanded="false" data-open-menu>Menu</button></li>
+      <li class="hide-m"><a href="#archetypes">Shop</a></li>
+      <li class="hide-m"><a href="#archetypes">The Archetypes</a></li>
+      <li class="hide-m"><a href="#house">The House</a></li>
+    </ul>
+    <a class="logo" href="#top" aria-label="ODIRAH, home"><svg viewBox="0 0 1104.91 221.00" aria-hidden="true"><use href="#wordmark"/></svg></a>
+    <ul>
+      <li class="hide-m"><a href="#search">Search</a></li>
+      <li class="hide-m"><a href="#account">Account</a></li>
+      <li><button type="button" data-open-bag aria-controls="bag">Bag (<span class="bag-count" data-count>0</span>)</button></li>
+    </ul>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-label="Menu" role="dialog" aria-modal="true">
+  <div class="menu-top">
+    <button type="button" class="sc" data-close-menu>Close</button>
+    <span class="logo" style="width:104px"><svg viewBox="0 0 1104.91 221.00" aria-hidden="true"><use href="#wordmark"/></svg></span>
+    <button type="button" class="sc" data-open-bag>Bag</button>
+  </div>
+  <nav aria-label="Main">
+    <a href="#archetypes" data-close-menu>Shop</a>
+    <a href="#archetypes" data-close-menu>The Archetypes: HER</a>
+    <a href="#kit" data-close-menu>Discovery Kit</a>
+    <a href="#house" data-close-menu>The House</a>
+  </nav>
+  <p class="tagline">Intimately you™</p>
+  <div class="utility sc"><a href="#search">Search</a><a href="#account">Account</a><a href="#contact">Contact</a></div>
+</div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <img src="assets/img/hero-desert-1280.webp" srcset="assets/img/hero-desert-1280.webp 1280w, assets/img/hero-desert-2400.webp 2400w" sizes="100vw" width="2400" height="1357" alt="A woman wrapped in sand-coloured silk stands on a dune at dusk, the fabric lifting in the wind." fetchpriority="high">
+    <div class="wrap">
+      <p class="sc">The Archetypes: HER · Collection 01</p>
+      <h1 id="hero-title">This is what it feels like to arrive.</h1>
+      <p class="lede">A scent stirs a memory. A feeling returns. ODIRAH creates fragrances that bring you closer to the many parts of yourself.</p>
+      <div class="actions">
+        <a class="btn btn--light" href="#archetypes">Shop the collection</a>
+        <a class="btn btn--ghost-light" href="#manifesto">Discover Odirah</a>
+      </div>
+    </div>
+    <div class="scroll-cue sc" aria-hidden="true">Scroll<i></i></div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
+    <div class="wrap">
+      <p class="sc reveal">Manifesto</p>
+      <h2 id="manifesto-title" class="reveal">Here’s to the unseen.</h2>
+      <p class="lines">
+        <span class="reveal">To the invisible self.</span>
+        <span class="reveal">To the worlds we carry within us.</span>
+        <span class="reveal">Some are quiet. Some hold fire. Some are softly lit.</span>
+        <span class="reveal">You are not one version of yourself.</span>
+      </p>
+      <div class="ornament reveal"></div>
+    </div>
+  </section>
+
+  <!-- ARCHETYPES -->
+  <section class="archetypes" id="archetypes" aria-labelledby="arch-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="sc reveal">Collection 01 · Six fragrances</p>
+          <h2 id="arch-title" class="reveal">The Archetypes: HER</h2>
+        </div>
+        <p class="reveal">Each fragrance gives voice to a different part of the inner world. Not a character to become, but a passage into a world already within you.</p>
+      </div>
+      <div class="grid" data-grid></div>
+      <p class="swipe-hint sc">Swipe to meet all six</p>
+    </div>
+  </section>
+
+  <!-- VESSEL -->
+  <section class="vessel" aria-labelledby="vessel-title">
+    <figure><img src="assets/img/bottle-on-stone-1200.webp" srcset="assets/img/bottle-on-stone-640.webp 640w, assets/img/bottle-on-stone-1200.webp 1200w" sizes="(max-width:860px) 100vw, 50vw" width="1200" height="1490" loading="lazy" decoding="async" alt="An ODIRAH bottle of amber eau de parfum with a round stone stopper, resting on sandstone beside a velvet curtain."></figure>
+    <div class="copy">
+      <p class="sc reveal">Eau de parfum · 100 ml</p>
+      <h2 id="vessel-title" class="reveal">One vessel, six inner worlds.</h2>
+      <p class="reveal">Every fragrance in the collection shares the same sculpted bottle, crowned with a hand-polished stone. What changes is the world inside it, and which part of you it speaks to.</p>
+      <dl class="reveal">
+        <div><dt class="sc">Concentration</dt><dd>Eau de parfum</dd></div>
+        <div><dt class="sc">Volume</dt><dd>100 ml</dd></div>
+        <div><dt class="sc">Collection</dt><dd>The Archetypes: HER</dd></div>
+      </dl>
+      <p class="reveal"><a class="btn btn--solid" href="#archetypes">Choose your archetype</a></p>
+    </div>
+  </section>
+
+  <!-- DISCOVERY KIT -->
+  <section class="kit" id="kit" aria-labelledby="kit-title">
+    <div class="wrap inner">
+      <div>
+        <p class="sc eyebrow reveal">The Discovery Kit</p>
+        <h2 id="kit-title" class="reveal">Meet all six before you choose.</h2>
+        <p class="reveal">Wear one archetype a day, on skin, not paper. Notice which one stays with you into the evening. That is usually her.</p>
+        <ul class="reveal">
+          <li><span>Inside</span><span>All six fragrances</span></li>
+          <li><span>Vials</span><span>6 × 7 or 10 ml</span></li>
+          <li><span>Presented in</span><span>A dedicated Discovery Kit box</span></li>
+        </ul>
+        <div class="reveal" style="display:flex;flex-wrap:wrap;gap:12px">
+          <button type="button" class="btn btn--light" data-add="kit">Add the kit to bag</button>
+        </div>
+      </div>
+      <figure class="reveal">
+        <img src="assets/img/discovery-kit-1600.webp" srcset="assets/img/discovery-kit-800.webp 800w, assets/img/discovery-kit-1600.webp 1600w" sizes="(max-width:860px) 100vw, 56vw" width="1600" height="1200" loading="lazy" decoding="async" alt="The Discovery Kit: an open brown linen box holding six slim glass vials of amber fragrance with stone caps.">
+        <figcaption>Six vials, one for each archetype.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- HOUSE -->
+  <section class="house" id="house" aria-labelledby="house-title">
+    <div class="wrap inner">
+      <figure class="reveal"><img src="assets/img/mirror-monolith-1200.webp" srcset="assets/img/mirror-monolith-640.webp 640w, assets/img/mirror-monolith-1200.webp 1200w" sizes="(max-width:860px) 100vw, 42vw" width="1200" height="1490" loading="lazy" decoding="async" alt="A woman in white stands before a tall mirror in a red rock desert, her reflection looking back."></figure>
+      <div>
+        <p class="sc reveal">The House</p>
+        <h2 id="house-title" class="reveal" style="font-size:clamp(2rem,1.4rem + 2.4vw,3.4rem);margin-top:14px">A mirror of the self</h2>
+        <blockquote class="reveal">To create a fragrance collection that transcends trends and becomes a mirror of the self: memory, intimacy, desire and mystery, translated into scent.</blockquote>
+        <div class="pillars reveal">
+          <div><h3>Mirror of the soul</h3><p>Fragrances that give expression to what is deeply personal.</p></div>
+          <div><h3>Inner archetypes</h3><p>Each scent explores a different part of the inner world.</p></div>
+          <div><h3>Self-discovery</h3><p>Choosing becomes a moment of recognition.</p></div>
+        </div>
+        <a class="link reveal" href="#manifesto">Read the manifesto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE -->
+  <section class="tagline-band" aria-label="Tagline">
+    <p class="big reveal">Intimately you<sup>TM</sup></p>
+    <p class="sc reveal">To the many layers of the human experience</p>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="news">
+        <span class="logo"><svg viewBox="0 0 1104.91 221.00" role="img" aria-label="ODIRAH"><use href="#wordmark"/></svg></span>
+        <p>Letters from the house. New worlds, first.</p>
+        <form data-news novalidate>
+          <label for="news-email" class="skip">Email address</label>
+          <input id="news-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <button type="submit">Join</button>
+        </form>
+        <p class="msg" aria-live="polite" data-news-msg></p>
+      </div>
+      <div><h3>Shop</h3><ul><li><a href="#archetypes">All fragrances</a></li><li><a href="#archetypes">The Archetypes: HER</a></li><li><a href="#kit">Discovery Kit</a></li></ul></div>
+      <div><h3>House</h3><ul><li><a href="#house">The House</a></li><li><a href="#manifesto">Manifesto</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h3>Help</h3><ul><li><a href="#contact">Shipping &amp; returns</a></li><li><a href="#contact">FAQ</a></li><li><a href="#contact">Legal</a></li></ul></div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 ODIRAH. All rights reserved.</span>
+      <span>Concept preview. Prices, vial size and fragrance copy to be confirmed.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" data-scrim></div>
+<aside class="bag" id="bag" role="dialog" aria-modal="true" aria-labelledby="bag-title">
+  <header><h2 id="bag-title">Your bag</h2><button type="button" class="sc" data-close-bag>Close</button></header>
+  <div class="items" data-items></div>
+  <footer>
+    <div class="row"><span class="sc">Subtotal</span><span>Price on launch</span></div>
+    <p class="note">Shipping and taxes are calculated at checkout.</p>
+    <button type="button" class="btn btn--solid" data-checkout>Checkout</button>
+    <p class="note" data-checkout-msg aria-live="polite"></p>
+  </footer>
+</aside>
+
+<script>
+(function(){
+  var root=document.documentElement; root.classList.add('js');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var archetypes=[
+    {id:'silk-and-ashes',n:'I',arch:'The Maiden',name:'Silk & Ashes',story:'Silver morning light on silk. The self before the world arrived.',tone:'#E8DFDB'},
+    {id:'skin-and-shadow',n:'II',arch:'The Lover',name:'Skin & Shadow',story:'Warm skin, a shadow on the wall, the hour no one else sees.',tone:'#DCC9BD'},
+    {id:'ember-and-desire',n:'III',arch:'The Seductress',name:'Ember & Desire',story:'Velvet, ember and a mirror that keeps your secret.',tone:'#DBC0B8'},
+    {id:'stars-and-whisper',n:'IV',arch:'The Wanderer',name:'Stars & Whisper',story:'A tent of light under the open sky. Home is where you breathe.',tone:'#D3CBCB'},
+    {id:'velvet-and-poise',n:'V',arch:'The Queen',name:'Velvet & Poise',story:'Stillness, gold, and a key she has always held.',tone:'#D9CDC6'},
+    {id:'rain-and-solace',n:'VI',arch:'The Healer',name:'Rain & Solace',story:'Rain on old stone. The quiet that puts you back together.',tone:'#D6D2C4'}
+  ];
+  var products={kit:{name:'Discovery Kit',meta:'6 × 7/10 ml',img:'assets/img/discovery-kit-800.webp',script:false}};
+  archetypes.forEach(function(a){products[a.id]={name:a.name,meta:'100 ml · '+a.arch,img:'assets/img/'+a.id+'-640.webp',script:true};});
+
+  // Render cards
+  var grid=document.querySelector('[data-grid]');
+  grid.innerHTML=archetypes.map(function(a){
+    return '<article class="card reveal" data-tone="'+a.tone+'">'+
+      '<a class="card-media" href="#'+a.id+'" aria-label="'+a.name+', '+a.arch+'"><img src="assets/img/'+a.id+'-640.webp" srcset="assets/img/'+a.id+'-640.webp 640w, assets/img/'+a.id+'-1200.webp 1200w" sizes="(max-width:640px) 78vw, (max-width:1024px) 46vw, 31vw" width="1200" height="1490" loading="lazy" decoding="async" alt="Painterly illustration of '+a.arch+'’s world for '+a.name+'."><span class="numeral sc">'+a.n+'</span></a>'+
+      '<div class="card-body"><p class="archetype sc">'+a.arch+'</p>'+
+      '<h3 class="name script" style="font-family:var(--f-script);font-weight:400">'+a.name.replace('&','&amp;')+'</h3>'+
+      '<p class="story">'+a.story+'</p>'+
+      '<div class="buy"><span class="meta">Eau de parfum · 100 ml</span><button type="button" class="add" data-add="'+a.id+'">Add to bag</button></div></div></article>';
+  }).join('');
+
+  // Archetype ground shifts toward the hovered card's tone
+  var sec=document.querySelector('.archetypes');
+  grid.addEventListener('pointerover',function(e){var c=e.target.closest('.card');if(c)sec.style.setProperty('--tone',c.dataset.tone);});
+  grid.addEventListener('pointerleave',function(){sec.style.removeProperty('--tone');});
+
+  // Header state
+  var header=document.querySelector('.site-header'), hero=document.querySelector('.hero');
+  function onScroll(){header.classList.toggle('is-solid',window.scrollY>hero.offsetHeight-90);}
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Reveal
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){var el=en.target;var sib=[].slice.call(el.parentNode.children).filter(function(x){return x.classList.contains('reveal');});el.style.transitionDelay=Math.min(sib.indexOf(el),5)*90+'ms';el.classList.add('in');io.unobserve(el);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el){io.observe(el);});
+  }
+
+  // Menu
+  var menu=document.getElementById('menu'), menuBtn=document.querySelector('[data-open-menu]');
+  function setMenu(open){menu.classList.toggle('is-open',open);menuBtn.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';if(open)menu.querySelector('[data-close-menu]').focus();}
+  menuBtn.addEventListener('click',function(){setMenu(true);});
+  menu.addEventListener('click',function(e){if(e.target.closest('[data-close-menu]'))setMenu(false);});
+
+  // Bag
+  var bag=document.getElementById('bag'), scrim=document.querySelector('[data-scrim]'), itemsEl=document.querySelector('[data-items]'), counts=document.querySelectorAll('[data-count]'), cart={}, lastFocus=null;
+  function render(){
+    var ids=Object.keys(cart), total=ids.reduce(function(s,k){return s+cart[k];},0);
+    counts.forEach(function(c){c.textContent=total;});
+    itemsEl.innerHTML=ids.length?ids.map(function(id){var p=products[id];return '<div class="line-item"><img src="'+p.img+'" alt=""><div><div class="'+(p.script?'script':'sc')+'">'+p.name.replace('&','&amp;')+'</div><div class="qty"><button type="button" aria-label="Remove one" data-dec="'+id+'">−</button><span>'+cart[id]+'</span><button type="button" aria-label="Add one" data-inc="'+id+'">+</button></div><div style="font-size:.9rem;color:var(--brown)">'+p.meta+'</div></div><button type="button" class="remove" data-remove="'+id+'">Remove</button></div>';}).join(''):'<p class="empty">Your bag is empty. Begin with the archetype you recognise.</p>';
+  }
+  function setBag(open){bag.classList.toggle('is-open',open);scrim.classList.toggle('is-open',open);document.body.style.overflow=open?'hidden':'';if(open){lastFocus=document.activeElement;bag.querySelector('[data-close-bag]').focus();}else if(lastFocus){lastFocus.focus();}}
+  document.addEventListener('click',function(e){
+    var t;
+    if((t=e.target.closest('[data-add]'))){var id=t.dataset.add;cart[id]=(cart[id]||0)+1;render();setMenu(false);setBag(true);}
+    else if(e.target.closest('[data-open-bag]')){setMenu(false);setBag(true);}
+    else if(e.target.closest('[data-close-bag]')||e.target===scrim){setBag(false);}
+    else if((t=e.target.closest('[data-inc]'))){cart[t.dataset.inc]++;render();}
+    else if((t=e.target.closest('[data-dec]'))){var k=t.dataset.dec;cart[k]--;if(cart[k]<=0)delete cart[k];render();}
+    else if((t=e.target.closest('[data-remove]'))){delete cart[t.dataset.remove];render();}
+    else if(e.target.closest('[data-checkout]')){document.querySelector('[data-checkout-msg]').textContent='In the live site this opens Shopify checkout.';}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setBag(false);setMenu(false);}});
+  render();
+
+  // Newsletter (concept: no data is sent)
+  document.querySelector('[data-news]').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('news-email').value.trim();var m=document.querySelector('[data-news-msg]');m.textContent=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'Thank you. The first letter will find you soon.':'Please enter a valid email address.';});
+})();
+</script>
+</body>
+</html>

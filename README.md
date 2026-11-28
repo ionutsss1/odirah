@@ -9,6 +9,13 @@ E-commerce website for ODIRAH, a fragrance house. Launch scope: one collection, 
 - [`docs/approval/index.html`](docs/approval/index.html): open it in a browser. It is self-contained, apart from Google Fonts stand-ins for the licensed brand faces.
 - [Figma file: ODIRAH — Website](https://www.figma.com/design/S2y1SIU3LdwgnUf0hCgaiH): the same pack as editable Figma pages (cover, foundations, sitemap and journey, desktop and mobile wireframes), built from brand colour variables, text styles and reusable components.
 
+## Homepage concept
+
+- [`site/index.html`](site/index.html): a high-fidelity homepage built on the brand guidelines. Live at https://ionutsss1.github.io/odirah/site/
+- The wordmark in `site/assets/brand/odirah-wordmark.svg` is extracted as vector paths from the brand manual's supplied artwork. It is not retyped.
+- The campaign photography and the six archetype illustrations in `site/assets/img/` were generated with Magnific as concept stand-ins. Replace them with the final shoot and illustrations.
+- The bag drawer works in the browser. Checkout and the newsletter are not connected to anything.
+
 ## Phase 2: build (after approval)
 
 | Layer | Choice |
