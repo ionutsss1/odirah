@@ -88,9 +88,9 @@ p{margin:0}
 @keyframes settle{to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(48,30,21,.66) 0%,rgba(48,30,21,.28) 46%,rgba(48,30,21,0) 70%),linear-gradient(0deg,rgba(48,30,21,.55) 0%,rgba(48,30,21,0) 45%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(56px,9vh,104px)}
-.hero h1{font-size:clamp(2.5rem,1.6rem + 4.2vw,5.4rem);max-width:12ch;margin-top:18px}
-.hero p.lede{max-width:34rem;margin-top:22px;font-size:clamp(1.1rem,1rem + .4vw,1.35rem);color:rgba(243,236,233,.92)}
-.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero h1{font-family:var(--f-serif);font-weight:500;font-size:clamp(2.6rem,1.7rem + 3.9vw,5.2rem);line-height:1;letter-spacing:-.012em;max-width:15ch}
+.hero p.lede{max-width:31rem;margin-top:16px;line-height:1.5;font-size:clamp(1.1rem,1rem + .4vw,1.35rem);color:rgba(243,236,233,.92)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .scroll-cue{position:absolute;z-index:1;right:max(var(--gutter),env(safe-area-inset-right));bottom:clamp(56px,9vh,104px);display:flex;flex-direction:column;align-items:center;gap:14px;font-size:.72rem}
 .scroll-cue i{display:block;width:1px;height:64px;background:linear-gradient(var(--blush),transparent);transform-origin:top;animation:cue 2.4s var(--ease) infinite}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
@@ -98,7 +98,7 @@ p{margin:0}
 
 /* ---------- manifesto ---------- */
 .manifesto{padding-block:clamp(96px,14vw,184px);text-align:center}
-.manifesto h2{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.6rem);margin-top:18px}
+.manifesto h2{font-size:clamp(2.1rem,1.5rem + 2.6vw,3.6rem)}
 .manifesto .lines{margin:40px auto 44px;max-width:36rem;font-style:italic;font-size:clamp(1.2rem,1.05rem + .6vw,1.55rem);line-height:1.7}
 .manifesto .lines span{display:block}
 .ornament{width:56px;height:1px;background:var(--gold);margin:0 auto}
@@ -106,7 +106,7 @@ p{margin:0}
 /* ---------- archetypes ---------- */
 .archetypes{background:var(--tone);transition:background-color 1.2s var(--ease);padding-block:clamp(88px,10vw,140px)}
 .section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,26rem);gap:32px;align-items:end;margin-bottom:clamp(48px,6vw,80px)}
-.section-head h2{font-size:clamp(2.2rem,1.4rem + 3.2vw,4.2rem);margin-top:14px}
+.section-head h2{font-size:clamp(2.2rem,1.4rem + 3.2vw,4.2rem)}
 .section-head p{color:var(--brown)}
 @media (max-width:860px){.section-head{grid-template-columns:1fr;gap:18px}}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(48px,5vw,72px) clamp(20px,2.4vw,36px)}
@@ -116,8 +116,8 @@ p{margin:0}
 .card:hover .card-media img{transform:scale(1.045)}
 .card-media .numeral{position:absolute;top:14px;left:16px;color:var(--blush);font-size:.9rem;text-shadow:0 1px 8px rgba(48,30,21,.5)}
 .card-body{display:flex;flex-direction:column;gap:6px;padding-top:22px}
-.card .archetype{color:var(--brown)}
-.card .name{font-size:clamp(2.1rem,1.7rem + 1vw,2.7rem);margin-top:2px}
+.card .archetype{color:var(--brown);margin-top:-2px}
+.card .name{font-size:clamp(2.1rem,1.7rem + 1vw,2.7rem)}
 .card .story{font-style:italic;color:var(--brown);max-width:30ch;min-height:3.2em}
 .card .buy{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
 .card .meta{font-size:.95rem;font-variant-numeric:lining-nums}
@@ -150,7 +150,7 @@ p{margin:0}
 .kit{background:var(--deep);color:var(--blush)}
 .kit .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:center;padding-block:clamp(88px,10vw,150px)}
 .kit .eyebrow{color:var(--gold)}
-.kit h2{font-size:clamp(2.2rem,1.5rem + 2.8vw,4rem);margin-top:14px}
+.kit h2{font-size:clamp(2.2rem,1.5rem + 2.8vw,4rem)}
 .kit p{margin-top:22px;max-width:28rem;color:rgba(227,213,207,.86)}
 .kit ul{list-style:none;padding:0;margin:32px 0 36px;display:grid;gap:0;max-width:28rem}
 .kit li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line-light);font-size:1.02rem}
@@ -272,7 +272,6 @@ p{margin:0}
   <section class="hero" aria-labelledby="hero-title">
     <img src="assets/img/hero-desert-1280.webp" srcset="assets/img/hero-desert-1280.webp 1280w, assets/img/hero-desert-2400.webp 2400w" sizes="100vw" width="2400" height="1357" alt="A woman wrapped in sand-coloured silk stands on a dune at dusk, the fabric lifting in the wind." fetchpriority="high">
     <div class="wrap">
-      <p class="sc">The Archetypes: HER · Collection 01</p>
       <h1 id="hero-title">This is what it feels like to arrive.</h1>
       <p class="lede">A scent stirs a memory. A feeling returns. ODIRAH creates fragrances that bring you closer to the many parts of yourself.</p>
       <div class="actions">
@@ -286,7 +285,6 @@ p{margin:0}
   <!-- MANIFESTO -->
   <section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
     <div class="wrap">
-      <p class="sc reveal">Manifesto</p>
       <h2 id="manifesto-title" class="reveal">Here’s to the unseen.</h2>
       <p class="lines">
         <span class="reveal">To the invisible self.</span>
@@ -303,7 +301,6 @@ p{margin:0}
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="sc reveal">Collection 01 · Six fragrances</p>
           <h2 id="arch-title" class="reveal">The Archetypes: HER</h2>
         </div>
         <p class="reveal">Each fragrance gives voice to a different part of the inner world. Not a character to become, but a passage into a world already within you.</p>
@@ -317,7 +314,6 @@ p{margin:0}
   <section class="vessel" aria-labelledby="vessel-title">
     <figure><img src="assets/img/bottle-on-stone-1200.webp" srcset="assets/img/bottle-on-stone-640.webp 640w, assets/img/bottle-on-stone-1200.webp 1200w" sizes="(max-width:860px) 100vw, 50vw" width="1200" height="1490" loading="lazy" decoding="async" alt="An ODIRAH bottle of amber eau de parfum with a round stone stopper, resting on sandstone beside a velvet curtain."></figure>
     <div class="copy">
-      <p class="sc reveal">Eau de parfum · 100 ml</p>
       <h2 id="vessel-title" class="reveal">One vessel, six inner worlds.</h2>
       <p class="reveal">Every fragrance in the collection shares the same sculpted bottle, crowned with a hand-polished stone. What changes is the world inside it, and which part of you it speaks to.</p>
       <dl class="reveal">
@@ -333,7 +329,6 @@ p{margin:0}
   <section class="kit" id="kit" aria-labelledby="kit-title">
     <div class="wrap inner">
       <div>
-        <p class="sc eyebrow reveal">The Discovery Kit</p>
         <h2 id="kit-title" class="reveal">Meet all six before you choose.</h2>
         <p class="reveal">Wear one archetype a day, on skin, not paper. Notice which one stays with you into the evening. That is usually her.</p>
         <ul class="reveal">
@@ -357,8 +352,7 @@ p{margin:0}
     <div class="wrap inner">
       <figure class="reveal"><img src="assets/img/mirror-monolith-1200.webp" srcset="assets/img/mirror-monolith-640.webp 640w, assets/img/mirror-monolith-1200.webp 1200w" sizes="(max-width:860px) 100vw, 42vw" width="1200" height="1490" loading="lazy" decoding="async" alt="A woman in white stands before a tall mirror in a red rock desert, her reflection looking back."></figure>
       <div>
-        <p class="sc reveal">The House</p>
-        <h2 id="house-title" class="reveal" style="font-size:clamp(2rem,1.4rem + 2.4vw,3.4rem);margin-top:14px">A mirror of the self</h2>
+        <h2 id="house-title" class="reveal" style="font-size:clamp(2rem,1.4rem + 2.4vw,3.4rem)">A mirror of the self</h2>
         <blockquote class="reveal">To create a fragrance collection that transcends trends and becomes a mirror of the self: memory, intimacy, desire and mystery, translated into scent.</blockquote>
         <div class="pillars reveal">
           <div><h3>Mirror of the soul</h3><p>Fragrances that give expression to what is deeply personal.</p></div>
@@ -434,8 +428,8 @@ p{margin:0}
   grid.innerHTML=archetypes.map(function(a){
     return '<article class="card reveal" data-tone="'+a.tone+'">'+
       '<a class="card-media" href="#'+a.id+'" aria-label="'+a.name+', '+a.arch+'"><img src="assets/img/'+a.id+'-640.webp" srcset="assets/img/'+a.id+'-640.webp 640w, assets/img/'+a.id+'-1200.webp 1200w" sizes="(max-width:640px) 78vw, (max-width:1024px) 46vw, 31vw" width="1200" height="1490" loading="lazy" decoding="async" alt="Painterly illustration of '+a.arch+'’s world for '+a.name+'."><span class="numeral sc">'+a.n+'</span></a>'+
-      '<div class="card-body"><p class="archetype sc">'+a.arch+'</p>'+
-      '<h3 class="name script" style="font-family:var(--f-script);font-weight:400">'+a.name.replace('&','&amp;')+'</h3>'+
+      '<div class="card-body"><h3 class="name script" style="font-family:var(--f-script);font-weight:400">'+a.name.replace('&','&amp;')+'</h3>'+
+      '<p class="archetype sc">'+a.arch+'</p>'+
       '<p class="story">'+a.story+'</p>'+
       '<div class="buy"><span class="meta">Eau de parfum · 100 ml</span><button type="button" class="add" data-add="'+a.id+'">Add to bag</button></div></div></article>';
   }).join('');
